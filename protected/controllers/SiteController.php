@@ -94,7 +94,7 @@ class SiteController extends Controller
 			if($model->validate() && $model->login()){
                             $id = Yii::app()->user->getid();
 				//$this->redirect(Yii::app()->user->returnUrl);
-                                $this->redirect(array('/users/'.$id));
+                                $this->redirect(array('/users/'));
                         }
 		}
 		// display the login form

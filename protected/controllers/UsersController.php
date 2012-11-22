@@ -51,36 +51,7 @@ class UsersController extends Controller
 	 */
 	public function actionView($id)
 	{
-                $questions = Questions::model()->with(array('questionOptions'=>array(
-                                                                'joinType'=>'INNER JOIN',
-                                                                ),
-                                                            'usersAnswers'=>array(
-                                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
-                                                                'joinType'=>'LEFT JOIN'
-                                                                )
-                                                        ))->findAll();
-                $name = Yii::app()->user->getName();
-                $view_questions = array();
-                foreach($questions as $question)
-                {
-                    $view_questions[$question->id]['question'] = str_replace('{user name}', $name, $question->question);
-                    $view_questions[$question->id]['question_id'] = $question->id;
-                    $options = array();
-                    foreach($question->questionOptions as $option)
-                    {
-                    $options[$option->id]['option'] = $option->option;
-                    $options[$option->id]['id'] = $option->id;
-                    }
-                    $view_questions[$question->id]['options'] = array_values($options);
-                }
-		$p_month = date('n'); 
-                Yii::app()->clientScript->registerCoreScript('jquery');
-		//echo '<pre>';print_r($freinds_occasions); die;
-		$this->render('friends_occasions',array(
-			'p_month'=>$p_month,
-			'user_id'=>$id,
-                        'questions'=> json_encode(array_values($view_questions))
-		));
+				
 	}
 	
 	public function actionGetOccasions()
@@ -89,9 +60,9 @@ class UsersController extends Controller
 		$userFriend_occasions = new User_friends_Occasions;
 		$ip_array = array('user_id'=>$_POST['user_id'],'p_month'=>$_POST['p_month']);
 		$freinds_occasions = $userFriend_occasions->getUser_friends_Occasions($ip_array);
+		//echo json_encode($freinds_occasions);
 		echo $this->renderPartial('occasions',array(
-			'freinds_occasions'=>$freinds_occasions,
-                        'questions'=>  json_encode(array_values($view_questions))
+			'freinds_occasions'=>$freinds_occasions
 		));
 	}
         
@@ -116,10 +87,9 @@ class UsersController extends Controller
         }
 	public function actiongetNotifications()
 	{
+		$userFriend_occasions = new User_friends_Occasions;
 		$notification_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 14 days'));
 		$to_day = date('Y-m-d');
-		//print_r($_POST); die;
-		$userFriend_occasions = new User_friends_Occasions;
 		$ip_array = array('user_id'=>$_POST['user_id'],'notification_date'=>$notification_date,'to_day'=>$to_day);
 		$freinds_notifications = $userFriend_occasions->getUser_friends_Notifications($ip_array);
 		echo $this->renderPartial('notifications',array(
@@ -261,9 +231,41 @@ class UsersController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Users');
+		/*$dataProvider=new CActiveDataProvider('Users');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+		));*/
+		
+		$name = Yii::app()->user->getName();
+				$id = Yii::app()->user->getId();
+				$questions = Questions::model()->with(array('questionOptions'=>array(
+                                                                'joinType'=>'INNER JOIN',
+                                                                ),
+                                                            'usersAnswers'=>array(
+                                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
+                                                                'joinType'=>'LEFT JOIN'
+                                                                )
+                                                        ))->findAll();
+				$view_questions = array();
+                foreach($questions as $question)
+                {
+                    $view_questions[$question->id]['question'] = str_replace('{user name}', $name, $question->question);
+                    $view_questions[$question->id]['question_id'] = $question->id;
+                    $options = array();
+                    foreach($question->questionOptions as $option)
+                    {
+                    $options[$option->id]['option'] = $option->option;
+                    $options[$option->id]['id'] = $option->id;
+                    }
+                    $view_questions[$question->id]['options'] = array_values($options);
+                }
+		$p_month = date('n'); 
+                Yii::app()->clientScript->registerCoreScript('jquery');
+		//echo '<pre>';print_r($freinds_occasions); die;
+		$this->render('friends_occasions',array(
+			'p_month'=>$p_month,
+			'user_id'=>$id,
+                        'questions'=> json_encode(array_values($view_questions))
 		));
 	}
 
