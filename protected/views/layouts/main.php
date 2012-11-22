@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
         <?php 
                $cs=Yii::app()->getClientScript(); 
-               $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js',CClientScript::POS_END);
+               $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js');
         ?>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>

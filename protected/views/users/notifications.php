@@ -23,9 +23,7 @@ if(!empty($freinds_notifications))
 }
 else
 {
-	?>
-	<div class="alert">No Notifications exist</div>
-<?php
+	echo 'No Notifications exist';
 }
 
 ?>

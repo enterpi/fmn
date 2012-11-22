@@ -39,7 +39,7 @@ class User_friends_Occasions
 			where DATE_FORMAT(uo.occassion_date, '%Y-%m') = '".$ocasion_date."' 
 			and uf.users_id = ".$ip_array['user_id']." 
 			and o.occassion_type=2
-			) result_set order by  occasion_day asc";
+			) result_set order by  occasion_day";
 		
 			//echo $sql;
 			$friends_occasions = Yii::app()->db->createCommand($sql)->queryAll();
@@ -73,7 +73,7 @@ class User_friends_Occasions
 			where uo.occassion_date between '".$ip_array['to_day']."' and '".$ip_array['notification_date']."' 
 			and uf.users_id = ".$ip_array['user_id']." 
 			and o.occassion_type=2
-			) result_set order by  occasion_day asc";
+			) result_set order by  occasion_day";
 		
 			//echo $sql;
 			$friends_notifications = Yii::app()->db->createCommand($sql)->queryAll();
