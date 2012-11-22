@@ -50,9 +50,9 @@ class Users extends CActiveRecord
 		return array(
 			array('first_name, last_name, email_address, password, physical_address', 'length', 'max'=>255),
                         array('email_address','unique'),
-                        array('first_name, last_name, email_address','required','on'=>'updateuser'),
-			array('first_name, last_name, email_address, password, confirm_password','required','on'=>'create'),
-                        array('password', 'compare','compareAttribute'=>'confirm_password','on'=>'create'),
+                        array('first_name, last_name, email_address','required','on'=>array('updateuser')),
+			array('first_name, last_name, email_address, password, confirm_password','required','on'=>array('usercreate')),
+                        array('password', 'compare','compareAttribute'=>'confirm_password','on'=>array('usercreate')),
 			array('gender, status', 'length', 'max'=>1),
 			array('birthday,confirm_password', 'safe'),
                         

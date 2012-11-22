@@ -103,8 +103,10 @@ class UsersController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Users;
-                $model->setScenario('create');
+		$model=new Users();
+                $model->setScenario('usercreate');
+                
+                
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -112,8 +114,8 @@ class UsersController extends Controller
 		{
                         $pwd = $_POST['Users']['password'];
                         $c_pwd = $_POST['Users']['confirm_password'];
-                        $md5_pwd = md5($pwd);
-                        $md5_confirmpwd = md5($c_pwd);
+                        $md5_pwd = $pwd!=""?md5($pwd):$pwd;
+                        $md5_confirmpwd = $c_pwd!=""?md5($c_pwd):$c_pwd;
                         $user = Yii::app()->input->stripClean($_POST['Users']);
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
@@ -131,9 +133,6 @@ class UsersController extends Controller
                                     $this->redirect(array('view','id'=>$id));
                             }
                         }
-                    $user['password'] = $pwd;
-                    $user['confirm_password'] = $c_pwd;
-                    $model->attributes=$user;
                 }
                 
 		$this->render('create',array(
