@@ -57,8 +57,8 @@ class Users extends CActiveRecord
 			array('birthday,confirm_password', 'safe'),
                         
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, first_name, last_name, email_address, password, birthday, gender, physical_address, created_by, created_date, modified_by, modified_date, ipaddress, status', 'safe', 'on'=>'search'),
+			// Please remove those attributes  that should not be searched.
+			array('id, first_name, last_name, confirm_password, email_address, password, birthday, gender, physical_address, created_by, created_date, modified_by, modified_date, ipaddress, status', 'safe', 'on'=>'search'),
 		);
 	}
 

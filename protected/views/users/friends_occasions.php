@@ -44,6 +44,9 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
         questions = JSON.parse(questions);
         if(questions.length>0)
         question(questions);
+        else
+        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
+    
         $('.user_answer').live('click',function(){
             var qry_string ={'answer':$(this).val(),'question':$('#user_question').val()} ;
             $.ajax({
@@ -58,7 +61,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
                             question(questions);
                     }
                     else{
-                        $('#question').html('');
+                        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
                     }
                         
                 },
@@ -74,6 +77,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
 <div class="wrapper_home">
     <div class="wrapper_left">
         <div id="question" class="question"> 
+            
         </div>
         
         <div class="upcoming">

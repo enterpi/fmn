@@ -55,6 +55,7 @@ class UsersController extends Controller
                                                                 'joinType'=>'INNER JOIN',
                                                                 ),
                                                             'usersAnswers'=>array(
+                                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
                                                                 'joinType'=>'LEFT JOIN'
                                                                 )
                                                         ))->findAll();
@@ -62,7 +63,7 @@ class UsersController extends Controller
                 $view_questions = array();
                 foreach($questions as $question)
                 {
-                    $view_questions[$question->id]['question'] = str_replace('{username}', $name, $question->question);
+                    $view_questions[$question->id]['question'] = str_replace('{user name}', $name, $question->question);
                     $view_questions[$question->id]['question_id'] = $question->id;
                     $options = array();
                     foreach($question->questionOptions as $option)
