@@ -50,11 +50,12 @@ class Users extends CActiveRecord
 		return array(
 			array('first_name, last_name, email_address, password, physical_address', 'length', 'max'=>255),
                         array('email_address','unique'),
+                        array('first_name, last_name, email_address','required','on'=>'updateuser'),
 			array('first_name, last_name, email_address, password, confirm_password','required','on'=>'create'),
-			array('first_name, last_name, email_address','required','on'=>'updateuser'),
-			array('gender, status', 'length', 'max'=>1),
-			array('birthday', 'safe'),
                         array('password', 'compare','compareAttribute'=>'confirm_password','on'=>'create'),
+			array('gender, status', 'length', 'max'=>1),
+			array('birthday,confirm_password', 'safe'),
+                        
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, first_name, last_name, email_address, password, birthday, gender, physical_address, created_by, created_date, modified_by, modified_date, ipaddress, status', 'safe', 'on'=>'search'),

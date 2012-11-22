@@ -16,6 +16,7 @@ class UserIdentity extends CUserIdentity
 	 * @return boolean whether authentication succeeds.
 	 */
 	private $_id;
+        private $_name;
         public function authenticate()
         {
             $record=Users::model()->findByAttributes(array('email_address'=>$this->username));
@@ -26,6 +27,7 @@ class UserIdentity extends CUserIdentity
             else
             {
                 $this->_id=$record->id;
+                $this->_name = $record->first_name.' '.$record->last_name;
                 //$this->setState('title', $record->title);
                 $this->errorCode=self::ERROR_NONE;
             }
@@ -34,5 +36,9 @@ class UserIdentity extends CUserIdentity
         public function getId()
         {
             return $this->_id;
+        }
+        public function getFullName()
+        {
+            return $this->_name;
         }
 }

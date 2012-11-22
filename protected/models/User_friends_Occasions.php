@@ -18,7 +18,7 @@ class User_friends_Occasions
 			$sql = "select occasion_name,occasion_date,occasion_day from (				
 			select concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
 			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
-			uo.occassion_date as occasion_day 
+			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
 			users_occassions uo
 			left join users u on u.id = uo.users_id
@@ -30,7 +30,7 @@ class User_friends_Occasions
 			union
 			select concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
 			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
-			uo.occassion_date as occasion_day 
+			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
 			users_occassions uo
 			left join users u on u.id = uo.users_id

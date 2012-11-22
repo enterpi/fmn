@@ -32,7 +32,7 @@ class UsersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('updateuser','view'),
+				'actions'=>array('updateuser','view','saveanswer'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,6 +51,21 @@ class UsersController extends Controller
 	 */
 	public function actionView($id)
 	{
+                $questions = Questions::model()->with('questionOptions')->findAll();
+                $name = Yii::app()->user->getName();
+                $view_questions = array();
+                foreach($questions as $question)
+                {
+                    $view_questions[$question->id]['question'] = str_replace('{username}', $name, $question->question);
+                    $view_questions[$question->id]['question_id'] = $question->id;
+                    $options = array();
+                    foreach($question->questionOptions as $option)
+                    {
+                    $options[$option->id]['option'] = $option->option;
+                    $options[$option->id]['id'] = $option->id;
+                    }
+                    $view_questions[$question->id]['options'] = array_values($options);
+                }
 		$p_month = date('n'); 
         Yii::app()->clientScript->registerCoreScript('jquery');
 		//echo '<pre>';print_r($freinds_occasions); die;
@@ -68,8 +83,29 @@ class UsersController extends Controller
 		$freinds_occasions = $userFriend_occasions->getUser_friends_Occasions($ip_array);
 		echo $this->renderPartial('occasions',array(
 			'freinds_occasions'=>$freinds_occasions,
+                        'questions'=>  json_encode(array_values($view_questions))
 		));
 	}
+        
+        public function actionSaveanswer()
+        {
+            $question_id = $_POST['question'];
+            $option_id = $_POST['answer'];
+            $user_id = Yii::app()->user->getid();
+            $usersanswers_model = new UsersAnswers();
+            $usersanswers_model->question_options_id = $option_id;
+            $usersanswers_model->questions_id = $question_id;
+            $usersanswers_model->users_id = $user_id;
+            if($usersanswers_model->save())
+            {
+                echo "success";
+            }
+            else
+            {
+                echo "fail";
+            }
+            
+        }
 	public function actiongetNotifications()
 	{
 		$notification_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 14 days'));
