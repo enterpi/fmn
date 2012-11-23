@@ -3,7 +3,10 @@
 /* @var $model ChangePassword */
 /* @var $form CActiveForm */
 ?>
-
+<?php 
+       $cs=Yii::app()->getClientScript(); 
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+?>
 <div class="form">
 <div class="update_pro">
 
@@ -17,7 +20,12 @@
     <h2 class="update_head">Change Password</h2>
 
 	<?php /* echo $form->errorSummary($model); */ ?>
-
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'current_password'); ?>
+		<?php echo $form->passwordField($model,'current_password'); ?>
+		<?php echo $form->error($model,'current_password'); ?>
+	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('class'=>'inp','maxlength'=>255)); ?>

@@ -368,7 +368,7 @@ class UsersController extends Controller
         public function actionChangepwd()
         {
             $model=new ChangePassword;
-
+            $model->setScenario('pwdchange');
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='change-password-changepwd-form')
@@ -377,19 +377,28 @@ class UsersController extends Controller
                 Yii::app()->end();
             }
             */
-			Yii::app()->clientScript->registerCoreScript('jquery');
+            Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
                 $model->attributes=$_POST['ChangePassword'];
                 if($model->validate())
                 {
                     $user_id = Yii::app()->user->getid();
-                    $user = Users::model()->findByAttributes(array('id'=>$user_id));
-                    $user->password = md5($model->confirm_password);
-                    $user->save();
-                    $this->redirect(array('/users'));
+                    $user = users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                    if($user)
+                    {
+                        $user->password = md5($model->confirm_password);
+                        $user->save();
+                        $this->redirect(array('/users'));
+                    }
+                    else
+                    {
+                        $model->addError('current_password', 'Incorrect Current Password!');
+                    }
+                    
                 }
             }
+            
             $this->render('changepwd',array('model'=>$model));
         }
 
