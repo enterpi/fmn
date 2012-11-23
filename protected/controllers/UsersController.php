@@ -352,6 +352,10 @@ class UsersController extends Controller
                         $savedtoken->delete();
                         $this->redirect(array('/users'));
                     }
+                    else
+                    {
+                        $this->redirect(array('/site/login'));
+                    }
                     //$this->render('changepassword',array('model'=>$model));
                 }
             }
@@ -407,18 +411,13 @@ class UsersController extends Controller
                 $email['message'] = 'Please click the below link and change your password <br/>'.$link;
                 $email['subject'] = 'FMN Forgot Password';
                 $mail = new SendEmail;
-                if($mail->send($email))
-                {
-                    $model = new ResetPassword;
-                    $model->email = $email_address;
-                    $model->token = $token;
-                    $model->save();
-                    echo "2";
-                }
-                else
-                {
-                    echo '3';
-                }
+                $mail->send($email);
+                
+                $model = new ResetPassword;
+                $model->email = $email_address;
+                $model->token = $token;
+                $model->save();
+                echo "2";
             }
         }
 }
