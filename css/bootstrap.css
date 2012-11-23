@@ -168,7 +168,7 @@ body {
 }
 
 a {
-  color: #0088cc;
+  color: #757575;
   text-decoration: none;
 }
 
@@ -2766,7 +2766,7 @@ table th[class*="span"],
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 1000;
   display: none;
   float: left;
@@ -2812,6 +2812,7 @@ table th[class*="span"],
   font-weight: normal;
   line-height: 20px;
   color: #333333;
+  font-size:14px;
   white-space: nowrap;
 }
 

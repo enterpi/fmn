@@ -20,13 +20,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'confirm_password'); ?>
-		<?php echo $form->passwordField($model,'confirm_password'); ?>
+		<?php echo $form->passwordField($model,'confirm_password',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'confirm_password'); ?>
 	</div>
 

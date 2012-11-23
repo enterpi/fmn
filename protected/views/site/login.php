@@ -24,12 +24,12 @@ $this->breadcrumbs=array(
                         <h6>we won’t post anything without your permission.</h6>
                     </div>
             <div class="option">
-                            ----------- or -----------
+                            ----------- <span>or</span> -----------
                     </div> 
             <div class="signin_sec">
                     <div class="head">
                     <h2>Log in </h2>
-                    <h3><?php echo CHtml::link('Dont have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
+                    <h3><?php echo CHtml::link('Don\'t have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
                 </div>
                 <?php $form=$this->beginWidget('CActiveForm', array(
                         'id'=>'login-form',
