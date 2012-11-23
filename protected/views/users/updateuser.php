@@ -78,21 +78,15 @@
                     }
                     echo $form->dropDownList($model, 'date',
                                         $dates,
-										array('class'=>'bday'),
-                                        array('options' =>array($curr_date=>array('selected'=>true)))
-                                        $model->birthday!=null?array('options' =>array($curr_date=>array('selected'=>true))):array('empty'=>'Day')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_date=>array('selected'=>true))):array('empty'=>'Day','class'=>'bday')
                                     ); 
 					 echo $form->dropDownList($model, 'month',
                                         $months,
-										array('class'=>'bday'),
-                                        array('options' =>array($curr_month=>array('selected'=>true)))
-                                        $model->birthday!=null?array('options' =>array($curr_month=>array('selected'=>true))):array('empty'=>'Month')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_month=>array('selected'=>true))):array('empty'=>'Month','class'=>'bday')
                                     ); 
 					echo $form->dropDownList($model, 'year',
                                         $years,
-										array('class'=>'bday'),
-                                        array('options' =>array($curr_year=>array('selected'=>true)))
-                                        $model->birthday!=null?array('options' =>array($curr_year=>array('selected'=>true))):array('empty'=>'Year')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_year=>array('selected'=>true))):array('empty'=>'Year','class'=>'bday')
                                     ); 
                    
                     echo $form->error($model,'birthday'); ?>

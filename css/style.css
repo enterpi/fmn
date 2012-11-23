@@ -131,7 +131,7 @@ textarea.inp, input.inp{
 }
 .head h2{
 	font-size:30px;
-	font-family:Arial;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 	font-weight:normal;
 	float:left;
 }
@@ -373,4 +373,8 @@ select.bday{
 	font-size:24px;
 	font-weight:normal;
 	border-bottom:1px solid #CCC;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+.m_r_6{
+	margin-left:6px;
 }
