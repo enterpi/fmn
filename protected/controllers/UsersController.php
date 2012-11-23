@@ -265,7 +265,7 @@ class UsersController extends Controller
                     $view_questions[$question->id]['options'] = array_values($options);
                 }
 		$p_month = date('n'); 
-                Yii::app()->clientScript->registerCoreScript('jquery');
+        Yii::app()->clientScript->registerCoreScript('jquery');
 		//echo '<pre>';print_r($freinds_occasions); die;
 		$this->render('friends_occasions',array(
 			'p_month'=>$p_month,

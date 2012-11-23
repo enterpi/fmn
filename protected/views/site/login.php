@@ -66,7 +66,7 @@ $this->breadcrumbs=array(
                             <?php echo $form->label($model,'rememberMe'); ?>
                             <?php echo $form->error($model,'rememberMe'); ?>
                     </label>
-                    
+                   
 							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin')); ?>
                     <label class="labl">
                         <div class="pwd">
