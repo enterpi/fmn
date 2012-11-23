@@ -159,11 +159,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     success: function(res){
                         if(res=='1')
                         {
-                            $("#data .error").html('Incorrect mail id specified').show();
+                            $("#data .error").html('Incorrect Email id specified').show();
                         }
                         else if(res=='2')
                         {
-                            $("#data .error").html('Mail sent to your mail id').show();    
+                            $("#data .error").html('Email sent to your Email id').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
