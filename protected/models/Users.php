@@ -22,6 +22,9 @@
 class Users extends CActiveRecord
 {
         public $confirm_password;
+        public $year;
+        public $month;
+        public $date;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.

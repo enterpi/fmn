@@ -28,11 +28,11 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create','fpmail','changepassword','GetOccasions','getNotifications'),
+				'actions'=>array('view','create','fpmail','changepassword','GetOccasions','getNotifications'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('updateuser','view','saveanswer'),
+				'actions'=>array('index','updateuser','view','saveanswer'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -120,10 +120,11 @@ class UsersController extends Controller
                         
                         $user = Yii::app()->input->stripClean($_POST['Users']);
                         
+                        $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
                         
-                        $user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
+                        //$user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
 			$model->attributes=$user;
                         if($model->validate())
                         {
@@ -134,7 +135,7 @@ class UsersController extends Controller
                                     $login_model->username = $user['email_address'];
                                     $login_model->login();
                                     $id = Yii::app()->user->getid();
-                                    $this->redirect(array('view','id'=>$id));
+                                    $this->redirect(array('/users'));
                             }
                         }
                 }
@@ -187,8 +188,9 @@ class UsersController extends Controller
          * @param integer $id 
          */
         
-        public function actionUpdateuser($id)
+        public function actionUpdateuser()
         {
+            $id = Yii::app()->user->getId();
             $model=Users::model()->findByPk($id);
             $model->setScenario('updateuser');
             // uncomment the following code to enable ajax-based validation
@@ -206,10 +208,10 @@ class UsersController extends Controller
                 if($model->validate())
                 {
                         $user = Yii::app()->input->stripClean($_POST['Users']);
-                        $user['birthday'] = date('Y-m-d',strtotime($user['birthday']));
+                        $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
 			$model->attributes=$user;
                         if($model->save())
-                                $this->redirect(array('view','id'=>$model->id));
+                                $this->redirect(array('/users'));
                 }
             }
             $this->render('updateuser',array('model'=>$model));
@@ -240,16 +242,16 @@ class UsersController extends Controller
 		));*/
 		
 		$name = Yii::app()->user->getName();
-				$id = Yii::app()->user->getId();
-				$questions = Questions::model()->with(array('questionOptions'=>array(
-                                                                'joinType'=>'INNER JOIN',
-                                                                ),
-                                                            'usersAnswers'=>array(
-                                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
-                                                                'joinType'=>'LEFT JOIN'
-                                                                )
-                                                        ))->findAll();
-				$view_questions = array();
+                $id = Yii::app()->user->getId();
+                $questions = Questions::model()->with(array('questionOptions'=>array(
+                                                'joinType'=>'INNER JOIN',
+                                                ),
+                                            'usersAnswers'=>array(
+                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
+                                                'joinType'=>'LEFT JOIN'
+                                                )
+                                        ))->findAll();
+                $view_questions = array();
                 foreach($questions as $question)
                 {
                     $view_questions[$question->id]['question'] = str_replace('{user name}', $name, $question->question);
