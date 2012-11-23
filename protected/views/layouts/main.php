@@ -41,7 +41,9 @@
                   <div class="pro_pic">
                   	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
                   </div><?php 
-				  echo Yii::app()->user->getName();?></a>
+				  
+				  $name = UserIdentity::getUserDetails(Yii::app()->user->getId());
+				  echo $name;?></a>
                   <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
                     <li><?php echo CHtml::link('Update Profile',array('/users/updateuser')); ?></li>
                     <li><?php echo CHtml::link('Change Password',array('/users/changepwd')); ?></li>

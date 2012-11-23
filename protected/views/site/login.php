@@ -61,13 +61,13 @@ $this->breadcrumbs=array(
                             <?php echo $form->error($model,'password'); ?>
                         </span>
                     </label>
-                    <label class="labl remember">
-                            <?php echo $form->checkBox($model,'rememberMe'); ?>
-                            <?php echo $form->label($model,'rememberMe'); ?>
-                            <?php echo $form->error($model,'rememberMe'); ?>
-                    </label>
+                    <!-- <label class="labl remember">
+                            <?php /* echo $form->checkBox($model,'rememberMe'); */ ?>
+                            <?php /* echo $form->label($model,'rememberMe'); */ ?>
+                            <?php /* echo $form->error($model,'rememberMe'); */ ?>
+                    </label> -->
                    
-							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin')); ?>
+							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
                     <label class="labl">
                         <div class="pwd">
                             <a href="#data" rel="fpwd">FORGOT YOUR PASSWORD?</a>
