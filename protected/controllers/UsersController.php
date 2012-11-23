@@ -368,7 +368,7 @@ class UsersController extends Controller
         public function actionChangepwd()
         {
             $model=new ChangePassword;
-
+            $model->setScenario('pwdchange');
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='change-password-changepwd-form')
@@ -377,7 +377,7 @@ class UsersController extends Controller
                 Yii::app()->end();
             }
             */
-			Yii::app()->clientScript->registerCoreScript('jquery');
+            Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
                 $model->attributes=$_POST['ChangePassword'];

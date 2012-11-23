@@ -22,7 +22,7 @@
 class Users extends CActiveRecord
 {
         public $confirm_password;
-        public $current_password;
+        
         public $year;
         public $month;
         public $date;
@@ -90,7 +90,6 @@ class Users extends CActiveRecord
 			'last_name' => 'Last Name',
 			'email_address' => 'Email Address/User Name',
 			'password' => 'Password',
-			'current_password' => 'Current Password',
                         'confirm_password' => 'Confirm Password',
 			'birthday' => 'Birthday',
 			'gender' => 'Gender',

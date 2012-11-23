@@ -23,8 +23,8 @@
         
         <div class="row">
 		<?php echo $form->labelEx($model,'current_password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->passwordField($model,'current_password'); ?>
+		<?php echo $form->error($model,'current_password'); ?>
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
