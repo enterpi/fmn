@@ -346,7 +346,7 @@ class UsersController extends Controller
                     // form inputs are valid, do something here
                     if($savedtoken)
                     {
-                        $user = users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
+                        $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
                         $user->password = md5($model->confirm_password);
                         $user->save();
                         $savedtoken->delete();
