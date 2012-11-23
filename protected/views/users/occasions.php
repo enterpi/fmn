@@ -23,7 +23,10 @@ if(!empty($freinds_occasions))
 }
 else
 {
-	echo 'No Ocasions in this month';
+?>
+
+	<div class="alert">No Occasions in this month</div>
+<?php
 }
 
 ?>

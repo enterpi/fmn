@@ -10,7 +10,7 @@ if(!empty($freinds_notifications))
                 <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
             </div>
             <div class="f_l">
-                <p>><?php echo $noti_values['occasion_name'];?></p>
+                <p><?php echo $noti_values['occasion_name'];?></p>
                 <p><span><?php echo $noti_values['occasion_date'];?></span></p>
                 <div class="f_l m_r_10"><i class="icon-time"></i></div>
                 <div class="f_l m_r_10"><i class="icon-gift"></i></div>
@@ -23,7 +23,10 @@ if(!empty($freinds_notifications))
 }
 else
 {
-	echo 'No Notifications exist';
+?>
+
+	<div class="alert">No Notifications exist</div>
+<?php
 }
 
 ?>
