@@ -12,6 +12,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'users-form',
 	'enableAjaxValidation'=>false,
+        'enableClientValidation'=>true,
 )); ?>
 
 
@@ -68,7 +69,7 @@
 		<?php echo $form->labelEx($model,'gender'); ?>
                 <?php 
                     echo $form->dropDownList($model, 'gender',
-                                    array('m' => 'male', 'f' => 'female','o'=>'other'),
+                                    array('m' => 'Male', 'f' => 'Female','o'=>'Other'),
                                     array('empty' => 'Select')
                                 ); 
                 ?>
