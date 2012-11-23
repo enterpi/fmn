@@ -20,15 +20,10 @@
                $cs=Yii::app()->getClientScript(); 
 			   //$cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
                $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js');
-			   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap.js');
+	       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap.js');
         ?>
         
-    <script>
-$(document).ready(function(){
-	$('.dropdown-toggle').dropdown();
-});
-
-</script>
+   
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -98,6 +93,11 @@ $(document).ready(function(){
                     <p><a href="#">CONTACT</a></p>
                 </div>
 	</div><!-- footer -->
+ <script>
+$(document).ready(function(){
+	$('.dropdown-toggle').dropdown();
+});
 
+</script>
 </body>
 </html>

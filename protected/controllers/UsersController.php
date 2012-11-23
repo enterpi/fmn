@@ -119,8 +119,12 @@ class UsersController extends Controller
                         $md5_confirmpwd = $c_pwd!=""?md5($c_pwd):$c_pwd;
                         
                         $user = Yii::app()->input->stripClean($_POST['Users']);
-                        
+                       
+                        if($user['month'] != '' && $user['year']!='' && $user['year']!='')
                         $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+                        else
+                        $user['birthday'] = null;
+                        
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
                         

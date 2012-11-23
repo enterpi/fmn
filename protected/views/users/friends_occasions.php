@@ -31,7 +31,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
                 html+=  '<input id="user_question" type="hidden" name="question" value="'+question.question_id+'" />';
                 $.each(question.options,function(index,value){
                     html+=  '<div class="opt1">';
-                    html+=  '<input class="user_answer" type="checkbox" name="question_option" value="'+value.id+'" />'+value.option; 
+                    html+=  '<label><input class="user_answer" type="checkbox" name="question_option" value="'+value.id+'" />'+value.option+'</label>'; 
                     html+=  '</div>'; 
                 });
                
