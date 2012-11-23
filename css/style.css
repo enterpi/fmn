@@ -350,3 +350,6 @@ table {
 	width:16px;
 	margin:28px auto;
 }
+select.bday{
+	width:95px;
+}

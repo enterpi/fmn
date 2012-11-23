@@ -92,19 +92,22 @@
                     }
                     echo $form->dropDownList($model, 'year',
                                         $years,
-                                        array('options' =>array($curr_year=>array('selected'=>true)))
+										//array('class'=>'bday'),
+                                        array('empty' =>'Year','class'=>'bday')
                                     ); 
                     ?>
                     <?php 
                     echo $form->dropDownList($model, 'month',
                                         $months,
-                                        array('options' =>array($curr_month=>array('selected'=>true)))
+										//array(),
+                                        array('empty' =>'Month','class'=>'bday')
                                     ); 
                     ?>
                     <?php 
                     echo $form->dropDownList($model, 'date',
                                         $dates,
-                                        array('options' =>array($curr_date=>array('selected'=>true)))
+										//array('class'=>'bday'),
+                                        array('empty' =>'Date','class'=>'bday')
                                     ); 
                     ?>
 		<?php echo $form->error($model,'birthday'); ?>
