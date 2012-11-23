@@ -286,6 +286,7 @@ table {
 }
 .preview{
 	display:block;
+	min-height:145px;
 }
 .prev_head{
 	text-align:right;
@@ -347,5 +348,5 @@ table {
 .loader{
 	background:url(images/loader.gif) 0 0 no-repeat;
 	width:16px;
-	margin:0px auto;
+	margin:28px auto;
 }
