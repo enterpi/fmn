@@ -410,7 +410,7 @@ class UsersController extends Controller
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
-                $email['to'] = 'm.rajashekarreddy@gmail.com';
+                $email['to'] = $email_address;
                 $email['message'] = 'Please click the below link and change your password <br/>'.$link;
                 $email['subject'] = 'FMN Forgot Password';
                 $mail = new SendEmail;
