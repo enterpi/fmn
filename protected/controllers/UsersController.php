@@ -32,7 +32,7 @@ class UsersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','updateuser','view','saveanswer'),
+				'actions'=>array('index','updateuser','view','saveanswer','changepwd'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -265,7 +265,7 @@ class UsersController extends Controller
                     $view_questions[$question->id]['options'] = array_values($options);
                 }
 		$p_month = date('n'); 
-        Yii::app()->clientScript->registerCoreScript('jquery');
+                Yii::app()->clientScript->registerCoreScript('jquery');
 		//echo '<pre>';print_r($freinds_occasions); die;
 		$this->render('friends_occasions',array(
 			'p_month'=>$p_month,
@@ -346,12 +346,43 @@ class UsersController extends Controller
                         $user->password = md5($model->confirm_password);
                         $user->save();
                         $savedtoken->delete();
+                        $this->redirect(array('/users'));
                     }
                     //$this->render('changepassword',array('model'=>$model));
                 }
             }
             $this->render('changepassword',array('model'=>$model));
         }
+        
+        public function actionChangepwd()
+        {
+            $model=new ChangePassword;
+
+            // uncomment the following code to enable ajax-based validation
+            /*
+            if(isset($_POST['ajax']) && $_POST['ajax']==='change-password-changepwd-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
+            */
+
+            if(isset($_POST['ChangePassword']))
+            {
+                $model->attributes=$_POST['ChangePassword'];
+                if($model->validate())
+                {
+                    $user_id = Yii::app()->user->getid();
+                    $user = users::model()->findByAttributes(array('id'=>$user_id));
+                    $user->password = md5($model->confirm_password);
+                    $user->save();
+                    $this->redirect(array('/users'));
+                }
+            }
+            $this->render('changepwd',array('model'=>$model));
+        }
+        
+        
 
         public function actionFpmail()
         {
