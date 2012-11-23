@@ -35,19 +35,51 @@
 	
         <div class="row">
 		<?php echo $form->labelEx($model,'birthday'); ?>
-                <?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-                        'model'=>$model,
-                        'attribute'=>'birthday',
-                        'name'=>'Users[birthday]',
-                        'options'=>array(
-                        'showAnim'=>'fold',
-                        ),
-                        'htmlOptions'=>array(
-                            'style'=>'height:20px;',
-							'class'=>'inp',
-                        ),
-                        
-                    )); ?>
+                <?php 
+                    $years = array();
+                    $months = array();
+                    $dates = array();
+                    $curr_year = date('Y',strtotime($model->birthday));
+                    $curr_date = date('j',strtotime($model->birthday));
+                    $curr_month = date('n',strtotime($model->birthday));
+                    $num = cal_days_in_month(CAL_GREGORIAN, 8, 2003);
+                    for($i=1900;$i<=$curr_year;$i++)
+                    {
+                        $years[$i] = $i;
+                    }
+                    $months = array(1 => 'Jan', 
+                                    2 => 'Feb', 
+                                    3 => 'Mar', 
+                                    4 => 'Apr', 
+                                    5 => 'May', 
+                                    6 => 'Jun', 
+                                    7 => 'Jul', 
+                                    8 => 'Aug', 
+                                    9 => 'Sep', 
+                                    10 => 'Oct', 
+                                    11 => 'Nov', 
+                                    12 => 'Dec');
+                    for($i=1;$i<=$num;$i++)
+                    {
+                        $dates[$i] = $i;
+                    }
+                    echo $form->dropDownList($model, 'year',
+                                        $years,
+                                        array('options' =>array($curr_year=>array('selected'=>true)))
+                                    ); 
+                    ?>
+                    <?php 
+                    echo $form->dropDownList($model, 'month',
+                                        $months,
+                                        array('options' =>array($curr_month=>array('selected'=>true)))
+                                    ); 
+                    ?>
+                    <?php 
+                    echo $form->dropDownList($model, 'date',
+                                        $dates,
+                                        array('options' =>array($curr_date=>array('selected'=>true)))
+                                    ); 
+                    ?>
 		<?php echo $form->error($model,'birthday'); ?>
 	</div>
 
