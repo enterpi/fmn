@@ -53,6 +53,7 @@ class Users extends CActiveRecord
 		return array(
 			array('first_name, last_name, email_address, password, physical_address', 'length', 'max'=>255),
                         array('email_address','unique'),
+                        array('email_address','email','message'=>'Not valid email address'),
                         array('first_name, last_name, email_address','required','on'=>array('updateuser')),
 			array('first_name, last_name, email_address, password, confirm_password','required','on'=>array('usercreate')),
                         array('password', 'compare','compareAttribute'=>'confirm_password','on'=>array('usercreate')),
