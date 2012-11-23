@@ -114,12 +114,16 @@ class UsersController extends Controller
 		{
                         $pwd = $_POST['Users']['password'];
                         $c_pwd = $_POST['Users']['confirm_password'];
+                        
                         $md5_pwd = $pwd!=""?md5($pwd):$pwd;
                         $md5_confirmpwd = $c_pwd!=""?md5($c_pwd):$c_pwd;
+                        
                         $user = Yii::app()->input->stripClean($_POST['Users']);
+                        
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
-                        $user['birthday'] = date('Y-m-d',strtotime($user['birthday']));
+                        
+                        $user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
 			$model->attributes=$user;
                         if($model->validate())
                         {
@@ -353,12 +357,12 @@ class UsersController extends Controller
             $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
             if($record===null)
             {
-
+                echo '1';
             }
             else
             {
                 $token = md5($email_address.time());
-                $link = CHtml::link('Click here','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/index.php/users/Changepassword?token='.$token);
+                $link = CHtml::link('Click here','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
@@ -372,6 +376,11 @@ class UsersController extends Controller
                     $model->email = $email_address;
                     $model->token = $token;
                     $model->save();
+                    echo "2";
+                }
+                else
+                {
+                    echo '3';
                 }
             }
         }

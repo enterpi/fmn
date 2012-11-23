@@ -51,7 +51,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
             var qry_string ={'answer':$(this).val(),'question':$('#user_question').val()} ;
             $.ajax({
                 type: 'POST',
-                url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/saveanswer/',
+                url: '<?php echo Yii::app()->request->baseUrl ?>/users/saveanswer/',
                 data: qry_string,
                 beforeSend: function(){},
                 success: function(res){
@@ -146,7 +146,7 @@ var p_month = '<?php echo $p_month;?>';
 		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
 		$.ajax({
 			type: 'POST',
-			url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/GetOccasions',
+			url: '<?php echo Yii::app()->request->baseUrl ?>/users/GetOccasions',
 			data: qry_string,
 			beforeSend: function(){},
 			success: function(res){
@@ -163,7 +163,7 @@ var p_month = '<?php echo $p_month;?>';
 		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
 		$.ajax({
 			type: 'POST',
-			url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/getNotifications',
+			url: '<?php echo Yii::app()->request->baseUrl ?>/users/getNotifications',
 			data: qry_string,
 			beforeSend: function(){},
 			success: function(res){

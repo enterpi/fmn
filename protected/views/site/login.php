@@ -29,7 +29,7 @@ $this->breadcrumbs=array(
             <div class="signin_sec">
                     <div class="head">
                     <h2>Log in </h2>
-                    <h3><?php echo CHtml::link('Dont have an account yet?',Yii::app()->baseUrl.'/index.php/users/create'); ?></h3>
+                    <h3><?php echo CHtml::link('Dont have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
                 </div>
                 <?php $form=$this->beginWidget('CActiveForm', array(
                         'id'=>'login-form',
@@ -152,17 +152,27 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                 var qry_string = 'emailid='+$('#fp_email').val();
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/fpmail/',
+                    url: '<?php echo Yii::app()->request->baseUrl ?>/users/fpmail/',
                     data: qry_string,
                     beforeSend: function(){},
                     success: function(res){
+                        if(res=='1')
+                        {
+                            $("#data .error").html('Incorrect mail id specified').show();
+                        }
+                        else if(res=='2')
+                        {
+                            $("#data .error").html('Mail sent to your mail id').show();    
+                        }
+                        
+                        //$('#fancybox-close').trigger('click');
                     },
                     error: function(sts,txt,res){
                     },
                     complete: function(){
                     }
                 });
-                $('#fancybox-close').trigger('click');
+                
             }
         });
         $('#fp_email').keyup(function(){
