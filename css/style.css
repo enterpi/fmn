@@ -286,6 +286,7 @@ table {
 }
 .preview{
 	display:block;
+	min-height:145px;
 }
 .prev_head{
 	text-align:right;
@@ -342,4 +343,10 @@ table {
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	margin-top:57px;
+}
+
+.loader{
+	background:url(images/loader.gif) 0 0 no-repeat;
+	width:16px;
+	margin:28px auto;
 }
