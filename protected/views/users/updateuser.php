@@ -11,31 +11,31 @@
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
 ?>
 <div class="form">
+<div class="update_pro">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'users-updateuser-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
+	<!--<p class="note">Fields with <span class="required">*</span> are required.</p> -->
+    <h2 class="update_head">Update Profile</h2>
+    
 	<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
-		<?php echo $form->textField($model,'first_name'); ?>
+		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'first_name'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'last_name'); ?>
-		<?php echo $form->textField($model,'last_name'); ?>
+		<?php echo $form->textField($model,'last_name',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'last_name'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'email_address'); ?>
-		<?php echo $form->textField($model,'email_address'); ?>
+		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'email_address'); ?>
 	</div>
 	
@@ -71,14 +71,17 @@
                     }
                     echo $form->dropDownList($model, 'date',
                                         $dates,
+										array('class'=>'bday'),
                                         array('options' =>array($curr_date=>array('selected'=>true)))
                                     ); 
 					 echo $form->dropDownList($model, 'month',
                                         $months,
+										array('class'=>'bday'),
                                         array('options' =>array($curr_month=>array('selected'=>true)))
                                     ); 
 					echo $form->dropDownList($model, 'year',
                                         $years,
+										array('class'=>'bday'),
                                         array('options' =>array($curr_year=>array('selected'=>true)))
                                     ); 
                    
@@ -98,16 +101,16 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'physical_address'); ?>
-		<?php echo $form->textField($model,'physical_address'); ?>
+		<?php echo $form->textArea($model,'physical_address',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'physical_address'); ?>
 	</div>
 
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Submit',array('class'=>'btn signin')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
+</div>
 </div><!-- form -->

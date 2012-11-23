@@ -366,7 +366,7 @@ class UsersController extends Controller
                 Yii::app()->end();
             }
             */
-
+			Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
                 $model->attributes=$_POST['ChangePassword'];

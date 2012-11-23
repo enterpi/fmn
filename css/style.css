@@ -88,7 +88,7 @@ table {
 .wrapper_home .login_sec .signin_sec{
 	overflow:hidden;
 }
-.wrapper_home .login_sec .signin_sec input.inp{
+textarea.inp, input.inp{
 	width:280px;
 	margin-top:3px;
 }
@@ -129,7 +129,7 @@ table {
 	font-size:13px;
 	font-weight:normal;
 }
-.wrapper_home .login_sec .signin_sec .head h2{
+.head h2{
 	font-size:30px;
 	font-family:Arial;
 	font-weight:normal;
@@ -357,4 +357,20 @@ select.bday{
 .dro_menu{
 	right:0px;
 	margin-top:10px;
+}
+.update_pro{
+	width:310px;
+	margin:50px auto;
+	padding:15px;
+	border:1px solid #CCC;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+.update_head{
+	padding-bottom:5px;
+	margin:0px 0px 15px 6px;
+	font-size:24px;
+	font-weight:normal;
+	border-bottom:1px solid #CCC;
 }
