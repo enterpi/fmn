@@ -69,24 +69,20 @@
                     {
                         $dates[$i] = $i;
                     }
-                    echo $form->dropDownList($model, 'year',
-                                        $years,
-                                        array('options' =>array($curr_year=>array('selected'=>true)))
-                                    ); 
-                    ?>
-                    <?php 
-                    echo $form->dropDownList($model, 'month',
-                                        $months,
-                                        array('options' =>array($curr_month=>array('selected'=>true)))
-                                    ); 
-                    ?>
-                    <?php 
                     echo $form->dropDownList($model, 'date',
                                         $dates,
                                         array('options' =>array($curr_date=>array('selected'=>true)))
                                     ); 
-                    ?>
-		<?php echo $form->error($model,'birthday'); ?>
+					 echo $form->dropDownList($model, 'month',
+                                        $months,
+                                        array('options' =>array($curr_month=>array('selected'=>true)))
+                                    ); 
+					echo $form->dropDownList($model, 'year',
+                                        $years,
+                                        array('options' =>array($curr_year=>array('selected'=>true)))
+                                    ); 
+                   
+                    echo $form->error($model,'birthday'); ?>
 	</div>
 
 	<div class="row">

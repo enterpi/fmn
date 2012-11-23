@@ -18,8 +18,17 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
         <?php 
                $cs=Yii::app()->getClientScript(); 
+			   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
                $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js');
+			   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap.js');
         ?>
+        
+    <script>
+$(document).ready(function(){
+	$('.dropdown-toggle').dropdown();
+});
+
+</script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -31,11 +40,24 @@
 		<div id="logo" class="logo_sec"><?php echo CHtml::link('<img src="'. Yii::app()->request->baseUrl .'/css/images/logo.png" alt="" />',array('/site/login')); ?></div>
     <?php
 		if(!Yii::app()->user->isGuest){ ?>
-			<div class="profile">
-                            <?php echo CHtml::link('Logout',array('/site/logout')); ?>
-                            <?php echo CHtml::link('Change Password',array('/users/changepwd')); ?>
-                            <?php echo CHtml::link('Update',array('/users/updateuser')); ?>
-                        </div>
+            <div class="profile">
+            	<div class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <div class="pro_pic">
+                  	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
+                  </div><?php 
+				 // $id = Yii::app()->user->getId();
+				 // $user_det = $this->loadModel($id);
+				 // echo '<pre>'; print_r($user_det); die;
+				  
+				  echo Yii::app()->user->getName();?></a>
+                  <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
+                    <li><?php echo CHtml::link('Logout',array('/site/logout')); ?></li>
+                    <li><?php echo CHtml::link('Change Password',array('/users/changepwd')); ?></li>
+                    <li><?php echo CHtml::link('Update Profile',array('/users/updateuser')); ?></li>
+                  </ul>
+                </div>
+            </div>
 		<?php }
 	?>
 

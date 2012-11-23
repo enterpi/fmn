@@ -90,27 +90,24 @@
                     {
                         $dates[$i] = $i;
                     }
-                    echo $form->dropDownList($model, 'year',
-                                        $years,
-										//array('class'=>'bday'),
-                                        array('empty' =>'Year','class'=>'bday')
-                                    ); 
-                    ?>
-                    <?php 
-                    echo $form->dropDownList($model, 'month',
-                                        $months,
-										//array(),
-                                        array('empty' =>'Month','class'=>'bday')
-                                    ); 
-                    ?>
-                    <?php 
                     echo $form->dropDownList($model, 'date',
                                         $dates,
 										//array('class'=>'bday'),
                                         array('empty' =>'Date','class'=>'bday')
                                     ); 
-                    ?>
-		<?php echo $form->error($model,'birthday'); ?>
+					 echo $form->dropDownList($model, 'month',
+                                        $months,
+										//array(),
+                                        array('empty' =>'Month','class'=>'bday')
+                                    ); 
+					echo $form->dropDownList($model, 'year',
+                                        $years,
+										//array('class'=>'bday'),
+                                        array('empty' =>'Year','class'=>'bday')
+                                    ); 
+                   
+                    
+                    echo $form->error($model,'birthday'); ?>
 	</div>
 
 	<div class="row">

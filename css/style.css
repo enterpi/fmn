@@ -200,11 +200,14 @@ table {
 }
 
 .profile{
-	width:300px;
 	float:right;
 	text-align:right;
-	line-height:80px;
-	margin-right:45px;
+	line-height:50px;
+	margin:15px 0px 0px 15px;
+}
+.pro_pic{
+	float:left;
+	margin-right:8px;
 }
 .errorMessage{
 	color:red;
@@ -333,7 +336,6 @@ table {
 	height:17px;
 	background:url(./images/sprite.png) 0 -87px no-repeat;
 }
-
 .right_head{
 	background-color:#000;
 	color:#FFF;
@@ -344,7 +346,6 @@ table {
 	-moz-border-radius:4px;
 	margin-top:57px;
 }
-
 .loader{
 	background:url(images/loader.gif) 0 0 no-repeat;
 	width:16px;
@@ -352,4 +353,8 @@ table {
 }
 select.bday{
 	width:95px;
+}
+.dro_menu{
+	right:0px;
+	margin-top:10px;
 }
