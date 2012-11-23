@@ -3,7 +3,13 @@
 /* @var $model Users */
 /* @var $form CActiveForm */
 ?>
-
+<?php 
+       $cs=Yii::app()->getClientScript(); 
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+       $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
+?>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

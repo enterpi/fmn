@@ -32,8 +32,10 @@
     <?php
 		if(!Yii::app()->user->isGuest){ ?>
 			<div class="profile">
-                    <?php echo CHtml::link('logout',array('/site/logout')); ?>
-            </div>
+                            <?php echo CHtml::link('Logout',array('/site/logout')); ?>
+                            <?php echo CHtml::link('Change Password',array('/users/changepwd')); ?>
+                            <?php echo CHtml::link('Update',array('/users/updateuser')); ?>
+                        </div>
 		<?php }
 	?>
 
