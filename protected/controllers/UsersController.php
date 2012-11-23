@@ -377,12 +377,21 @@ class UsersController extends Controller
                 if($model->validate())
                 {
                     $user_id = Yii::app()->user->getid();
-                    $user = users::model()->findByAttributes(array('id'=>$user_id));
-                    $user->password = md5($model->confirm_password);
-                    $user->save();
-                    $this->redirect(array('/users'));
+                    $user = users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                    if($user)
+                    {
+                        $user->password = md5($model->confirm_password);
+                        $user->save();
+                        $this->redirect(array('/users'));
+                    }
+                    else
+                    {
+                        $model->addError('current_password', 'Incorrect Current Password!');
+                    }
+                    
                 }
             }
+            
             $this->render('changepwd',array('model'=>$model));
         }
         

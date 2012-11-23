@@ -22,6 +22,7 @@
 class Users extends CActiveRecord
 {
         public $confirm_password;
+        public $current_password;
         public $year;
         public $month;
         public $date;
@@ -65,6 +66,7 @@ class Users extends CActiveRecord
 			array('id, first_name, last_name, confirm_password, email_address, password, birthday, gender, physical_address, created_by, created_date, modified_by, modified_date, ipaddress, status', 'safe', 'on'=>'search'),
 		);
 	}
+        
 
 	/**
 	 * @return array relational rules.
@@ -88,6 +90,7 @@ class Users extends CActiveRecord
 			'last_name' => 'Last Name',
 			'email_address' => 'Email Address/User Name',
 			'password' => 'Password',
+			'current_password' => 'Current Password',
                         'confirm_password' => 'Confirm Password',
 			'birthday' => 'Birthday',
 			'gender' => 'Gender',
