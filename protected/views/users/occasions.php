@@ -25,7 +25,7 @@ else
 {
 ?>
 
-	<div class="alert">No Ocasions in this month</div>
+	<div class="alert">No Occasions in this month</div>
 <?php
 }
 

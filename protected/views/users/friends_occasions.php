@@ -148,7 +148,7 @@ var p_month = '<?php echo $p_month;?>';
 			type: 'POST',
 			url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/GetOccasions',
 			data: qry_string,
-			beforeSend: function(){},
+			beforeSend: function(){ $('.jdisplayocc').html('<div class="loader">&nbsp;</div>'); },
 			success: function(res){
 				$('.jdisplayocc').html(res);
 			},
@@ -165,7 +165,7 @@ var p_month = '<?php echo $p_month;?>';
 			type: 'POST',
 			url: '<?php echo Yii::app()->request->baseUrl ?>/index.php/users/getNotifications',
 			data: qry_string,
-			beforeSend: function(){},
+			beforeSend: function(){ $('.jdisplaynotifications').html('<div class="loader">&nbsp;</div>'); },
 			success: function(res){
 				$('.jdisplaynotifications').html(res);
 			},
