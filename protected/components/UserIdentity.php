@@ -39,6 +39,14 @@ class UserIdentity extends CUserIdentity
         }
         public function getFullName()
         {
-            return $this->_name;
+            //echo 3123;die;
+			return $this->_name;
         }
+		
+		public function getUserDetails($id)
+		{
+			$record_details=Users::model()->findByAttributes(array('id'=>$id));
+			return ucfirst($record_details['first_name'].' '.$record_details['last_name']);
+			//echo '<pre>';print_r($record_details);die;
+		}
 }

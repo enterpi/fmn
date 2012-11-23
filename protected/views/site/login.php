@@ -24,12 +24,12 @@ $this->breadcrumbs=array(
                         <h6>we won’t post anything without your permission.</h6>
                     </div>
             <div class="option">
-                            ----------- or -----------
+                            ----------- <span>or</span> -----------
                     </div> 
             <div class="signin_sec">
                     <div class="head">
                     <h2>Log in </h2>
-                    <h3><?php echo CHtml::link('Dont have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
+                    <h3><?php echo CHtml::link('Don\'t have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
                 </div>
                 <?php $form=$this->beginWidget('CActiveForm', array(
                         'id'=>'login-form',
@@ -61,13 +61,13 @@ $this->breadcrumbs=array(
                             <?php echo $form->error($model,'password'); ?>
                         </span>
                     </label>
-                    <label class="labl remember">
-                            <?php echo $form->checkBox($model,'rememberMe'); ?>
-                            <?php echo $form->label($model,'rememberMe'); ?>
-                            <?php echo $form->error($model,'rememberMe'); ?>
-                    </label>
+                    <!-- <label class="labl remember">
+                            <?php /* echo $form->checkBox($model,'rememberMe'); */ ?>
+                            <?php /* echo $form->label($model,'rememberMe'); */ ?>
+                            <?php /* echo $form->error($model,'rememberMe'); */ ?>
+                    </label> -->
                    
-							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin')); ?>
+							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
                     <label class="labl">
                         <div class="pwd">
                             <a href="#data" rel="fpwd">FORGOT YOUR PASSWORD?</a>
@@ -159,11 +159,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     success: function(res){
                         if(res=='1')
                         {
-                            $("#data .error").html('Incorrect mail id specified').show();
+                            $("#data .error").html('Incorrect Email id specified').show();
                         }
                         else if(res=='2')
                         {
-                            $("#data .error").html('Mail sent to your mail id').show();    
+                            $("#data .error").html('Email sent to your Email id').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
