@@ -45,10 +45,17 @@
                     $years = array();
                     $months = array();
                     $dates = array();
-                    $curr_year = date('Y',strtotime($model->birthday));
-                    $curr_date = date('j',strtotime($model->birthday));
-                    $curr_month = date('n',strtotime($model->birthday));
-                    $num = cal_days_in_month(CAL_GREGORIAN, 8, 2003);
+                    $num = 0;
+                    $curr_year = date('Y');
+                    $curr_date = date ('j');
+                    $curr_month = date('n');
+                    if($model->birthday!=null)
+                    {
+                        $curr_year = date('Y',strtotime($model->birthday));
+                        $curr_date = date('j',strtotime($model->birthday));
+                        $curr_month = date('n',strtotime($model->birthday));
+                        $num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
+                    }
                     for($i=1900;$i<=$curr_year;$i++)
                     {
                         $years[$i] = $i;
@@ -71,15 +78,15 @@
                     }
                     echo $form->dropDownList($model, 'date',
                                         $dates,
-                                        array('options' =>array($curr_date=>array('selected'=>true)))
+                                        $model->birthday!=null?array('options' =>array($curr_date=>array('selected'=>true))):array('empty'=>'Day')
                                     ); 
 					 echo $form->dropDownList($model, 'month',
                                         $months,
-                                        array('options' =>array($curr_month=>array('selected'=>true)))
+                                        $model->birthday!=null?array('options' =>array($curr_month=>array('selected'=>true))):array('empty'=>'Month')
                                     ); 
 					echo $form->dropDownList($model, 'year',
                                         $years,
-                                        array('options' =>array($curr_year=>array('selected'=>true)))
+                                        $model->birthday!=null?array('options' =>array($curr_year=>array('selected'=>true))):array('empty'=>'Year')
                                     ); 
                    
                     echo $form->error($model,'birthday'); ?>
