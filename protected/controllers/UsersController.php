@@ -135,7 +135,7 @@ class UsersController extends Controller
                             if($model->save())
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
-                                    $this->redirect(array('/site/login'));
+                                    //$this->redirect(array('/site/login'));
                             }
                         }
                 }
@@ -154,28 +154,23 @@ class UsersController extends Controller
         {
             $token = Yii::app()->input->get('token');
             $condition=array(
-                        'select'=>'email,token,for',
+                        'select'=>'email,token,token_for',
                         'condition'=>'token=:token',
                         'params'=>array(':token'=>$token)
                     );
             $savedtoken = ResetPassword::model()->find($condition);
-            if($savedtoken && $savedtoken->for=='2')
+            if($savedtoken && $savedtoken->token_for=='2')
             {
-                    $model->attributes=$_POST['ChangePassword'];
-
-                    if($model->validate())
-                    {
-                            // form inputs are valid, do something here
-                            $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
-                            $user->status = '1';
-                            $user->save();
-                            $savedtoken->delete();
-                            $login_model = new LoginForm;
-                            $login_model->password = $user->password;
-                            $login_model->username = $user->email_address;
-                            $login_model->login();
-                            $this->redirect(array('/users'));
-                    }
+                // form inputs are valid, do something here
+                $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
+                $user->status = '1';
+                $user->save();
+                $savedtoken->delete();
+                $login_model = new LoginForm;
+                $login_model->password = $user->password;
+                $login_model->username = $user->email_address;
+                $login_model->login();
+                $this->redirect(array('/users'));
             }
             else
             {
@@ -369,12 +364,12 @@ class UsersController extends Controller
             */
             $token = Yii::app()->input->get('token');
             $condition=array(
-                        'select'=>'email,token,for',
+                        'select'=>'email,token,token_for',
                         'condition'=>'token=:token',
                         'params'=>array(':token'=>$token)
                     );
             $savedtoken = ResetPassword::model()->find($condition);
-            if($savedtoken && $savedtoken->for=='1')
+            if($savedtoken && $savedtoken->token_for=='1')
             {
                     if(isset($_POST['ChangePassword']))
                     {
@@ -476,7 +471,7 @@ class UsersController extends Controller
                 $model = new ResetPassword;
                 $model->email = $email_address;
                 $model->token = $token;
-                $model->for = $for;
+                $model->token_for = $for;
                 $model->save();
                 echo "2";
             }

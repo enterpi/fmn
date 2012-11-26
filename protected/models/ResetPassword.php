@@ -35,7 +35,7 @@ class ResetPassword extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, token,for', 'length', 'max'=>255),
+			array('email, token,token_for', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('email, token', 'safe', 'on'=>'search'),
