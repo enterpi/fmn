@@ -138,7 +138,8 @@ class UsersController extends Controller
                             if($model->save())
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
-                                    $this->render('confirm',array('email'=>$user['email_address']));
+                                    Yii::app()->clientScript->registerCoreScript('jquery');
+									$this->render('confirm',array('email'=>$user['email_address']));
                                     unset($_POST['Users']);
                             }
                             else

@@ -19,8 +19,6 @@ $this->breadcrumbs=array(
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
 ?>
 
-
-
 <div class="wrapper_home">
 	
 	<div class="login_sec">
@@ -31,8 +29,7 @@ $this->breadcrumbs=array(
              * To change this template, choose Tools | Templates
              * and open the template in the editor.
              */
-            
-            echo "Activation link has been sent to your email";
+            echo "An e-mail has been sent to<br /> ".$email." <br /> Please click the activation link included in the email to activate your account.";
             ?>
          </div>
     </div>
