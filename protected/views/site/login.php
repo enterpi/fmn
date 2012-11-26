@@ -106,18 +106,18 @@ $this->breadcrumbs=array(
             <label>
                 <div class="lft_em">Email Id:</div>
                 <div class="rgt_em">
-                    <input type="text" name="fp_email" id="fp_email" />
+                    <input type="text" name="fp_email" id="fp_email" style="width:300px"/>
                     <span class="error">Please enter Email Id</span>
                 </div>
             </label>
         </div>
-        <div class="sec3"><input style="margin-top:15px;" type="button" name="send" value="Send" id="sendpwd" /></div>
+        <div class="sec3"><input  type="button" name="send" value="Send" id="sendpwd" /></div>
     </div>
 </div>
 <?php
 $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target'=>'a[rel=fpwd]',
-    'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'130'),
+    'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'100'),
     )
 );
 ?>
@@ -163,7 +163,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         }
                         else if(res=='2')
                         {
-                            $("#data .error").html('Reset password link has been sent to your Email').show();    
+                            $("#data .error").html('password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
