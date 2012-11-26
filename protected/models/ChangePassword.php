@@ -57,7 +57,7 @@ class ChangePassword extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'password' => 'Password',
+			'password' => 'New Password',
                         'confirm_password'=>'Confirm Password',
                         'current_password' => 'Current Password'
 		);

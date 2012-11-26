@@ -104,6 +104,7 @@ class UsersController extends Controller
 	 */
 	public function actionCreate()
 	{
+		//echo CHttpRequest::getUserHostAddress(); die;
 		$model=new Users();
                 $model->setScenario('usercreate');
 
@@ -128,6 +129,7 @@ class UsersController extends Controller
 
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
+						// $user['ipaddress'] = CHttpRequest::getUserHostAddress();
 
                         //$user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
 			$model->attributes=$user;

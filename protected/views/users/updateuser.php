@@ -35,7 +35,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'email_address'); ?>
-		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255,'disabled'=>true)); ?>
 		<?php echo $form->error($model,'email_address'); ?>
 	</div>
 	
