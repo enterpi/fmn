@@ -111,13 +111,13 @@ $this->breadcrumbs=array(
                 </div>
             </label>
         </div>
-        <div class="sec3"><input type="button" name="send" value="Send" id="sendpwd" /></div>
+        <div class="sec3"><input style="margin-top:15px;" type="button" name="send" value="Send" id="sendpwd" /></div>
     </div>
 </div>
 <?php
 $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target'=>'a[rel=fpwd]',
-    'config'=>array(),
+    'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'130'),
     )
 );
 ?>
