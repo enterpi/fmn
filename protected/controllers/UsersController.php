@@ -384,7 +384,7 @@ class UsersController extends Controller
                 if($model->validate())
                 {
                     $user_id = Yii::app()->user->getid();
-                    $user = users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                    $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
                     if($user)
                     {
                         $user->password = md5($model->confirm_password);
