@@ -22,7 +22,7 @@ class UserIdentity extends CUserIdentity
             $record=Users::model()->findByAttributes(array('email_address'=>$this->username,'status'=>'1'));
             if($record===null)
                 $this->errorCode=self::ERROR_USERNAME_INVALID;
-            else if($record->password!==md5($this->password))
+            else if($record->password!==$this->password)
                 $this->errorCode=self::ERROR_PASSWORD_INVALID;
             else
             {
@@ -43,10 +43,10 @@ class UserIdentity extends CUserIdentity
 			return $this->_name;
         }
 		
-		public function getUserDetails($id)
-		{
-			$record_details=Users::model()->findByAttributes(array('id'=>$id));
-			return ucfirst($record_details['first_name'].' '.$record_details['last_name']);
-			//echo '<pre>';print_r($record_details);die;
-		}
+        public function getUserDetails($id)
+        {
+                $record_details=Users::model()->findByAttributes(array('id'=>$id));
+                return ucfirst($record_details['first_name'].' '.$record_details['last_name']);
+                //echo '<pre>';print_r($record_details);die;
+        }
 }

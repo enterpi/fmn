@@ -28,7 +28,8 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail','changepassword','GetOccasions','getNotifications','confirmregistration'),
+				'actions'=>array('view','create','fpmail',
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration','confirm'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -135,7 +136,7 @@ class UsersController extends Controller
                             if($model->save())
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
-                                    //$this->redirect(array('/site/login'));
+                                    $this->redirect(array('/users/confirm'));
                             }
                         }
                 }
@@ -145,7 +146,10 @@ class UsersController extends Controller
 		));
 	}
         
-        
+        public function actionConfirm()
+        {
+            $this->render('confirm');
+        }
         /* Function to check whether a token from a given url exists for confirming registration. 
          * If exists change the user status to 1 
          * param from GET token
@@ -169,8 +173,10 @@ class UsersController extends Controller
                 $login_model = new LoginForm;
                 $login_model->password = $user->password;
                 $login_model->username = $user->email_address;
-                $login_model->login();
-                $this->redirect(array('/users'));
+                if($login_model->login())
+                {
+                    $this->redirect(array('/users'));
+                }
             }
             else
             {
@@ -282,7 +288,7 @@ class UsersController extends Controller
                                                 'joinType'=>'INNER JOIN',
                                                 ),
                                             'usersAnswers'=>array(
-                                                'condition'=>'usersAnswer.users_id!='.$id.' or usersAnswers.users_id is null',
+                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
                                                 'joinType'=>'LEFT JOIN',
                                                 'on'=>'usersAnswers.questions_id!=t.id'
                                                 )
@@ -452,6 +458,7 @@ class UsersController extends Controller
                             'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
                     $for = '1';
                     $msg = 'Please click the below link and change your password <br/>'.$link;
+					$subject = 'FMN Forgot Password';
                 }
                 elseif($for=='confirmRegistration')
                 {
@@ -459,13 +466,14 @@ class UsersController extends Controller
                             'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
                     $for = '2';
                     $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
+					$subject = 'FMN Registration';
                 }
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
                 $email['to'] = $email_address;
                 $email['message'] = $msg;
-                $email['subject'] = 'FMN Forgot Password';
+                $email['subject'] = $subject;
                 $mail = new SendEmail;
                 $mail->send($email);
                 $model = new ResetPassword;
