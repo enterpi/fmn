@@ -5,5 +5,5 @@
  * and open the template in the editor.
  */
 
-echo "A mail has been sent";
+echo "A mail has been sent to ".$email;
 ?>

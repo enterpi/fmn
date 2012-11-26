@@ -29,7 +29,7 @@ class UsersController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('view','create','fpmail',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration','confirm'),
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -138,20 +138,32 @@ class UsersController extends Controller
                             if($model->save())
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
-                                    $this->redirect(array('/users/confirm'));
+                                    $this->render('confirm',array('email'=>$user['email_address']));
+                                    unset($_POST['Users']);
+                            }
+                            else
+                            {
+                                    $this->render('create',array(
+                                            'model'=>$model,
+                                    ));
                             }
                         }
+                        else
+                        {
+                                $this->render('create',array(
+                                        'model'=>$model,
+                                ));
+                        }
                 }
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+                else
+                {
+                        $this->render('create',array(
+                                'model'=>$model,
+                        ));
+                }
 	}
         
-        public function actionConfirm()
-        {
-            $this->render('confirm');
-        }
+        
         /* Function to check whether a token from a given url exists for confirming registration. 
          * If exists change the user status to 1 
          * param from GET token
@@ -483,6 +495,7 @@ class UsersController extends Controller
                 $model->token = $token;
                 $model->token_for = $for;
                 $model->save();
+                if($for == 'changepwd')
                 echo "2";
             }
         }
