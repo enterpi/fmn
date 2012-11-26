@@ -505,7 +505,7 @@ class UsersController extends Controller
                 $model->token = $token;
                 $model->token_for = $for;
                 $model->save();
-                if($for == 'changepwd')
+                if($for == '1')
                 echo "2";
             }
         }
