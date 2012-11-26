@@ -143,13 +143,22 @@ class UsersController extends Controller
                             }
                             else
                             {
+                                    $user['password'] = $pwd;
+                                    $user['confirm_password'] = $c_pwd;
+                                    $model->attributes = $user;
                                     $this->render('create',array(
                                             'model'=>$model,
                                     ));
                             }
                         }
                         else
-                        {
+                        {       
+                                $user['password'] = $pwd;
+                                $user['confirm_password'] = $c_pwd;
+                                $model->attributes = $user;
+                                $this->render('create',array(
+                                        'model'=>$model,
+                                ));
                                 $this->render('create',array(
                                         'model'=>$model,
                                 ));
