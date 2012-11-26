@@ -385,7 +385,7 @@ class UsersController extends Controller
                 if($model->validate())
                 {
                     $user_id = Yii::app()->user->getid();
-                    $user = users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                    $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
                     if($user)
                     {
                         $user->password = md5($model->confirm_password);
@@ -420,7 +420,7 @@ class UsersController extends Controller
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
-                $email['to'] = 'm.rajashekarreddy@gmail.com';
+                $email['to'] = $email_address;
                 $email['message'] = 'Please click the below link and change your password <br/>'.$link;
                 $email['subject'] = 'FMN Forgot Password';
                 $mail = new SendEmail;

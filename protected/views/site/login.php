@@ -163,7 +163,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         }
                         else if(res=='2')
                         {
-                            $("#data .error").html('Email sent to your Email id').show();    
+                            $("#data .error").html('Reset password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
@@ -179,11 +179,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
         $('#fp_email').keyup(function(){
             if($(this).val()!='')
             {
-                $('.error').hide();
+                $('#fp_email').closest('#data').find('.error').hide();
             }
             else
             {
-                $('.error').show();
+                $('#fp_email').closest('#data').find('.error').show();
             }
         });
     });
