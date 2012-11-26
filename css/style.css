@@ -393,3 +393,14 @@ select.bday{
 .buttons{
 	margin-top:5px;
 }
+.confirmation{
+	padding:10px;
+	text-align:center;
+	line-height:30px;
+	margin-top:160px;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size:20px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
