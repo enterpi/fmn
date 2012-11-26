@@ -150,7 +150,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             }
             else
             {
-                var qry_string = 'emailid='+$('#fp_email').val();
+                var qry_string = 'for=changepwd&emailid='+$('#fp_email').val();
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo Yii::app()->request->baseUrl ?>/users/fpmail/',

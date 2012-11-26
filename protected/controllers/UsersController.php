@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail','changepassword','GetOccasions','getNotifications'),
+				'actions'=>array('view','create','fpmail','changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -134,12 +134,8 @@ class UsersController extends Controller
                         {
                             if($model->save())
                             {
-                                    $login_model = new LoginForm;
-                                    $login_model->password = $c_pwd;
-                                    $login_model->username = $user['email_address'];
-                                    $login_model->login();
-                                    $id = Yii::app()->user->getid();
-                                    $this->redirect(array('/users'));
+                                    $this->actionFpmail($user['email_address'],'confirmRegistration');
+                                    $this->redirect(array('/site/login'));
                             }
                         }
                 }
@@ -148,6 +144,46 @@ class UsersController extends Controller
 			'model'=>$model,
 		));
 	}
+        
+        
+        /* Function to check whether a token from a given url exists for confirming registration. 
+         * If exists change the user status to 1 
+         * param from GET token
+         */
+        public function actionConfirmregistration()
+        {
+            $token = Yii::app()->input->get('token');
+            $condition=array(
+                        'select'=>'email,token,for',
+                        'condition'=>'token=:token',
+                        'params'=>array(':token'=>$token)
+                    );
+            $savedtoken = ResetPassword::model()->find($condition);
+            if($savedtoken && $savedtoken->for=='2')
+            {
+                    $model->attributes=$_POST['ChangePassword'];
+
+                    if($model->validate())
+                    {
+                            // form inputs are valid, do something here
+                            $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
+                            $user->status = '1';
+                            $user->save();
+                            $savedtoken->delete();
+                            $login_model = new LoginForm;
+                            $login_model->password = $user->password;
+                            $login_model->username = $user->email_address;
+                            $login_model->login();
+                            $this->redirect(array('/users'));
+                    }
+            }
+            else
+            {
+                    $this->redirect(array('/site/login'));
+            }
+            
+        }
+        
 
 	/**
 	 * Updates a particular model.
@@ -331,38 +367,36 @@ class UsersController extends Controller
                 Yii::app()->end();
             }
             */
-			$token = Yii::app()->input->get('token');
-			$condition=array(
-                                    'select'=>'email,token',
-                                    'condition'=>'token=:token',
-                                    'params'=>array(':token'=>$token)
-                                );
-			$savedtoken = ResetPassword::model()->find($condition);
-			if($savedtoken)
-			{
-				if(isset($_POST['ChangePassword']))
-				{
-					$model->attributes=$_POST['ChangePassword'];
+            $token = Yii::app()->input->get('token');
+            $condition=array(
+                        'select'=>'email,token,for',
+                        'condition'=>'token=:token',
+                        'params'=>array(':token'=>$token)
+                    );
+            $savedtoken = ResetPassword::model()->find($condition);
+            if($savedtoken && $savedtoken->for=='1')
+            {
+                    if(isset($_POST['ChangePassword']))
+                    {
+                            $model->attributes=$_POST['ChangePassword'];
 
-					if($model->validate())
-					{
-
-						// form inputs are valid, do something here
-
-						$user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
-						$user->password = md5($model->confirm_password);
-						$user->save();
-						$savedtoken->delete();
-						$this->redirect(array('/users'));
-					}
-						//$this->render('changepassword',array('model'=>$model));
-				}
-				$this->render('changepassword',array('model'=>$model));
+                            if($model->validate())
+                            {
+                                    // form inputs are valid, do something here
+                                    $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
+                                    $user->password = md5($model->confirm_password);
+                                    $user->save();
+                                    $savedtoken->delete();
+                                    $this->redirect(array('/users'));
+                            }
+                                    //$this->render('changepassword',array('model'=>$model));
+                    }
+                    $this->render('changepassword',array('model'=>$model));
             }
-			else
-			{
-				$this->redirect(array('/site/login'));
-			}
+            else
+            {
+                    $this->redirect(array('/site/login'));
+            }
 
         }
 
@@ -405,29 +439,44 @@ class UsersController extends Controller
 
 
 
-        public function actionFpmail()
+        public function actionFpmail($email_address = null,$for=null)
         {
-            $email_address = $_POST['emailid'];
+            $email_address = isset($_POST['emailid'])?$_POST['emailid']:$email_address;
+            $for = isset($_POST['for'])?$_POST['for']:$for;
             $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
             if($record===null)
             {
                 echo '1';
             }
-            else
+            elseif($email_address!=null)
             {
                 $token = md5($email_address.time());
-                $link = CHtml::link('Click here','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
+                if($for == 'changepwd')
+                {
+                    $link = CHtml::link('Click here',
+                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
+                    $for = '1';
+                    $msg = 'Please click the below link and change your password <br/>'.$link;
+                }
+                elseif($for=='confirmRegistration')
+                {
+                    $link = CHtml::link('Click here',
+                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
+                    $for = '2';
+                    $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
+                }
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
                 $email['to'] = $email_address;
-                $email['message'] = 'Please click the below link and change your password <br/>'.$link;
+                $email['message'] = $msg;
                 $email['subject'] = 'FMN Forgot Password';
                 $mail = new SendEmail;
                 $mail->send($email);
                 $model = new ResetPassword;
                 $model->email = $email_address;
                 $model->token = $token;
+                $model->for = $for;
                 $model->save();
                 echo "2";
             }
