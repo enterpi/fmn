@@ -2,6 +2,11 @@
 $('#Users_year,#Users_month').live('change',function(){
    var year = $('#Users_year').val();
    var month = $('#Users_month').val();
+   if(year == '')
+   {
+	   var theDate=new Date()
+       year = theDate.getFullYear();
+   }
    numberOfDays(year,month); 
 });
 function numberOfDays(year, month) {

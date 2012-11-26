@@ -96,6 +96,9 @@ textarea.inp, input.inp{
 	width:280px;
 	margin-top:3px;
 }
+textarea.inp{
+	resize:vertical;	
+}
 .wrapper_home .login_sec .signin_sec input.gender{
 	width:20px;
 	margin-top:-4px ;
@@ -252,6 +255,9 @@ textarea.inp, input.inp{
 .opt1 input{
 	margin-top:-3px;
 	margin-right:5px;
+}
+.opt1 label{ 
+	display:inline;
 }
 .month_head{
 	border-bottom:1px dotted #333;

@@ -88,7 +88,7 @@ class Users extends CActiveRecord
 			'id' => 'ID',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
-			'email_address' => 'Email Address/User Name',
+			'email_address' => 'Email Address',
 			'password' => 'Password',
                         'confirm_password' => 'Confirm Password',
 			'birthday' => 'Birthday',
