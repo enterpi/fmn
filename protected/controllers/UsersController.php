@@ -251,8 +251,9 @@ class UsersController extends Controller
                                                 'joinType'=>'INNER JOIN',
                                                 ),
                                             'usersAnswers'=>array(
-                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
-                                                'joinType'=>'LEFT JOIN'
+                                                'condition'=>'usersAnswer.users_id!='.$id.' or usersAnswers.users_id is null',
+                                                'joinType'=>'LEFT JOIN',
+                                                'on'=>'usersAnswers.questions_id!=t.id'
                                                 )
                                         ))->findAll();
                 $view_questions = array();
