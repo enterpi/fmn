@@ -91,13 +91,19 @@ class SiteController extends Controller
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
-                        $_POST['LoginForm']['password'] = md5($_POST['LoginForm']['password']);
-			$model->attributes=Yii::app()->input->stripClean($_POST['LoginForm']);
+                        $pwd = $_POST['LoginForm']['password'];
+                        $login = Yii::app()->input->stripClean($_POST['LoginForm']);
+                        $login['password'] = md5($pwd);
+			$model->attributes=$login;
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
                             $id = Yii::app()->user->getid();
 				//$this->redirect(Yii::app()->user->returnUrl);
                                 $this->redirect(array('users/'));
+                        }
+                        else{
+                            $login['password'] = $pwd;
+                            $model->attributes=$login;
                         }
 		}
 		// display the login form

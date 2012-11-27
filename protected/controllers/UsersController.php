@@ -263,7 +263,28 @@ class UsersController extends Controller
 
 		$name = Yii::app()->user->getName();
                 $id = Yii::app()->user->getId();
-                $questions = Questions::model()->with(array('questionOptions'=>array('joinType'=>'INNER JOIN')))->findAll();
+                $answered_questions = UsersAnswers::model()->findAll(array(
+                                                                       'select'=>'questions_id',
+                                                                        'condition'=>'users_id=:usersID',
+                                                                        'params'=>array(':usersID'=>$id),         
+                                                                        ));
+                $ids = array();
+                foreach($answered_questions as $ans_q)
+                {
+                    $ids[] = $ans_q->questions_id;
+                }
+                if(sizeof($ids)>0)
+                {
+                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).')');
+                }
+                else
+                {
+                    $cond = array();
+                }
+                $questions = Questions::model()->with(array('questionOptions'=>array(
+                                                                'joinType'=>'INNER JOIN',
+                                                                )
+                                                        ))->findAll($cond);
                 $view_questions = array();
                 foreach($questions as $question)
                 {
