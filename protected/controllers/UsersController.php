@@ -129,9 +129,7 @@ class UsersController extends Controller
 
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
-						// $user['ipaddress'] = CHttpRequest::getUserHostAddress();
 
-                        //$user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
 			$model->attributes=$user;
                         if($model->validate())
                         {
@@ -139,7 +137,7 @@ class UsersController extends Controller
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
                                     Yii::app()->clientScript->registerCoreScript('jquery');
-									$this->render('confirm',array('email'=>$user['email_address']));
+                                    $this->render('confirm',array('email'=>$user['email_address']));
                                     unset($_POST['Users']);
                             }
                             else
@@ -157,9 +155,6 @@ class UsersController extends Controller
                                 $user['password'] = $pwd;
                                 $user['confirm_password'] = $c_pwd;
                                 $model->attributes = $user;
-                                $this->render('create',array(
-                                        'model'=>$model,
-                                ));
                                 $this->render('create',array(
                                         'model'=>$model,
                                 ));
@@ -208,46 +203,6 @@ class UsersController extends Controller
             }
             
         }
-        
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Users']))
-		{
-                        $pwd = $_POST['Users']['password'];
-                        $c_pwd = $_POST['Users']['confirm_password'];
-                        $md5_pwd = md5($pwd);
-                        $md5_confirmpwd = md5($c_pwd);
-                        $user = Yii::app()->input->stripClean($_POST['Users']);
-                        $user['password'] = $md5_pwd;
-                        $user['confirm_password'] = $md5_confirmpwd;
-                        $user['birthday'] = date('Y-m-d',strtotime($user['birthday']));
-			$model->attributes=$user;
-                        if($model->validate())
-                        {
-                            if($model->save())
-                                    $this->redirect(array('view','id'=>$model->id));
-                        }
-                        $user['password'] = $pwd;
-                        $user['confirm_password'] = $c_pwd;
-                        $model->attributes=$user;
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-         */
 
         /*
          * @param integer $id
@@ -308,15 +263,7 @@ class UsersController extends Controller
 
 		$name = Yii::app()->user->getName();
                 $id = Yii::app()->user->getId();
-                $questions = Questions::model()->with(array('questionOptions'=>array(
-                                                'joinType'=>'INNER JOIN',
-                                                ),
-                                            'usersAnswers'=>array(
-                                                'condition'=>'usersAnswers.users_id!='.$id.' or usersAnswers.users_id is null',
-                                                'joinType'=>'LEFT JOIN',
-                                                'on'=>'usersAnswers.questions_id!=t.id'
-                                                )
-                                        ))->findAll();
+                $questions = Questions::model()->with(array('questionOptions'=>array('joinType'=>'INNER JOIN')))->findAll();
                 $view_questions = array();
                 foreach($questions as $question)
                 {
@@ -381,6 +328,10 @@ class UsersController extends Controller
 		}
 	}
 
+        /*function called for forgot password functionality
+         * User clicks the link in the mail sent to him
+         * params GET token
+         */
         public function actionChangepassword()
         {
             $model= new ChangePassword();
@@ -425,6 +376,9 @@ class UsersController extends Controller
 
         }
 
+        /*function called for change of password for an authenticated user
+         * params POST ChangepPassword array containing current_password,password,confirm_password,
+         */
         public function actionChangepwd()
         {
             $model=new ChangePassword;
