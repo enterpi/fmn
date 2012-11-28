@@ -117,7 +117,7 @@ $this->breadcrumbs=array(
 <?php
 $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target'=>'a[rel=fpwd]',
-    'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'100'),
+    //'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'100'),
     )
 );
 ?>
