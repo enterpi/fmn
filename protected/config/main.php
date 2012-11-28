@@ -35,7 +35,18 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+                        
 		),
+                'request'=>array(
+                            'enableCsrfValidation'=>true,
+                            'enableCookieValidation'=>true,
+                            'csrfTokenName'=>'FMN_TOKEN',
+                            'class' => 'application.components.HttpRequest',
+                            'csrfCookie'=>array(
+                                    'httpOnly'=>true,
+                            )
+                        ),
+                        
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
@@ -84,13 +95,14 @@ return array(
 		),
             'input'=>array(   
                                 'class'         => 'CmsInput',  
-                                'cleanPost'     => false,  
-                                'cleanGet'      => false,   
+                                'cleanPost'     => true,  
+                                'cleanGet'      => true,   
                             ),
             'session' => array (
                             'class' => 'system.web.CDbHttpSession',
                             'connectionID' => 'db',
                             'sessionTableName' => 'fmn_sessions',
+                            'timeout' => 86400,
                         )
 
 	),

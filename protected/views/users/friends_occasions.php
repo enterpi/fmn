@@ -7,6 +7,7 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
+Yii::app()->clientScript->registerCoreScript('jquery');  
 $cs=Yii::app()->getClientScript(); 
 $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
 //echo '<pre>';print_r($freinds_occasions); die;
@@ -17,62 +18,9 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slide
 
 $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
 ?>
-<?php 
-       $cs=Yii::app()->getClientScript(); 
-       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
-?>
 <script>
-    function question(questions)
-        {
-            random_number = Math.floor(Math.random()*questions.length);
-            var question =  questions[random_number];
-            var html='<h3 class="m_t_15">'+question.question+'</h3>';
-                html+='<div class="answer">';
-                html+=  '<input id="user_question" type="hidden" name="question" value="'+question.question_id+'" />';
-                $.each(question.options,function(index,value){
-                    html+=  '<div class="opt1">';
-                    html+=  '<label><input class="user_answer" type="checkbox" name="question_option" value="'+value.id+'" />'+value.option+'</label>'; 
-                    html+=  '</div>'; 
-                });
-               
-                html+=  '</div>';
-                            
-                $('#question').html(html);
-        }
-    $(document).ready(function(){
-        var questions = '<?php echo $questions ?>';
-        questions = JSON.parse(questions);
-        if(questions.length>0)
-        question(questions);
-        else
-        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
     
-        $('.user_answer').live('click',function(){
-            var qry_string ={'answer':$(this).val(),'question':$('#user_question').val()} ;
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo Yii::app()->request->baseUrl ?>/users/saveanswer/',
-                data: qry_string,
-                beforeSend: function(){},
-                success: function(res){
-                    questions.splice(random_number,1);
-                    if(questions.length>0){
-                        if(res=='success')
-                            question(questions);
-                    }
-                    else{
-                        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
-                    }
-                        
-                },
-                error: function(sts,txt,res){
-                },
-                complete: function(){
-                }
-            });
-            
-        });
-    });
+   
 </script>
 <div class="wrapper_home">
     <div class="wrapper_left">
@@ -139,11 +87,60 @@ var p_month = '<?php echo $p_month;?>';
 			getNotifications(p_month,user_id);
 			
         });
+        
+        var questions = '<?php echo $questions ?>';
+        questions = JSON.parse(questions);
+        if(questions.length>0)
+        question(questions);
+        else
+        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
+    
+        $('.user_answer').live('click',function(){
+            var qry_string ={'answer':$(this).val(),'question':$('#user_question').val(),'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>'} ;
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo Yii::app()->request->baseUrl ?>/users/saveanswer/',
+                data: qry_string,
+                beforeSend: function(){},
+                success: function(res){
+                    questions.splice(random_number,1);
+                    if(questions.length>0){
+                        if(res=='success')
+                            question(questions);
+                    }
+                    else{
+                        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
+                    }
+                        
+                },
+                error: function(sts,txt,res){
+                },
+                complete: function(){
+                }
+            });
+            
+        });
     });
-	
+	function question(questions)
+        {
+            random_number = Math.floor(Math.random()*questions.length);
+            var question =  questions[random_number];
+            var html='<h3 class="m_t_15">'+question.question+'</h3>';
+                html+='<div class="answer">';
+                html+=  '<input id="user_question" type="hidden" name="question" value="'+question.question_id+'" />';
+                $.each(question.options,function(index,value){
+                    html+=  '<div class="opt1">';
+                    html+=  '<label><input class="user_answer" type="checkbox" name="question_option" value="'+value.id+'" />'+value.option+'</label>'; 
+                    html+=  '</div>'; 
+                });
+               
+                html+=  '</div>';
+                            
+                $('#question').html(html);
+        }
 	function getOccasions(p_month,user_id)
 	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
+		var qry_string = {'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>','p_month':p_month,'user_id':user_id};
 		$.ajax({
 			type: 'POST',
 			url: '<?php echo Yii::app()->request->baseUrl ?>/users/GetOccasions',
@@ -160,7 +157,7 @@ var p_month = '<?php echo $p_month;?>';
 	}
 	function getNotifications(p_month,user_id)
 	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
+		var qry_string = {'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>','p_month':p_month,'user_id':user_id};
 		$.ajax({
 			type: 'POST',
 			url: '<?php echo Yii::app()->request->baseUrl ?>/users/getNotifications',

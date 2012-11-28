@@ -5,7 +5,7 @@
 ?>
 <?php 
        $cs=Yii::app()->getClientScript(); 
-       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+       Yii::app()->clientScript->registerCoreScript('jquery');  
 ?>
 
 <div class="form">

@@ -5,7 +5,7 @@
 ?>
 <?php 
        $cs=Yii::app()->getClientScript(); 
-       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+       Yii::app()->clientScript->registerCoreScript('jquery');  
        $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');

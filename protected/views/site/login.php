@@ -15,6 +15,32 @@ $this->breadcrumbs=array(
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/facebook.js');
 ?>
+<script>
+     function login() {
+        FB.login(function(response) {
+            if (response.authResponse) {
+                //connected
+                var res = response.authResponse;
+                FB.api('/me', function(resp) {
+                    $.ajax({
+                        url:'<?php echo Yii::app()->request->baseUrl ?>/site/fblogin/',
+                        data:{
+                            'accessToken':res.accessToken,
+                            'userID':res.userID,
+                            'email':resp.email,
+                            'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>'
+                            },
+                        type:'POST'
+                    });
+                });
+                
+                
+            } else {
+                // cancelled
+            }
+        },{scope: 'email'});
+    }
+</script>
 <div id="fb-root"></div>
 <div class="form">
     <div class="wrapper_home">
@@ -150,7 +176,10 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             }
             else
             {
-                var qry_string = 'for=changepwd&emailid='+$('#fp_email').val();
+                var qry_string = {'for':'changepwd',
+                                  'emailid':$('#fp_email').val(),
+                                  'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>'
+                                 };
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo Yii::app()->request->baseUrl ?>/users/fpmail/',
@@ -187,4 +216,6 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             }
         });
     });
+    
+   
 </script>
