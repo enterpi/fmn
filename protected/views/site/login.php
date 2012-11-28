@@ -127,32 +127,37 @@ $this->breadcrumbs=array(
 </div><!-- form -->
 <div style="display:none">
     <div id="data">
-        <div>Email will be sent to the email id provided</div>
-        <div class="sec2">
-            <label>
-                <div class="lft_em">Email Id:</div>
-                <div class="rgt_em">
-                    <input type="text" name="fp_email" id="fp_email" style="width:300px"/>
-                    <span class="error">Please enter Email Id</span>
-                </div>
-            </label>
+        <div class="heading">Forgot your password?</div>
+        <div class="email_id_sec">
+            <div class="sec2">
+                <label>
+                    <div class="lft_em">Email Id:</div>
+                    <div class="rgt_em">
+                        <input type="text" name="fp_email" id="fp_email" style="width:300px"/>
+                        <span class="error">Please enter Email Id</span>
+                    </div>
+                </label>
+            </div>
+            <div class="sec3"><input class="btn btn_fgt m_b_10" type="button" name="send" value="Send" id="sendpwd" /></div>
         </div>
-        <div class="sec3"><input  type="button" name="send" value="Send" id="sendpwd" /></div>
+        <div><h2 class="sucess_msg"></h2></div>
     </div>
 </div>
 <?php
 $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target'=>'a[rel=fpwd]',
-    'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'100'),
+    //'config'=>array('autoDimensions'=>false,'width'=>'400','height'=>'100'),
     )
 );
 ?>
 <style>
     #data{
         font-size:13px;
+		min-height:100px;
+		min-width:377px;
     }
     .sec2{
-        margin:8px 0;
+        margin:20px 0 10px 0;
         overflow:hidden
     }
     .lft_em{ margin:6px 10px 0 0}
@@ -162,6 +167,10 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
         text-align:center;
     }
     span.error{
+        color:red;
+        display:none;
+    }
+	h2.sucess_msg{
         color:red;
         display:none;
     }
@@ -190,9 +199,10 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         {
                             $("#data .error").html('Incorrect Email id specified').show();
                         }
-                        else if(res=='2')
-                        {
-                            $("#data .error").html('password link has been sent to your Email').show();    
+                       else if(res=='2')
+					    {
+                            $(".email_id_sec").hide();
+							$("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');

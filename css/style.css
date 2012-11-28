@@ -296,6 +296,9 @@ textarea.inp{
 .m_b_20{
 	margin-bottom:20px;
 }
+.m_b_10{
+	margin-bottom:10px;
+}
 .f_l{
 	float:left;
 }
@@ -403,4 +406,17 @@ select.bday{
 	border-radius:4px;
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
+}
+.heading{
+	padding:5px 0px 15px 0px;
+	border-bottom:1px solid #DADADA;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size:18px;
+}
+
+.sucess_msg{
+	padding:15px 0px;
+}
+.btn_fgt{
+	padding:5px 12px;
 }
