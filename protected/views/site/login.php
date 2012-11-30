@@ -28,7 +28,10 @@ $this->breadcrumbs=array(
                             "userID":res.userID,
                             "email":resp.email,
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
-                            }
+                            },
+                         success:function(res){
+                            window.location.href = res
+                         }
                     });
                 });
                 

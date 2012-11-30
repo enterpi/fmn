@@ -132,8 +132,8 @@ class SiteController extends Controller
                 $user = Users::model()->find(array(
                                         'select'=>'fb_id,password',
                                         'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
-                                        'params'=>array(':fbID'=>$idm,':emailID'=>$email_id,':Status'=>4), 
-                                    ));
+                                        'params'=>array(':fbID'=>$id,':emailID'=>$email_id,':Status'=>4), 
+                               ));
                 if($user == null)
                 {
                     $model = new Users();
@@ -146,7 +146,7 @@ class SiteController extends Controller
                     $model->save();
                 }
                 else
-                {
+                { 
                     $pwd = $user->password;
                 }
                 
@@ -154,7 +154,8 @@ class SiteController extends Controller
                 $login_model->username = $email_id;
                 $login_model->password = $pwd;
                 $login_model->login();
-                $this->redirect(array('users/'));
+                
+                echo Yii::app()->createUrl('/users');
                 
                 
                 
