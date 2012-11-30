@@ -131,8 +131,8 @@ class SiteController extends Controller
                 $email_id = $_POST['email'];
                 $user = Users::model()->find(array(
                                         'select'=>'fb_id,password',
-                                        'condition'=>'fb_id=:fbID AND email_address=:emailID',
-                                        'params'=>array(':fbID'=>$idm,':emailID'=>$email_id), 
+                                        'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
+                                        'params'=>array(':fbID'=>$idm,':emailID'=>$email_id,':Status'=>4), 
                                     ));
                 if($user == null)
                 {
@@ -140,6 +140,7 @@ class SiteController extends Controller
                     $model->fb_id = $id;
                     $model->access_token = $access_token;
                     $model->email_address = $email_id;
+                    $model->status = '4';
                     $pwd = md5($email_id.time());
                     $model->password = $pwd;
                     $model->save();
@@ -148,7 +149,7 @@ class SiteController extends Controller
                 {
                     $pwd = $user->password;
                 }
-                echo $email_id;echo $pwd;
+                
                 $login_model = new LoginForm;
                 $login_model->username = $email_id;
                 $login_model->password = $pwd;

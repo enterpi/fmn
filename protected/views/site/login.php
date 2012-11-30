@@ -14,23 +14,21 @@ $this->breadcrumbs=array(
        $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/facebook.js');
-?>
-<script>
-     function login() {
+       Yii::app()->clientScript->registerScript('login','function login() {
         FB.login(function(response) {
             if (response.authResponse) {
                 //connected
                 var res = response.authResponse;
-                FB.api('/me', function(resp) {
+                FB.api("/me", function(resp) {
                     $.ajax({
-                        url:'<?php echo Yii::app()->request->baseUrl ?>/site/fblogin/',
+                        url:"'.Yii::app()->request->baseUrl.'/site/fblogin/",
+                        type:"POST",
                         data:{
-                            'accessToken':res.accessToken,
-                            'userID':res.userID,
-                            'email':resp.email,
-                            'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>'
-                            },
-                        type:'POST'
+                            "accessToken":res.accessToken,
+                            "userID":res.userID,
+                            "email":resp.email,
+                            "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
+                            }
                     });
                 });
                 
@@ -38,9 +36,9 @@ $this->breadcrumbs=array(
             } else {
                 // cancelled
             }
-        },{scope: 'email'});
-    }
-</script>
+        },{scope: "email"});
+    }', CClientScript::POS_HEAD);
+?>
 <div id="fb-root"></div>
 <div class="form">
     <div class="wrapper_home">
@@ -93,7 +91,7 @@ $this->breadcrumbs=array(
                             <?php /* echo $form->error($model,'rememberMe'); */ ?>
                     </label> -->
                    
-							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
+			<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
                     <label class="labl">
                         <div class="pwd">
                             <a href="#data" rel="fpwd">FORGOT YOUR PASSWORD?</a>
@@ -202,7 +200,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                        else if(res=='2')
 					    {
                             $(".email_id_sec").hide();
-							$("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
+			    $("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
