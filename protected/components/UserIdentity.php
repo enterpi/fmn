@@ -21,7 +21,7 @@ class UserIdentity extends CUserIdentity
         {
             $criteria=new CDbCriteria;
             $criteria->condition='email_address=:emailAddress AND (status=:Status OR status=:Stat)';
-            $criteria->params=array(':emailAddress'=>$this->username,':Status'=>1,':Stat'=>4);
+            $criteria->params=array(':emailAddress'=>$this->username,':Status'=>'1',':Stat'=>'4');
             $record=Users::model()->find($criteria);
             if($record===null)
                 $this->errorCode=self::ERROR_USERNAME_INVALID;
@@ -49,7 +49,7 @@ class UserIdentity extends CUserIdentity
         public function getUserDetails($id)
         {
                 $record_details=Users::model()->findByAttributes(array('id'=>$id));
-                return ucfirst($record_details['first_name'].' '.$record_details['last_name']);
+                return ucfirst($record_details->first_name.' '.$record_details->last_name);
                 //echo '<pre>';print_r($record_details);die;
         }
 }
