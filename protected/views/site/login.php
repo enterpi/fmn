@@ -15,6 +15,13 @@ $this->breadcrumbs=array(
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/facebook.js');
        Yii::app()->clientScript->registerScript('login','function login() {
+        function FacebookInviteFriends()
+        {
+            FB.ui({
+                method: "apprequests",
+                message: "Invite friends to join FORGETMNOT"
+            });
+        }
         FB.login(function(response) {
             if (response.authResponse) {
                 //connected
@@ -30,7 +37,14 @@ $this->breadcrumbs=array(
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
                             },
                          success:function(res){
+                            if(res != "user_first_login")
                             window.location.href = res
+                            else
+                            {
+                                FacebookInviteFriends();
+                                location.reload(true);
+                            }
+                            
                          }
                     });
                 });

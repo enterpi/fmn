@@ -144,10 +144,12 @@ class SiteController extends Controller
                     $pwd = md5($email_id.time());
                     $model->password = $pwd;
                     $model->save();
+                    $first_login = true;
                 }
                 else
                 { 
                     $pwd = $user->password;
+                    $first_login = false;
                 }
                 
                 $login_model = new LoginForm;
@@ -155,7 +157,10 @@ class SiteController extends Controller
                 $login_model->password = $pwd;
                 $login_model->login();
                 
+                if(!$first_login)
                 echo Yii::app()->createUrl('/users');
+                else
+                echo 'user_first_login';
                 
                 
                 

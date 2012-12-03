@@ -28,6 +28,8 @@ window.fbAsyncInit = function() {
         //login();
       }
      });
+     
+    
 
     };
 
