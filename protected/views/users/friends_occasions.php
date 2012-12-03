@@ -7,8 +7,6 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$cs=Yii::app()->getClientScript(); 
-$cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
 //echo '<pre>';print_r($freinds_occasions); die;
 /* $this->menu=array(
 	array('label'=>'List Users', 'url'=>array('index')),
@@ -28,51 +26,49 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
 
 <?php 
        $cs=Yii::app()->getClientScript(); 
-       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
-	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/popover.js');
-	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/useroccasions.js');
-?>
-<script>
-    function question(questions)
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/popover.js');
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/useroccasions.js');
+       Yii::app()->clientScript->registerScript('questions','
+        function question(questions)
         {
             random_number = Math.floor(Math.random()*questions.length);
             var question =  questions[random_number];
-            var html='<h3 class="m_t_15">'+question.question+'</h3>';
-                html+='<div class="answer">';
-                html+=  '<input id="user_question" type="hidden" name="question" value="'+question.question_id+'" />';
+            var html=\'<h3 class="m_t_15">\'+question.question+\'</h3>\';
+                html+=\'<div class="answer">\';
+                html+=  \'<input id="user_question" type="hidden" name="question" value="\'+question.question_id+\'" />\';
                 $.each(question.options,function(index,value){
-                    html+=  '<div class="opt1">';
-                    html+=  '<label><input class="user_answer" type="checkbox" name="question_option" value="'+value.id+'" />'+value.option+'</label>'; 
-                    html+=  '</div>'; 
+                    html+=  \'<div class="opt1">\';
+                    html+=  \'<label><input class="user_answer" type="checkbox" name="question_option" value="\'+value.id+\'" />\'+value.option+\'</label>\'; 
+                    html+=  \'</div>\'; 
                 });
                
-                html+=  '</div>';
+                html+=  \'</div>\';
                             
-                $('#question').html(html);
+                $("#question").html(html);
         }
-    $(document).ready(function(){
-        var questions = '<?php echo $questions ?>';
+        
+        var questions = \''.$questions.'\';
         questions = JSON.parse(questions);
         if(questions.length>0)
         question(questions);
         else
-        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
-    
-        $('.user_answer').live('click',function(){
-            var qry_string ={'answer':$(this).val(),'question':$('#user_question').val()} ;
+        $("#question").html(\'<h3 class="m_t_15">All questions have been answered</h3>\');
+        setInterval(function(){question(questions)}, 15000);
+        $(".user_answer").live("click",function(){
+            var qry_string ={"answer":$(this).val(),"question":$("#user_question").val(),"FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"} ;
             $.ajax({
-                type: 'POST',
-                url: '<?php echo Yii::app()->request->baseUrl ?>/users/saveanswer/',
+                type: "POST",
+                url: "'.Yii::app()->request->baseUrl.'/users/saveanswer/",
                 data: qry_string,
                 beforeSend: function(){},
                 success: function(res){
                     questions.splice(random_number,1);
                     if(questions.length>0){
-                        if(res=='success')
+                        if(res=="success")
                             question(questions);
                     }
                     else{
-                        $('#question').html('<h3 class="m_t_15">All questions have been answered</h3>');
+                        $("#question").html(\'<h3 class="m_t_15">All questions have been answered</h3>\');
                     }
                         
                 },
@@ -83,8 +79,8 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
             });
             
         });
-    });
-</script>
+        ');
+?>
 <div class="wrapper_home">
 <div class="jhideoccpop"></div>
     <div class="wrapper_left">
