@@ -15,11 +15,21 @@ $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slide
 	array('label'=>'Manage Users', 'url'=>array('admin')),
 ); */
 
+
 $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8=>'Aug',9=>'Sep',10=>'Oct',11=>'Nov',12=>'Dec');
 ?>
+<script>
+var user_id = '<?php echo $user_id;?>';
+var p_month = '<?php echo $p_month;?>';
+var base_url = '<?php echo Yii::app()->request->baseUrl; ?>';
+</script>
+
+
 <?php 
        $cs=Yii::app()->getClientScript(); 
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/popover.js');
+	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/useroccasions.js');
 ?>
 <script>
     function question(questions)
@@ -75,6 +85,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
     });
 </script>
 <div class="wrapper_home">
+<div class="jhideoccpop"></div>
     <div class="wrapper_left">
         <div id="question" class="question"> 
             
@@ -123,56 +134,3 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
         </div>
     </div>
 </div>
-
-<script>
-var user_id = '<?php echo $user_id;?>';
-var p_month = '<?php echo $p_month;?>';
-    $(document).ready(function(){
-		getOccasions(p_month,user_id);
-		getNotifications(p_month,user_id);
-        $('.jgetocc').click(function(){
-			$('.jgetocc').removeClass('active');
-			$(this).addClass('active');
-			var p_month = $(this).attr("month");
-			var user_id = $(this).attr("user_id");
-			getOccasions(p_month,user_id);
-			getNotifications(p_month,user_id);
-			
-        });
-    });
-	
-	function getOccasions(p_month,user_id)
-	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
-		$.ajax({
-			type: 'POST',
-			url: '<?php echo Yii::app()->request->baseUrl ?>/users/GetOccasions',
-			data: qry_string,
-			beforeSend: function(){ $('.jdisplayocc').html('<div class="loader">&nbsp;</div>'); },
-			success: function(res){
-				$('.jdisplayocc').html(res);
-			},
-			error: function(sts,txt,res){
-			},
-			complete: function(){
-			}
-		});
-	}
-	function getNotifications(p_month,user_id)
-	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
-		$.ajax({
-			type: 'POST',
-			url: '<?php echo Yii::app()->request->baseUrl ?>/users/getNotifications',
-			data: qry_string,
-			beforeSend: function(){ $('.jdisplaynotifications').html('<div class="loader">&nbsp;</div>'); },
-			success: function(res){
-				$('.jdisplaynotifications').html(res);
-			},
-			error: function(sts,txt,res){
-			},
-			complete: function(){
-			}
-		});
-	}
-</script>

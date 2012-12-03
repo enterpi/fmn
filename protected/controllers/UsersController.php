@@ -29,7 +29,7 @@ class UsersController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('view','create','fpmail',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration'),
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions','useradmin','admin'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -54,6 +54,13 @@ class UsersController extends Controller
 	{
 
 	}
+	
+	public function actionUseradmin()
+	{
+		$model=new Users();
+		$this->render('useradmin',array('model'=>$model,
+                                    ));
+	}
 
 	public function actionGetOccasions()
 	{
@@ -65,6 +72,19 @@ class UsersController extends Controller
 		echo $this->renderPartial('occasions',array(
 			'freinds_occasions'=>$freinds_occasions
 		));
+	}
+	
+	public function actionhideOccasions()
+	{
+		$occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
+		$sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
+		$model=UsersOccassions::model()->findByPk($occ_id);
+		$UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
+        $UsersOccassions->hide_occ = $sts_value; 
+        if($UsersOccassions->save())
+			echo true;
+		else
+			echo false;
 	}
 
         public function actionSaveanswer()

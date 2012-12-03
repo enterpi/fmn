@@ -103,9 +103,18 @@ textarea.inp{
 	width:20px;
 	margin-top:-4px ;
 }
-.wrapper_home .login_sec .signin_sec label .gen_sel{
-	line-height:30px;
+.gen_sel{
+	line-height:45px;
 	font-weight:normal;
+}
+.popover-content{
+	font-size:14px;
+}
+.gen_sel input{
+	margin-top:-4px;
+}
+.occa_w{
+	margin-right:20px;
 }
 .wrapper_home .login_sec .signin_sec input.bday{
 	width:250px;
@@ -287,11 +296,17 @@ textarea.inp{
 .m_t_15{
 	margin-top:15px;
 }
+.m_t_10{
+	margin-top:10px;
+}
 .m_t_25{
 	margin-top:25px;
 }
 .m_r_10{
 	margin-right:10px;
+}
+.m_r_5{
+	margin-right:5px;
 }
 .m_b_20{
 	margin-bottom:20px;
@@ -301,6 +316,9 @@ textarea.inp{
 }
 .f_l{
 	float:left;
+}
+.f_r{
+	float:right;
 }
 .preview{
 	display:block;
@@ -419,4 +437,52 @@ select.bday{
 }
 .btn_fgt{
 	padding:5px 12px;
+}
+.remind{
+	padding:3px 12px;
+	line-height:22px;
+}
+.userlist{
+	font-size:14px;
+}
+.admin_menu{
+	margin:15px 0px 10px 0px;
+}
+.m_b_0{
+	margin-bottom:0px;
+}
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  width: 236px;
+  padding: 1px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-left:25px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+.popover_cls {
+    background: url("images/sprite.png") no-repeat scroll 0px -254px transparent;
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 22px;
+}
+.m_l_5{
+	margin-left:5px;
 }
