@@ -85,7 +85,7 @@ $(document).ready(function(){
 		var sts_value = $(this).val();
 		if(sts_value == 'y')
 		{
-			var qry_string = 'occ_id='+usr_occ_id+'&sts_value='+sts_value;
+			var qry_string = 'occ_id='+usr_occ_id+'&sts_value='+sts_value+'&FMN_TOKEN='+fmn_token;
 			//don't delete below commented code
 			$.ajax({
 				type: 'POST',
@@ -94,7 +94,8 @@ $(document).ready(function(){
 				beforeSend: function(){ },
 				success: function(res){
 					$('.jhideoccpop').html(''); 
-					getOccasions(p_month,user_id);
+					//getOccasions(p_month,user_id);
+                                        $('.jgetocc.active').trigger('click'); // trigger click the active button to get the details of that particular month
 				},
 				error: function(sts,txt,res){
 				},
