@@ -15,8 +15,8 @@ class User_friends_Occasions
   function getUser_friends_Occasions($ip_array)
   {
 			$ocasion_date = date('Y').'-'.$ip_array['p_month'];		
-			$sql = "select occasion_name,occasion_date,occasion_day from (				
-			select concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
+			$sql = "select user_occ_id,occasion_name,occasion_date,occasion_day from (				
+			select uo.id as user_occ_id,concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
 			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
 			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
@@ -26,9 +26,9 @@ class User_friends_Occasions
 			left join occassions o on o.id = uo.occassions_id
 			where DATE_FORMAT(uo.occassion_date, '%m') = ".$ip_array['p_month']." 
 			and uf.users_id = ".$ip_array['user_id']."
-			and o.occassion_type=1
+			and o.occassion_type=1 and uo.hide_occ='n'
 			union
-			select concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
+			select uo.id as user_occ_id,concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
 			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
 			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
@@ -38,7 +38,7 @@ class User_friends_Occasions
 			left join occassions o on o.id = uo.occassions_id
 			where DATE_FORMAT(uo.occassion_date, '%Y-%m') = '".$ocasion_date."' 
 			and uf.users_id = ".$ip_array['user_id']." 
-			and o.occassion_type=2
+			and o.occassion_type=2  and uo.hide_occ='n'
 			) result_set order by  occasion_day";
 		
 			//echo $sql;

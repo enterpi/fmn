@@ -16,14 +16,15 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />-->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/datepicer/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/datepicer/less/datepicker.less" />
         <?php 
                $cs=Yii::app()->getClientScript(); 
                $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js');
 	       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap.js');
+		   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/datepicker/bootstrap-datepicker.js');
         ?>
-        
-   
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
@@ -82,23 +83,22 @@
 
 </div><!-- page -->
 <div id="footer" class="footer">
-		<div class="foot_cont">
-                        <ul class="first">
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">HELP</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#">PRIVACY POLICY</a></li>
-                        <li><a href="#">TERMS OF SERVICE</a></li>
-                    </ul>
-                    <p><a href="#">CONTACT</a></p>
-                </div>
-	</div><!-- footer -->
- <script>
-$(document).ready(function(){
-	$('.dropdown-toggle').dropdown();
-});
-
+    <div class="foot_cont">
+        <ul class="first">
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">HELP</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">PRIVACY POLICY</a></li>
+            <li><a href="#">TERMS OF SERVICE</a></li>
+        </ul>
+        <p><a href="#">CONTACT</a></p>
+    </div>
+</div><!-- footer -->
+<script>
+	$(document).ready(function(){
+		$('.dropdown-toggle').dropdown();
+	});
 </script>
 </body>
 </html>

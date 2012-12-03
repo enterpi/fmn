@@ -220,7 +220,8 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         {
                             $("#data .error").html('Incorrect Email id specified').show();
                         }
-                       else if(res=='2')
+                       //else if(res=='2')
+					   else
 					    {
                             $(".email_id_sec").hide();
 			    $("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
@@ -246,6 +247,12 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                 $('#fp_email').closest('#data').find('.error').show();
             }
         });
+	
+		$('#fancybox-close,#fancybox-overlay').live('click',function(){
+			$('#fp_email').val('');
+			$(".email_id_sec").show();
+			$("#data .sucess_msg").hide();   
+		});
     });
     
    

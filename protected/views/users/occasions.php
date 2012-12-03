@@ -12,10 +12,10 @@ if(!empty($freinds_occasions))
 			<div class="f_l">
 				<p><?php echo $oca_values['occasion_name'];?></p>
 				<p><span><?php echo $oca_values['occasion_date'];?></span></p>
-				<div class="f_l m_r_10"><i class="icon-time"></i></div>
+				<div class="f_l m_r_10"><i class="icon-time jreminder" user_occ_id =<?php echo $oca_values['user_occ_id'];?>></i></div>
 				<div class="f_l m_r_10"><i class="icon-gift"></i></div>
 				<div class="f_l m_r_10"><i class="icon-fb"></i></div>
-				<div class="f_l m_r_10"><i class="icon-none"></i></div>
+				<div class="f_l m_r_10"><i class="icon-none jhideocc" user_occ_id =<?php echo $oca_values['user_occ_id'];?>></i></div>
 			</div>
 		</div>
 	<?php	
@@ -24,9 +24,9 @@ if(!empty($freinds_occasions))
 else
 {
 ?>
-
 	<div class="alert">No Occasions in this month</div>
 <?php
 }
 
 ?>
+
