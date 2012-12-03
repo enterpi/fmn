@@ -21,7 +21,7 @@ $(document).ready(function(){
 	//Getting friends occasions data
 	function getOccasions(p_month,user_id)
 	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
+		var qry_string = 'p_month='+p_month+'&user_id='+user_id+'&FMN_TOKEN='+fmn_token;
 		$.ajax({
 			type: 'POST',
 			url: base_url+'/users/GetOccasions',
@@ -40,7 +40,7 @@ $(document).ready(function(){
 	//Getting friends Notifications data
 	function getNotifications(p_month,user_id)
 	{
-		var qry_string = 'p_month='+p_month+'&user_id='+user_id;
+		var qry_string = 'p_month='+p_month+'&user_id='+user_id+'&FMN_TOKEN='+fmn_token;
 		$.ajax({
 			type: 'POST',
 			url: base_url+'/users/getNotifications',

@@ -22,6 +22,7 @@ $months = array(1=>'Jan',2=>'Feb',3=>'Mar',4=>'Apr',5=>'May',6=>'Jun',7=>'Jul',8
 var user_id = '<?php echo $user_id;?>';
 var p_month = '<?php echo $p_month;?>';
 var base_url = '<?php echo Yii::app()->request->baseUrl; ?>';
+var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
 </script>
 
 
