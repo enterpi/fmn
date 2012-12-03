@@ -14,6 +14,47 @@ $this->breadcrumbs=array(
        $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/facebook.js');
+       Yii::app()->clientScript->registerScript('login','function login() {
+        function FacebookInviteFriends()
+        {
+            FB.ui({
+                method: "apprequests",
+                message: "Invite friends to join FORGETMNOT"
+            });
+        }
+        FB.login(function(response) {
+            if (response.authResponse) {
+                //connected
+                var res = response.authResponse;
+                FB.api("/me", function(resp) {
+                    $.ajax({
+                        url:"'.Yii::app()->request->baseUrl.'/site/fblogin/",
+                        type:"POST",
+                        data:{
+                            "accessToken":res.accessToken,
+                            "userID":res.userID,
+                            "email":resp.email,
+                            "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
+                            },
+                         success:function(res){
+                            if(res != "user_first_login")
+                            window.location.href = res
+                            else
+                            {
+                                FacebookInviteFriends();
+                                location.reload(true);
+                            }
+                            
+                         }
+                    });
+                });
+                
+                
+            } else {
+                // cancelled
+            }
+        },{scope: "email"});
+    }', CClientScript::POS_HEAD);
 ?>
 <div id="fb-root"></div>
 <div class="form">
@@ -67,7 +108,7 @@ $this->breadcrumbs=array(
                             <?php /* echo $form->error($model,'rememberMe'); */ ?>
                     </label> -->
                    
-							<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
+			<?php echo CHtml::submitButton('SIGN IN',array('class'=>'btn signin m_r_6')); ?>
                     <label class="labl">
                         <div class="pwd">
                             <a href="#data" rel="fpwd">FORGOT YOUR PASSWORD?</a>
@@ -159,7 +200,10 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             }
             else
             {
-                var qry_string = 'for=changepwd&emailid='+$('#fp_email').val();
+                var qry_string = {'for':'changepwd',
+                                  'emailid':$('#fp_email').val(),
+                                  'FMN_TOKEN':'<?php echo Yii::app()->request->csrfToken; ?>'
+                                 };
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo Yii::app()->request->baseUrl ?>/users/fpmail/',
@@ -174,7 +218,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 					   else
 					    {
                             $(".email_id_sec").hide();
-							$("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
+			    $("#data .sucess_msg").html('Reset password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
@@ -204,4 +248,6 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 			$("#data .sucess_msg").hide();   
 		});
     });
+    
+   
 </script>

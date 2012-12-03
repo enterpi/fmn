@@ -20,7 +20,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/datepicer/less/datepicker.less" />
         <?php 
                $cs=Yii::app()->getClientScript(); 
-			   //$cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
                $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap-modal.js');
 	       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/bootstrap.js');
 		   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/datepicker/bootstrap-datepicker.js');

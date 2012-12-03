@@ -118,4 +118,52 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+        
+        /*
+         * facebook login
+         */
+        public function actionFblogin()
+        {
+            if(isset($_POST['accessToken']) && isset($_POST['userID']) && isset($_POST['email']))
+            {
+                $id = $_POST['userID'];
+                $access_token = $_POST['accessToken'];
+                $email_id = $_POST['email'];
+                $user = Users::model()->find(array(
+                                        'select'=>'fb_id,password',
+                                        'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
+                                        'params'=>array(':fbID'=>$id,':emailID'=>$email_id,':Status'=>4), 
+                               ));
+                if($user == null)
+                {
+                    $model = new Users();
+                    $model->fb_id = $id;
+                    $model->access_token = $access_token;
+                    $model->email_address = $email_id;
+                    $model->status = '4';
+                    $pwd = md5($email_id.time());
+                    $model->password = $pwd;
+                    $model->save();
+                    $first_login = true;
+                }
+                else
+                { 
+                    $pwd = $user->password;
+                    $first_login = false;
+                }
+                
+                $login_model = new LoginForm;
+                $login_model->username = $email_id;
+                $login_model->password = $pwd;
+                $login_model->login();
+                
+                if(!$first_login)
+                echo Yii::app()->createUrl('/users');
+                else
+                echo 'user_first_login';
+                
+                
+                
+            }
+        }
 }
