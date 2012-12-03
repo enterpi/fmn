@@ -154,13 +154,11 @@ $this->breadcrumbs=array(
 <div style="display:none">
     <div id="data">
         <div class="heading">Add Users</div>
-        
     </div>
 </div>
 <div style="display:none">
     <div id="edit">
         <div class="heading">Edit</div>
-        
     </div>
 </div>
 <?php
