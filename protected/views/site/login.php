@@ -14,14 +14,21 @@ $this->breadcrumbs=array(
        $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/facebook.js');
-       Yii::app()->clientScript->registerScript('login','function login() {
-        function FacebookInviteFriends()
-        {
-            FB.ui({
+       Yii::app()->clientScript->registerScript('login','
+       function FacebookInviteFriends()
+       {
+            FB.ui(
+            {
                 method: "apprequests",
                 message: "Invite friends to join FORGETMNOT"
-            });
+            },
+            function(response) {
+                window.location.reload(true);
+            }
+            )
+            
         }
+        function login() {
         FB.login(function(response) {
             if (response.authResponse) {
                 //connected
@@ -42,7 +49,6 @@ $this->breadcrumbs=array(
                             else
                             {
                                 FacebookInviteFriends();
-                                location.reload(true);
                             }
                             
                          }
