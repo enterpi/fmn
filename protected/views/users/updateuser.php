@@ -5,7 +5,7 @@
 ?>
 <?php 
        $cs=Yii::app()->getClientScript(); 
-       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.js');
+       Yii::app()->clientScript->registerCoreScript('jquery');  
        $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
@@ -35,7 +35,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'email_address'); ?>
-		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255,'disabled'=>true)); ?>
 		<?php echo $form->error($model,'email_address'); ?>
 	</div>
 	

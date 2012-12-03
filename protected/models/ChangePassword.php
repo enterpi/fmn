@@ -23,6 +23,7 @@ class ChangePassword extends CFormModel
 {
 	public $password;
         public $confirm_password;
+        public $current_password;
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -34,6 +35,7 @@ class ChangePassword extends CFormModel
 		return array(
 			array('password,confirm_password', 'length', 'max'=>255),
 			array('password,confirm_password', 'required'),
+                        array('current_password','required','on'=>'pwdchange'),
 			array('password', 'compare','compareAttribute'=>'confirm_password')
 		);
 	}
@@ -55,8 +57,9 @@ class ChangePassword extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'password' => 'Password',
-                        'confirm_password'=>'Confirm Password'
+			'password' => 'New Password',
+                        'confirm_password'=>'Confirm Password',
+                        'current_password' => 'Current Password'
 		);
 	}
 

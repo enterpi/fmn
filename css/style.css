@@ -15,7 +15,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -54,7 +54,7 @@ table {
 .header .logo_sec{
 	float:left;
 	width:300px;
-	padding:30px 0px 0px 5px;
+	padding:30px 0px 0px 0px;
 }
 .header .user_sec{
 	float:right;
@@ -84,6 +84,10 @@ table {
 	height:auto;
 	padding:50px 0px;
 	text-align:center;
+	font-family:Arial;
+}
+.option span{
+	font-size:20px;
 }
 .wrapper_home .login_sec .signin_sec{
 	overflow:hidden;
@@ -91,6 +95,9 @@ table {
 textarea.inp, input.inp{
 	width:280px;
 	margin-top:3px;
+}
+textarea.inp{
+	resize:vertical;	
 }
 .wrapper_home .login_sec .signin_sec input.gender{
 	width:20px;
@@ -126,7 +133,7 @@ textarea.inp, input.inp{
 .wrapper_home .login_sec .signin_sec .pwd{
 	float:right;
 	line-height:72px;
-	font-size:13px;
+	font-size:12px;
 	font-weight:normal;
 }
 .head h2{
@@ -136,10 +143,10 @@ textarea.inp, input.inp{
 	float:left;
 }
 .wrapper_home .login_sec .signin_sec .head h3{
-	font-size:14px;
+	font-size:13px;
 	float:right;
 	font-weight:normal;
-	margin-top:7px;
+	margin-top:9px;
 }
 .wrapper_home .login_sec .signin_sec .head h3 a{
 	border-bottom:1px dotted #000;	
@@ -166,14 +173,14 @@ textarea.inp, input.inp{
 }
 .wrapper_home .slider h3 span{
 	display:block;
-	font-size:22px;
+	font-size:20px;
 }
 .footer{
 	height:75px;
 	background:#000;
 }
 .footer .foot_cont{
-	width:950px;
+	width:960px;
 	padding:0px 5px;
 	margin:0px auto;
 }
@@ -232,7 +239,7 @@ textarea.inp, input.inp{
 }
 .answer{
 	background-color:#F2F2F2;
-	padding:15px;
+	padding:15px 0px;
 	overflow:hidden;
 	border-radius:4px;
 	-webkit-border-radius:4px;
@@ -243,10 +250,14 @@ textarea.inp, input.inp{
 	padding-left: 20px;
 	float: left;
 	min-width: 150px;
+	font-size:12px;
 }
 .opt1 input{
 	margin-top:-3px;
 	margin-right:5px;
+}
+.opt1 label{ 
+	display:inline;
 }
 .month_head{
 	border-bottom:1px dotted #333;
@@ -264,6 +275,7 @@ textarea.inp, input.inp{
 }
 .month_head ul li a{
 	padding:10px 5px;
+	color:#757575;
 }
 .month_head ul li a:hover{
 	text-decoration:none;
@@ -284,6 +296,9 @@ textarea.inp, input.inp{
 .m_b_20{
 	margin-bottom:20px;
 }
+.m_b_10{
+	margin-bottom:10px;
+}
 .f_l{
 	float:left;
 }
@@ -300,7 +315,7 @@ textarea.inp, input.inp{
 }
 .gift{
 	float:left;
-	width:230px;
+	min-width:230px;
 	min-height:80px;
 }
 .gift1{
@@ -377,4 +392,31 @@ select.bday{
 }
 .m_r_6{
 	margin-left:6px;
+}
+.buttons{
+	margin-top:5px;
+}
+.confirmation{
+	padding:10px;
+	text-align:center;
+	line-height:30px;
+	margin-top:160px;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size:16px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+.heading{
+	padding:5px 0px 15px 0px;
+	border-bottom:1px solid #DADADA;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size:18px;
+}
+
+.sucess_msg{
+	padding:15px 0px;
+}
+.btn_fgt{
+	padding:5px 12px;
 }

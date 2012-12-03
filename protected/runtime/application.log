@@ -4120,1171 +4120,384 @@ Stack trace:
 #34 {main}
 REQUEST_URI=/fmn/
 ---
-2012/11/23 10:34:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:34:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:35:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "date" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "month" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "year" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "date" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "month" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:56 [warning] [application] Failed to set unsafe attribute "year" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:35:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:37:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:37:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:38:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:41:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:42:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:42:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:44:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:45:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:47:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:47:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:47:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:48:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:48:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "date" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "month" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "year" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "date" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "month" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:37 [warning] [application] Failed to set unsafe attribute "year" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (212)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 10:48:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:49:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:50:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:50:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:51:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:54:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:54:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:56:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:56:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 10:56:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:56:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:57:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:58:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:58:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:58:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 10:58:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:00:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:01:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:01:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:01:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:02:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:03:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:03:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:03:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:04:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:04:56 [warning] [application] Failed to set unsafe attribute "date" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 11:04:56 [warning] [application] Failed to set unsafe attribute "month" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 11:04:56 [warning] [application] Failed to set unsafe attribute "year" of "Users".
-in D:\wamp\www\fmn\protected\controllers\UsersController.php (207)
-in D:\wamp\www\fmn\index.php (13)
-2012/11/23 11:04:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:05:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:06:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:06:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:08:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:08:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:09:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:09:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:10:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:10:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:10:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:11:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:12:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:12:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/create
----
-2012/11/23 11:12:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:13:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:14:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:14:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:14:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:14:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:14:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:15:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:16:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:16:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:17:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:17:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:18:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:19:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:19:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:20:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:20:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:20:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:21:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:21:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:21:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:21:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:22:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:22:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:22:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:22:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:22:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:25:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:27:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:29:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:30:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/updateuser
----
-2012/11/23 11:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:33:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:33:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 11:42:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fmn".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('fmn')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/fmn
----
-2012/11/23 11:42:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/create
----
-2012/11/23 11:42:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/updateuser
----
-2012/11/23 11:43:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/create
----
-2012/11/23 11:44:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/create
----
-2012/11/23 11:48:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/create
----
-2012/11/23 11:48:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://192.168.1.125/fmn/users/create
----
-2012/11/23 12:00:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 12:01:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "scripts/numberofdays.js".' in D:\wamp\www\yii\framework\web\CWebApplication.php:287
-Stack trace:
-#0 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('scripts/numbero...')
-#1 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#2 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/fmn/scripts/numberofdays.js
-HTTP_REFERER=http://localhost/fmn/users/updateuser
----
-2012/11/23 12:40:40 [error] [exception.CException] exception 'CException' with message 'Property "UsersController._name" is not defined.' in D:\wamp\www\yii\framework\base\CComponent.php:131
-Stack trace:
-#0 D:\wamp\www\fmn\protected\components\UserIdentity.php(42): CComponent->__get('_name')
-#1 D:\wamp\www\fmn\protected\views\layouts\main.php(44): UserIdentity->getFullName()
-#2 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#3 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#4 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#5 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('?<div id="conte...')
-#6 D:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('?<div id="conte...')
-#7 D:\wamp\www\yii\framework\web\CBaseController.php(207): COutputProcessor->run()
-#8 D:\wamp\www\yii\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
-#9 D:\wamp\www\fmn\protected\views\layouts\column2.php(20): CBaseController->endContent()
-#10 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#11 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#12 D:\wamp\www\yii\framework\web\CController.php(785): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#13 D:\wamp\www\fmn\protected\controllers\UsersController.php(386): CController->render('changepwd', Array)
-#14 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): UsersController->actionChangepwd()
-#15 D:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
-#16 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#17 D:\wamp\www\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
-#18 D:\wamp\www\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
-#19 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
-#20 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#21 D:\wamp\www\yii\framework\web\CController.php(292): CFilterChain->run()
-#22 D:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 D:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('changepwd')
-#24 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('users/changepwd')
-#25 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#26 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/fmn/users/changepwd
-HTTP_REFERER=http://192.168.1.125/fmn/users/updateuser
----
-2012/11/23 12:41:54 [error] [exception.CException] exception 'CException' with message 'Property "UsersController._name" is not defined.' in D:\wamp\www\yii\framework\base\CComponent.php:131
-Stack trace:
-#0 D:\wamp\www\fmn\protected\components\UserIdentity.php(43): CComponent->__get('_name')
-#1 D:\wamp\www\fmn\protected\views\layouts\main.php(44): UserIdentity->getFullName()
-#2 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#3 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#4 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#5 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('?<div id="conte...')
-#6 D:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('?<div id="conte...')
-#7 D:\wamp\www\yii\framework\web\CBaseController.php(207): COutputProcessor->run()
-#8 D:\wamp\www\yii\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
-#9 D:\wamp\www\fmn\protected\views\layouts\column2.php(20): CBaseController->endContent()
-#10 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#11 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#12 D:\wamp\www\yii\framework\web\CController.php(785): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#13 D:\wamp\www\fmn\protected\controllers\UsersController.php(386): CController->render('changepwd', Array)
-#14 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): UsersController->actionChangepwd()
-#15 D:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
-#16 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#17 D:\wamp\www\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
-#18 D:\wamp\www\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
-#19 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
-#20 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#21 D:\wamp\www\yii\framework\web\CController.php(292): CFilterChain->run()
-#22 D:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 D:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('changepwd')
-#24 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('users/changepwd')
-#25 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#26 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/fmn/users/changepwd
----
-2012/11/23 12:42:09 [error] [exception.CException] exception 'CException' with message 'Property "UsersController._name" is not defined.' in D:\wamp\www\yii\framework\base\CComponent.php:131
-Stack trace:
-#0 D:\wamp\www\fmn\protected\components\UserIdentity.php(43): CComponent->__get('_name')
-#1 D:\wamp\www\fmn\protected\views\layouts\main.php(44): UserIdentity->getFullName()
-#2 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#3 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#4 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#5 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('?<div id="conte...')
-#6 D:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('?<div id="conte...')
-#7 D:\wamp\www\yii\framework\web\CBaseController.php(207): COutputProcessor->run()
-#8 D:\wamp\www\yii\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
-#9 D:\wamp\www\fmn\protected\views\layouts\column2.php(20): CBaseController->endContent()
-#10 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#11 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#12 D:\wamp\www\yii\framework\web\CController.php(785): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#13 D:\wamp\www\fmn\protected\controllers\UsersController.php(386): CController->render('changepwd', Array)
-#14 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): UsersController->actionChangepwd()
-#15 D:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
-#16 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#17 D:\wamp\www\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
-#18 D:\wamp\www\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
-#19 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
-#20 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#21 D:\wamp\www\yii\framework\web\CController.php(292): CFilterChain->run()
-#22 D:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 D:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('changepwd')
-#24 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('users/changepwd')
-#25 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#26 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/fmn/users/changepwd
----
-2012/11/23 12:43:30 [error] [exception.CException] exception 'CException' with message 'Property "UsersController.name" is not defined.' in D:\wamp\www\yii\framework\base\CComponent.php:131
-Stack trace:
-#0 D:\wamp\www\fmn\protected\components\UserIdentity.php(43): CComponent->__get('name')
-#1 D:\wamp\www\fmn\protected\views\layouts\main.php(44): UserIdentity->getFullName()
-#2 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#3 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#4 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#5 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('?<div id="conte...')
-#6 D:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('?<div id="conte...')
-#7 D:\wamp\www\yii\framework\web\CBaseController.php(207): COutputProcessor->run()
-#8 D:\wamp\www\yii\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
-#9 D:\wamp\www\fmn\protected\views\layouts\column2.php(20): CBaseController->endContent()
-#10 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#11 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#12 D:\wamp\www\yii\framework\web\CController.php(785): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#13 D:\wamp\www\fmn\protected\controllers\UsersController.php(386): CController->render('changepwd', Array)
-#14 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): UsersController->actionChangepwd()
-#15 D:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
-#16 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#17 D:\wamp\www\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
-#18 D:\wamp\www\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
-#19 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
-#20 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#21 D:\wamp\www\yii\framework\web\CController.php(292): CFilterChain->run()
-#22 D:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 D:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('changepwd')
-#24 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('users/changepwd')
-#25 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#26 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/fmn/users/changepwd
----
-2012/11/23 12:50:53 [error] [exception.CException] exception 'CException' with message 'Property "UsersController.username" is not defined.' in D:\wamp\www\yii\framework\base\CComponent.php:131
-Stack trace:
-#0 D:\wamp\www\fmn\protected\components\UserIdentity.php(48): CComponent->__get('username')
-#1 D:\wamp\www\fmn\protected\views\layouts\main.php(45): UserIdentity->getUserDetails('2')
-#2 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#3 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#4 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(77): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#5 D:\wamp\www\yii\framework\web\widgets\CContentDecorator.php(55): CContentDecorator->decorate('?<div id="conte...')
-#6 D:\wamp\www\yii\framework\web\widgets\COutputProcessor.php(45): CContentDecorator->processOutput('?<div id="conte...')
-#7 D:\wamp\www\yii\framework\web\CBaseController.php(207): COutputProcessor->run()
-#8 D:\wamp\www\yii\framework\web\CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
-#9 D:\wamp\www\fmn\protected\views\layouts\column2.php(20): CBaseController->endContent()
-#10 D:\wamp\www\yii\framework\web\CBaseController.php(127): require('D:\wamp\www\fmn...')
-#11 D:\wamp\www\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('D:\wamp\www\fmn...', Array, true)
-#12 D:\wamp\www\yii\framework\web\CController.php(785): CBaseController->renderFile('D:\wamp\www\fmn...', Array, true)
-#13 D:\wamp\www\fmn\protected\controllers\UsersController.php(386): CController->render('changepwd', Array)
-#14 D:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): UsersController->actionChangepwd()
-#15 D:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
-#16 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
-#17 D:\wamp\www\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
-#18 D:\wamp\www\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
-#19 D:\wamp\www\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
-#20 D:\wamp\www\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
-#21 D:\wamp\www\yii\framework\web\CController.php(292): CFilterChain->run()
-#22 D:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
-#23 D:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('changepwd')
-#24 D:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('users/changepwd')
-#25 D:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
-#26 D:\wamp\www\fmn\index.php(13): CApplication->run()
-#27 {main}
-REQUEST_URI=/fmn/users/changepwd
+2012/11/27 13:15:36 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=NULL LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:15:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=NULL LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:16:33 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=NULL LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:16:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=NULL LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:17:40 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:17:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:19:19 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:19:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:19:57 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emai_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,emai_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:19:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emai_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,emai_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:22:51 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=prasadmsvs@yahoo.co.in LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=prasadmsvs@yahoo.co.in LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:22:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address=prasadmsvs@yahoo.co.in LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address=prasadmsvs@yahoo.co.in LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:23:18 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address="prasadmsvs@yahoo.co.in" LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address="prasadmsvs@yahoo.co.in" LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:23:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'email_address="prasadmsvs@yahoo.co.in" LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,email_address="prasadmsvs@yahoo.co.in" LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:24:31 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'users.email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,users.email_address=:emailID LIMIT 1.
+in C:\wamp\www\fmn\protected\controllers\SiteController.php (136)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/27 13:24:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'users.email_address='prasadmsvs@yahoo.co.in' LIMIT 1' at line 1. The SQL statement executed was: SELECT fb_id FROM `users` `t` WHERE fb_id=:fbID,users.email_address=:emailID LIMIT 1' in C:\wamp\www\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\wamp\www\fmn\protected\controllers\SiteController.php(136): CActiveRecord->find(Array)
+#4 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#5 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#10 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/27 13:45:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '192.168.1.30' (10060)' in C:\wamp\www\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\wamp\www\yii\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\wamp\www\yii\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\wamp\www\yii\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(624): CApplication->getDb()
+#5 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(2311): CActiveRecord->getDbConnection()
+#6 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(Users))
+#7 C:\wamp\www\fmn\protected\models\Users.php(36): CActiveRecord::model('Users')
+#8 C:\wamp\www\fmn\protected\controllers\SiteController.php(132): Users::model()
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionFblogin()
+#10 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('fblogin')
+#14 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/fblogin')
+#15 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/fmn/site/fblogin/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/28 05:39:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '192.168.1.30' (10060)' in C:\wamp\www\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\wamp\www\yii\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\wamp\www\yii\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\wamp\www\yii\framework\web\CDbHttpSession.php(161): CModule->getComponent('db')
+#4 C:\wamp\www\yii\framework\web\CDbHttpSession.php(185): CDbHttpSession->getDbConnection()
+#5 [internal function]: CDbHttpSession->openSession('c:/wamp/tmp', 'PHPSESSID')
+#6 C:\wamp\www\yii\framework\web\CHttpSession.php(115): session_start()
+#7 C:\wamp\www\yii\framework\web\CHttpSession.php(89): CHttpSession->open()
+#8 C:\wamp\www\yii\framework\base\CModule.php(388): CHttpSession->init()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(202): CModule->getComponent('session')
+#10 C:\wamp\www\yii\framework\web\auth\CWebUser.php(194): CWebApplication->getSession()
+#11 C:\wamp\www\yii\framework\base\CModule.php(388): CWebUser->init()
+#12 C:\wamp\www\yii\framework\base\CModule.php(104): CModule->getComponent('user')
+#13 C:\wamp\www\fmn\protected\controllers\SiteController.php(81): CModule->__get('user')
+#14 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#15 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#16 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#17 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('login')
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/login')
+#20 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/fmn/
+---
+2012/11/28 05:50:40 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.enableCsrfValidation" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\auth\CWebUser.php(155): CComponent->__set('enableCsrfValid...', true)
+#1 C:\wamp\www\yii\framework\YiiBase.php(222): CWebUser->__set('enableCsrfValid...', true)
+#2 C:\wamp\www\yii\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#3 C:\wamp\www\yii\framework\base\CModule.php(104): CModule->getComponent('user')
+#4 C:\wamp\www\fmn\protected\controllers\SiteController.php(81): CModule->__get('user')
+#5 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#6 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('login')
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/login')
+#11 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/fmn/
+---
+2012/11/28 05:51:36 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.request" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\auth\CWebUser.php(155): CComponent->__set('request', Array)
+#1 C:\wamp\www\yii\framework\YiiBase.php(222): CWebUser->__set('request', Array)
+#2 C:\wamp\www\yii\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#3 C:\wamp\www\yii\framework\base\CModule.php(104): CModule->getComponent('user')
+#4 C:\wamp\www\fmn\protected\controllers\SiteController.php(81): CModule->__get('user')
+#5 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#6 C:\wamp\www\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(283): CController->run('login')
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/login')
+#11 C:\wamp\www\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/fmn/
+---
+2012/11/28 06:09:51 [warning] [application] Failed to set unsafe attribute "date" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:51 [warning] [application] Failed to set unsafe attribute "month" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:51 [warning] [application] Failed to set unsafe attribute "year" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "date" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "month" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "year" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (227)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "date" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (232)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "month" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (232)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [warning] [application] Failed to set unsafe attribute "year" of "Users".
+in C:\wamp\www\fmn\protected\controllers\UsersController.php (232)
+in C:\wamp\www\fmn\index.php (13)
+2012/11/28 06:09:57 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/GetOccasions
+HTTP_REFERER=http://localhost/fmn/users
+---
+2012/11/28 06:09:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/getNotifications
+HTTP_REFERER=http://localhost/fmn/users
+---
+2012/11/28 06:12:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/fpmail/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/28 06:43:30 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/fpmail/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/28 06:44:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/fpmail/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/28 06:55:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\yii\framework\web\CHttpRequest.php:976
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): CHttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/fpmail/
+HTTP_REFERER=http://localhost/fmn/
+---
+2012/11/28 07:54:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\fmn\protected\components\HttpRequest.php:38
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): HttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/GetOccasions
+HTTP_REFERER=http://localhost/fmn/users
+---
+2012/11/28 07:54:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\fmn\protected\components\HttpRequest.php:38
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): HttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/getNotifications
+HTTP_REFERER=http://localhost/fmn/users
+---
+2012/11/28 09:34:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\fmn\protected\components\HttpRequest.php:38
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): HttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/getNotifications
+HTTP_REFERER=http://localhost/fmn/users
+---
+2012/11/28 09:34:09 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'The CSRF token could not be verified.' in C:\wamp\www\fmn\protected\components\HttpRequest.php:38
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(559): HttpRequest->validateCsrfToken(Object(CEvent))
+#1 C:\wamp\www\yii\framework\base\CApplication.php(189): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#2 C:\wamp\www\yii\framework\base\CApplication.php(161): CApplication->onBeginRequest(Object(CEvent))
+#3 C:\wamp\www\fmn\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/fmn/users/GetOccasions
+HTTP_REFERER=http://localhost/fmn/users
 ---

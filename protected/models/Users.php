@@ -22,6 +22,7 @@
 class Users extends CActiveRecord
 {
         public $confirm_password;
+        
         public $year;
         public $month;
         public $date;
@@ -51,20 +52,83 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('first_name, last_name, email_address, password, physical_address', 'length', 'max'=>255),
-                        array('email_address','unique'),
-                        array('email_address','email','message'=>'Not valid email address'),
-                        array('first_name, last_name, email_address','required','on'=>array('updateuser')),
-			array('first_name, last_name, email_address, password, confirm_password','required','on'=>array('usercreate')),
-                        array('password', 'compare','compareAttribute'=>'confirm_password','on'=>array('usercreate')),
-			array('gender, status', 'length', 'max'=>1),
-			array('birthday,confirm_password', 'safe'),
-                        
-			// The following rule is used by search().
-			// Please remove those attributes  that should not be searched.
-			array('id, first_name, last_name, confirm_password, email_address, password, birthday, gender, physical_address, created_by, created_date, modified_by, modified_date, ipaddress, status', 'safe', 'on'=>'search'),
+                            array('first_name, 
+                                last_name, 
+                                email_address, 
+                                password, 
+                                physical_address', 
+                                'length', 
+                                'max'=>255),
+
+                            array('first_name, 
+                                last_name,
+                                email_address,
+                                password, 
+                                physical_address', 
+                                'filter',
+                                'filter'=>array($obj=new CHtmlPurifier(),
+                                'purify')),
+
+                            array('email_address','unique'),
+
+                            array('email_address',
+                                'email',
+                                'message'=>'Not valid email address'),
+
+                            array('first_name, 
+                                last_name, 
+                                email_address,
+                                birthday,
+                                gender',
+                                'required',
+                                'on'=>array('updateuser')),
+
+                            array('first_name,
+                                last_name,
+                                email_address,
+                                password, 
+                                confirm_password, 
+                                birthday,
+                                gender',
+                                'required',
+                                'on'=>array('usercreate')),
+
+                            array('confirm_password',
+                                'compare',
+                                'compareAttribute'=>'password',
+                                'on'=>array('usercreate')),
+
+                            array('gender,
+                                status', 
+                                'length', 
+                                'max'=>1),
+
+                            array('birthday,
+                                confirm_password', 
+                                'safe'),
+
+                            // The following rule is used by search().
+                            // Please remove those attributes  that should not be searched.
+                            array('id, 
+                                first_name, 
+                                last_name, 
+                                confirm_password, 
+                                email_address, 
+                                password,
+                                birthday, 
+                                gender, 
+                                physical_address, 
+                                created_by, 
+                                created_date, 
+                                modified_by, 
+                                modified_date, 
+                                ipaddress,
+                                status', 
+                                'safe', 
+                                'on'=>'search'),
 		);
 	}
+        
 
 	/**
 	 * @return array relational rules.
@@ -86,7 +150,7 @@ class Users extends CActiveRecord
 			'id' => 'ID',
 			'first_name' => 'First Name',
 			'last_name' => 'Last Name',
-			'email_address' => 'Email Address/User Name',
+			'email_address' => 'Email Address',
 			'password' => 'Password',
                         'confirm_password' => 'Confirm Password',
 			'birthday' => 'Birthday',

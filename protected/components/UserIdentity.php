@@ -19,10 +19,13 @@ class UserIdentity extends CUserIdentity
         private $_name;
         public function authenticate()
         {
-            $record=Users::model()->findByAttributes(array('email_address'=>$this->username));
+            $criteria=new CDbCriteria;
+            $criteria->condition='email_address=:emailAddress AND (status=:Status OR status=:Stat)';
+            $criteria->params=array(':emailAddress'=>$this->username,':Status'=>'1',':Stat'=>'4');
+            $record=Users::model()->find($criteria);
             if($record===null)
                 $this->errorCode=self::ERROR_USERNAME_INVALID;
-            else if($record->password!==md5($this->password))
+            else if($record->password!==$this->password)
                 $this->errorCode=self::ERROR_PASSWORD_INVALID;
             else
             {
@@ -43,10 +46,10 @@ class UserIdentity extends CUserIdentity
 			return $this->_name;
         }
 		
-		public function getUserDetails($id)
-		{
-			$record_details=Users::model()->findByAttributes(array('id'=>$id));
-			return ucfirst($record_details['first_name'].' '.$record_details['last_name']);
-			//echo '<pre>';print_r($record_details);die;
-		}
+        public function getUserDetails($id)
+        {
+                $record_details=Users::model()->findByAttributes(array('id'=>$id));
+                return ucfirst($record_details->first_name.' '.$record_details->last_name);
+                //echo '<pre>';print_r($record_details);die;
+        }
 }

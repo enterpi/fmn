@@ -91,12 +91,19 @@ class SiteController extends Controller
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
-			$model->attributes=Yii::app()->input->stripClean($_POST['LoginForm']);
+                        $pwd = $_POST['LoginForm']['password'];
+                        $login = Yii::app()->input->stripClean($_POST['LoginForm']);
+                        $login['password'] = md5($pwd);
+			$model->attributes=$login;
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
                             $id = Yii::app()->user->getid();
 				//$this->redirect(Yii::app()->user->returnUrl);
                                 $this->redirect(array('users/'));
+                        }
+                        else{
+                            $login['password'] = $pwd;
+                            $model->attributes=$login;
                         }
 		}
 		// display the login form
@@ -111,4 +118,47 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+        
+        /*
+         * facebook login
+         */
+        public function actionFblogin()
+        {
+            if(isset($_POST['accessToken']) && isset($_POST['userID']) && isset($_POST['email']))
+            {
+                $id = $_POST['userID'];
+                $access_token = $_POST['accessToken'];
+                $email_id = $_POST['email'];
+                $user = Users::model()->find(array(
+                                        'select'=>'fb_id,password',
+                                        'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
+                                        'params'=>array(':fbID'=>$id,':emailID'=>$email_id,':Status'=>4), 
+                               ));
+                if($user == null)
+                {
+                    $model = new Users();
+                    $model->fb_id = $id;
+                    $model->access_token = $access_token;
+                    $model->email_address = $email_id;
+                    $model->status = '4';
+                    $pwd = md5($email_id.time());
+                    $model->password = $pwd;
+                    $model->save();
+                }
+                else
+                { 
+                    $pwd = $user->password;
+                }
+                
+                $login_model = new LoginForm;
+                $login_model->username = $email_id;
+                $login_model->password = $pwd;
+                $login_model->login();
+                
+                echo Yii::app()->createUrl('/users');
+                
+                
+                
+            }
+        }
 }

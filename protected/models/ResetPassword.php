@@ -35,7 +35,7 @@ class ResetPassword extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, token', 'length', 'max'=>255),
+			array('email, token,token_for', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('email, token', 'safe', 'on'=>'search'),
@@ -61,6 +61,7 @@ class ResetPassword extends CActiveRecord
 		return array(
 			'email' => 'Email',
 			'token' => 'Token',
+			'for' => 'For',
 		);
 	}
 
@@ -77,6 +78,7 @@ class ResetPassword extends CActiveRecord
 
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('token',$this->token,true);
+		$criteria->compare('for',$this->for,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

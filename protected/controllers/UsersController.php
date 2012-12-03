@@ -28,7 +28,8 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail','changepassword','GetOccasions','getNotifications','confirmregistration'),
+				'actions'=>array('view','create','fpmail',
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -103,6 +104,7 @@ class UsersController extends Controller
 	 */
 	public function actionCreate()
 	{
+		//echo CHttpRequest::getUserHostAddress(); die;
 		$model=new Users();
                 $model->setScenario('usercreate');
 
@@ -128,21 +130,42 @@ class UsersController extends Controller
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
 
-                        //$user['birthday'] = $user['birthday']!=""?date('Y-m-d',strtotime($user['birthday'])):$user['birthday'];
 			$model->attributes=$user;
                         if($model->validate())
                         {
                             if($model->save())
                             {
                                     $this->actionFpmail($user['email_address'],'confirmRegistration');
-                                    $this->redirect(array('/site/login'));
+                                    Yii::app()->clientScript->registerCoreScript('jquery');
+                                    $this->render('confirm',array('email'=>$user['email_address']));
+                                    unset($_POST['Users']);
+                            }
+                            else
+                            {
+                                    $user['password'] = $pwd;
+                                    $user['confirm_password'] = $c_pwd;
+                                    $model->attributes = $user;
+                                    $this->render('create',array(
+                                            'model'=>$model,
+                                    ));
                             }
                         }
+                        else
+                        {       
+                                $user['password'] = $pwd;
+                                $user['confirm_password'] = $c_pwd;
+                                $model->attributes = $user;
+                                $this->render('create',array(
+                                        'model'=>$model,
+                                ));
+                        }
                 }
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+                else
+                {
+                        $this->render('create',array(
+                                'model'=>$model,
+                        ));
+                }
 	}
         
         
@@ -154,28 +177,25 @@ class UsersController extends Controller
         {
             $token = Yii::app()->input->get('token');
             $condition=array(
-                        'select'=>'email,token,for',
+                        'select'=>'email,token,token_for',
                         'condition'=>'token=:token',
                         'params'=>array(':token'=>$token)
                     );
             $savedtoken = ResetPassword::model()->find($condition);
-            if($savedtoken && $savedtoken->for=='2')
+            if($savedtoken && $savedtoken->token_for=='2')
             {
-                    $model->attributes=$_POST['ChangePassword'];
-
-                    if($model->validate())
-                    {
-                            // form inputs are valid, do something here
-                            $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
-                            $user->status = '1';
-                            $user->save();
-                            $savedtoken->delete();
-                            $login_model = new LoginForm;
-                            $login_model->password = $user->password;
-                            $login_model->username = $user->email_address;
-                            $login_model->login();
-                            $this->redirect(array('/users'));
-                    }
+                // form inputs are valid, do something here
+                $user = Users::model()->findByAttributes(array('email_address'=>$savedtoken->email));
+                $user->status = '1';
+                $user->save();
+                $savedtoken->delete();
+                $login_model = new LoginForm;
+                $login_model->password = $user->password;
+                $login_model->username = $user->email_address;
+                if($login_model->login())
+                {
+                    $this->redirect(array('/users'));
+                }
             }
             else
             {
@@ -183,46 +203,6 @@ class UsersController extends Controller
             }
             
         }
-        
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Users']))
-		{
-                        $pwd = $_POST['Users']['password'];
-                        $c_pwd = $_POST['Users']['confirm_password'];
-                        $md5_pwd = md5($pwd);
-                        $md5_confirmpwd = md5($c_pwd);
-                        $user = Yii::app()->input->stripClean($_POST['Users']);
-                        $user['password'] = $md5_pwd;
-                        $user['confirm_password'] = $md5_confirmpwd;
-                        $user['birthday'] = date('Y-m-d',strtotime($user['birthday']));
-			$model->attributes=$user;
-                        if($model->validate())
-                        {
-                            if($model->save())
-                                    $this->redirect(array('view','id'=>$model->id));
-                        }
-                        $user['password'] = $pwd;
-                        $user['confirm_password'] = $c_pwd;
-                        $model->attributes=$user;
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-         */
 
         /*
          * @param integer $id
@@ -283,15 +263,28 @@ class UsersController extends Controller
 
 		$name = Yii::app()->user->getName();
                 $id = Yii::app()->user->getId();
+                $answered_questions = UsersAnswers::model()->findAll(array(
+                                                                       'select'=>'questions_id',
+                                                                        'condition'=>'users_id=:usersID',
+                                                                        'params'=>array(':usersID'=>$id),         
+                                                                        ));
+                $ids = array();
+                foreach($answered_questions as $ans_q)
+                {
+                    $ids[] = $ans_q->questions_id;
+                }
+                if(sizeof($ids)>0)
+                {
+                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).')');
+                }
+                else
+                {
+                    $cond = array();
+                }
                 $questions = Questions::model()->with(array('questionOptions'=>array(
-                                                'joinType'=>'INNER JOIN',
-                                                ),
-                                            'usersAnswers'=>array(
-                                                'condition'=>'usersAnswer.users_id!='.$id.' or usersAnswers.users_id is null',
-                                                'joinType'=>'LEFT JOIN',
-                                                'on'=>'usersAnswers.questions_id!=t.id'
-                                                )
-                                        ))->findAll();
+                                                                'joinType'=>'INNER JOIN',
+                                                                )
+                                                        ))->findAll($cond);
                 $view_questions = array();
                 foreach($questions as $question)
                 {
@@ -356,6 +349,10 @@ class UsersController extends Controller
 		}
 	}
 
+        /*function called for forgot password functionality
+         * User clicks the link in the mail sent to him
+         * params GET token
+         */
         public function actionChangepassword()
         {
             $model= new ChangePassword();
@@ -369,12 +366,12 @@ class UsersController extends Controller
             */
             $token = Yii::app()->input->get('token');
             $condition=array(
-                        'select'=>'email,token,for',
+                        'select'=>'email,token,token_for',
                         'condition'=>'token=:token',
                         'params'=>array(':token'=>$token)
                     );
             $savedtoken = ResetPassword::model()->find($condition);
-            if($savedtoken && $savedtoken->for=='1')
+            if($savedtoken && $savedtoken->token_for=='1')
             {
                     if(isset($_POST['ChangePassword']))
                     {
@@ -400,6 +397,9 @@ class UsersController extends Controller
 
         }
 
+        /*function called for change of password for an authenticated user
+         * params POST ChangepPassword array containing current_password,password,confirm_password,
+         */
         public function actionChangepwd()
         {
             $model=new ChangePassword;
@@ -457,6 +457,7 @@ class UsersController extends Controller
                             'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
                     $for = '1';
                     $msg = 'Please click the below link and change your password <br/>'.$link;
+					$subject = 'FMN Forgot Password';
                 }
                 elseif($for=='confirmRegistration')
                 {
@@ -464,20 +465,22 @@ class UsersController extends Controller
                             'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
                     $for = '2';
                     $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
+					$subject = 'FMN Registration';
                 }
                 $email = array();
                 $email['from'] = 'admin@fmn.com';
                 $email['from_name'] = 'Admin';
                 $email['to'] = $email_address;
                 $email['message'] = $msg;
-                $email['subject'] = 'FMN Forgot Password';
+                $email['subject'] = $subject;
                 $mail = new SendEmail;
                 $mail->send($email);
                 $model = new ResetPassword;
                 $model->email = $email_address;
                 $model->token = $token;
-                $model->for = $for;
+                $model->token_for = $for;
                 $model->save();
+                if($for == '1')
                 echo "2";
             }
         }

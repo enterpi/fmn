@@ -69,7 +69,8 @@
                     $curr_year = date('Y');
                     $curr_date = date('j');
                     $curr_month = date('n');
-                    $num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
+                    //$num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
+					$num= 31;
                     for($i=1900;$i<=$curr_year;$i++)
                     {
                         $years[$i] = $i;
