@@ -24,12 +24,12 @@ $this->breadcrumbs=array(
                         <h6>we won’t post anything without your permission.</h6>
                     </div>
             <div class="option">
-                            ----------- or -----------
+                            ----------- <span>or</span> -----------
                     </div> 
             <div class="signin_sec">
                     <div class="head">
                     <h2>Log in </h2>
-                    <h3><?php echo CHtml::link('Dont have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
+                    <h3><?php echo CHtml::link('Don\'t have an account yet?',Yii::app()->baseUrl.'/users/create'); ?></h3>
                 </div>
                 <?php $form=$this->beginWidget('CActiveForm', array(
                         'id'=>'login-form',
@@ -150,7 +150,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             }
             else
             {
-                var qry_string = 'emailid='+$('#fp_email').val();
+                var qry_string = 'for=changepwd&emailid='+$('#fp_email').val();
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo Yii::app()->request->baseUrl ?>/users/fpmail/',
@@ -159,11 +159,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     success: function(res){
                         if(res=='1')
                         {
-                            $("#data .error").html('Incorrect mail id specified').show();
+                            $("#data .error").html('Incorrect Email id specified').show();
                         }
                         else if(res=='2')
                         {
-                            $("#data .error").html('Mail sent to your mail id').show();    
+                            $("#data .error").html('Reset password link has been sent to your Email').show();    
                         }
                         
                         //$('#fancybox-close').trigger('click');
@@ -179,11 +179,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
         $('#fp_email').keyup(function(){
             if($(this).val()!='')
             {
-                $('.error').hide();
+                $('#fp_email').closest('#data').find('.error').hide();
             }
             else
             {
-                $('.error').show();
+                $('#fp_email').closest('#data').find('.error').show();
             }
         });
     });
