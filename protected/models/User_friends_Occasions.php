@@ -15,9 +15,9 @@ class User_friends_Occasions
   function getUser_friends_Occasions($ip_array)
   {
 			$ocasion_date = date('Y').'-'.$ip_array['p_month'];		
-			$sql = "select user_occ_id,occasion_name,occasion_date,occasion_day from (				
+			$sql = "select user_occ_id,occasion_name,occasion_date,occasion_day,remind_date from (
 			select uo.id as user_occ_id,concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
-			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
+			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,DATE_FORMAT(uo.remind_date,'%m/%d/%Y') as remind_date,
 			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
 			users_occassions uo
@@ -29,7 +29,7 @@ class User_friends_Occasions
 			and o.occassion_type=1 and uo.hide_occ='n'
 			union
 			select uo.id as user_occ_id,concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
-			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
+			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,DATE_FORMAT(uo.remind_date,'%m/%d/%Y') as remind_date,
 			DATE_FORMAT(uo.occassion_date, '%d') as occasion_day 
 			from 
 			users_occassions uo
@@ -49,6 +49,7 @@ class User_friends_Occasions
   }
   function getUser_friends_Notifications($ip_array)
   {
+      //print_r($ip_array);die;
 			$sql = "select occasion_name,occasion_date,occasion_day from (				
 			select concat(u.first_name,' ',u.last_name,'\'s ',o.occassion) as occasion_name,
 			DATE_FORMAT(uo.occassion_date, '%M %d') as occasion_date,
@@ -58,7 +59,8 @@ class User_friends_Occasions
 			left join users u on u.id = uo.users_id
 			left join users_friends uf on uf.users_friend_id = u.id 
 			left join occassions o on o.id = uo.occassions_id
-			where uo.occassion_date between '".$ip_array['to_day']."' and '".$ip_array['notification_date']."' 
+			where ((uo.occassion_date between '".$ip_array['to_day']."' and '".$ip_array['notification_date']."') 
+                                or (uo.`remind_date` != '0000-00-00' and uo.remind_date > '".$ip_array['to_day']."' ))
 			and uf.users_id = ".$ip_array['user_id']."
 			and o.occassion_type=1
 			union
@@ -70,7 +72,8 @@ class User_friends_Occasions
 			left join users u on u.id = uo.users_id
 			left join users_friends uf on uf.users_friend_id = u.id 
 			left join occassions o on o.id = uo.occassions_id
-			where uo.occassion_date between '".$ip_array['to_day']."' and '".$ip_array['notification_date']."' 
+			where ((uo.occassion_date between '".$ip_array['to_day']."' and '".$ip_array['notification_date']."') 
+                                or (uo.`remind_date` != '0000-00-00' and uo.remind_date > '".$ip_array['to_day']."' ))
 			and uf.users_id = ".$ip_array['user_id']." 
 			and o.occassion_type=2
 			) result_set order by  occasion_day";

@@ -122,18 +122,18 @@ $(document).ready(function(){
         $('.jpopovercls.jclose').trigger('click');
         var top_left_lgt = $(this).offset();
         var user_occ_id = $(this).attr('user_occ_id');
+        var user_remind_date = $(this).attr('user_remind_date');
         var popovercontent = '<div class="popover-content">\
-							 <p>Remind occasion on</p>\
-							 <div class="m_t_10">\
-							 <div class="input-append date f_l m_r_10" id="dp3" data-date="12/02/2012" data-date-format="mm/dd/yyyy">\
-							 	<input class="span2 bday jremind_date" size="16" type="text">\
-							 	<span class="add-on"><i class="icon-th"></i></span>\
-							 </div>\
-							 <div class="m_t_10"><input class="btn remind m_b_10 jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\
-							 <div class="jmsg"></div>\
-                                                        </div></div>';
+                             <p>Remind occasion on</p>\
+                             <div class="m_t_10">\
+                             <div class="input-append date f_l m_r_10" id="dp3" data-date="12/02/2012" data-date-format="mm/dd/yyyy">\
+                                    <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'">\
+                                    <span class="add-on"><i class="icon-th"></i></span>\
+                             </div>\
+                             <div class="m_t_10"><input class="btn remind m_b_10 jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\
+                             <div class="jmsg"></div>\
+                            </div></div>';
         $('.jhideoccpop').html($.showpopover({
-			
             popovercontent:popovercontent,
             popoverheader:'Remind me',
             height:'150px',
