@@ -486,3 +486,42 @@ select.bday{
 .m_l_5{
 	margin-left:5px;
 }
+.grid-view .summary{
+	float:left;
+	margin-top:-4px !important;
+}
+.grid-view .filters input, .grid-view .filters select {
+	width: 91% !important;
+	border: 1px solid #CCC;
+	margin-bottom:2px !important;
+}
+.grid-view table.items th, .grid-view table.items td{
+	line-height:30px;
+	padding-left:5px !important;
+	border:1px solid #DDD !important;
+}
+.grid-view table.items tr.odd, .grid-view table.items tr.even{
+	background-color:#FFF !important;
+}
+.grid-view table.items tr.filters td{
+	margin-bottom:10px !important;
+}
+.grid-view .pager{
+	margin:20px 0px !important;
+	text-align:left !important;
+}
+ul.yiiPager li{
+	float:left;
+	margin-right:5px;
+}
+.pager li > a, .pager li > span {
+	background-color: white;
+	border: 1px solid #DDD;
+	-webkit-border-radius: 4px !important;
+	-moz-border-radius: 4px !important;
+	border-radius: 4px !important;
+	padding:4px 12px !important;
+}
+.button-column .view, .button-column .delete{
+	display:none;
+}

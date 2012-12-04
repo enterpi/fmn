@@ -43,36 +43,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <div class="admin_menu">
     <ul class="nav nav-tabs m_b_0">
-      <li class="active"><a href="#">Users</a></li>
-      <li><a href="#">Questions</a></li>
+      <li><a href="#">Users</a></li>
+      <li class="active"><a href="#">Questions</a></li>
     </ul>
 </div>
 
 <div class="userlist">
-	<div class="f_r">
-        	<a href="#" rel="adduser" class="btn btn_fgt m_b_10" type="button"><i class="icon-plus-sign icon-white m_r_5"></i>Add Users</a>
-    </div>
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'users-grid',
         'dataProvider'=>$model->search(),
         'filter'=>$model,
         'columns'=>array(
-            'first_name',
-            'last_name',
-            'email_address',
-            'gender',
-            'birthday',
-            /*
-            'id',
-            'password',
-            'physical_address',
-            'created_by',
-            'created_date',
-            'modified_by',
-            'modified_date',
-            'ipaddress',
-            'status',
-            */
+           'question',
             array(
                 'class'=>'CButtonColumn',
             ),
