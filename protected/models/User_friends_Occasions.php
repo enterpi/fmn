@@ -81,6 +81,13 @@ class User_friends_Occasions
 			return $friends_notifications;
 			
   }
+
+  function setReminderDate($ip_array)
+  {
+        $user = UsersOccassions::model()->findByPk($ip_array['occ_id']);
+        $user->remind_date = $ip_array['remind_date'];
+        return $user->save();
+  }
     //put your code here
 }
 ?>

@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail',
+				'actions'=>array('view','create','fpmail','saveReminder',
                                     'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions','useradmin','admin'),
 				'users'=>array('*'),
 			),
@@ -73,6 +73,25 @@ class UsersController extends Controller
 			'freinds_occasions'=>$freinds_occasions
 		));
 	}
+
+        public function actionSaveReminder()
+        {
+            $userFriend_occasions = new User_friends_Occasions;
+            $ip_array = array('occ_id'=>Yii::app()->input->stripClean(Yii::app()->input->post('occ_id')),
+                            'remind_date'=>date('Y-m-d',strtotime(Yii::app()->input->stripClean(Yii::app()->input->post('remind_date')))));
+            if($userFriend_occasions->setReminderDate($ip_array))
+            {
+                echo 'success';
+            }
+            else
+            {
+                echo 'error';
+            }
+            //echo json_encode($freinds_occasions);
+            /*echo $this->renderPartial('occasions',array(
+                    'freinds_occasions'=>$freinds_occasions
+            ));*/
+        }
 	
 	public function actionhideOccasions()
 	{
