@@ -246,29 +246,33 @@ class UsersController extends Controller
         {
             $id = Yii::app()->user->getId();
             $model=Users::model()->findByPk($id);
-            $model->setScenario('updateuser');
-            // uncomment the following code to enable ajax-based validation
-            /*
-            if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
+            if($model->status != '4')
             {
-                echo CActiveForm::validate($model);
-                Yii::app()->end();
-            }
-            */
-
-            if(isset($_POST['Users']))
-            {
-                $model->attributes=$_POST['Users'];
-                if($model->validate())
+                $model->setScenario('updateuser');
+                // uncomment the following code to enable ajax-based validation
+                /*
+                if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
                 {
-                        $user = Yii::app()->input->stripClean($_POST['Users']);
-                        $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
-			$model->attributes=$user;
-                        if($model->save())
-                                $this->redirect(array('/users'));
+                    echo CActiveForm::validate($model);
+                    Yii::app()->end();
                 }
+                */
+
+                if(isset($_POST['Users']))
+                {
+                    $model->attributes=$_POST['Users'];
+                    if($model->validate())
+                    {
+                            $user = Yii::app()->input->stripClean($_POST['Users']);
+                            $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+                            $model->attributes=$user;
+                            if($model->save())
+                                    $this->redirect(array('/users'));
+                    }
+                }
+                $this->render('updateuser',array('model'=>$model));
             }
-            $this->render('updateuser',array('model'=>$model));
+            
         }
         
         
@@ -468,6 +472,7 @@ class UsersController extends Controller
         {
             $model=new ChangePassword;
             $model->setScenario('pwdchange');
+            
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='change-password-changepwd-form')
@@ -479,22 +484,25 @@ class UsersController extends Controller
             Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
-                $model->attributes=$_POST['ChangePassword'];
-                if($model->validate())
+                $user_id = Yii::app()->user->getid();
+                $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                if($user->status != '4')
                 {
-                    $user_id = Yii::app()->user->getid();
-                    $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
-                    if($user)
+                    $model->attributes=$_POST['ChangePassword'];
+                    if($model->validate())
                     {
-                        $user->password = md5($model->confirm_password);
-                        $user->save();
-                        $this->redirect(array('/users'));
+                        if($user)
+                        {
+                            $user->password = md5($model->confirm_password);
+                            $user->save();
+                            $this->redirect(array('/users'));
+                        }
+                        else
+                        {
+                            $model->addError('current_password', 'Incorrect Current Password!');
+                        }
+
                     }
-                    else
-                    {
-                        $model->addError('current_password', 'Incorrect Current Password!');
-                    }
-                    
                 }
             }
             
