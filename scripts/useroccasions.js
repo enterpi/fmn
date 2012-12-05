@@ -240,6 +240,7 @@ $(document).ready(function(){
                         setTimeout(function(){
                             $('.popover').hide('slow');
                         }, 2000);
+                        getNotifications($('.jgetocc.active').attr('month'),$('.jgetocc.active').attr('user_id'));
                     }
                     else
                     {
