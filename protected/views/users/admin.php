@@ -62,21 +62,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             'email_address',
             'gender',
             'birthday',
-            /*
-            'id',
-            'password',
+            
+            //'id',
+            //'password',
             'physical_address',
-            'created_by',
+            /*'created_by',
             'created_date',
             'modified_by',
-            'modified_date',
+            'modified_date',*/
             'ipaddress',
-            'status',
-            */
             array(
                 'class'=>'CButtonColumn',
             ),
         ),
-		'pager'=>array('header'=>'')
+            'pager'=>array('header'=>''),
+            'enableSorting'=>true,
     )); ?>
 </div>

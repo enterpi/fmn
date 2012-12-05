@@ -29,16 +29,16 @@ class UsersController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('view','create','fpmail','saveReminder',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions','useradmin','admin'),
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','updateuser','view','saveanswer','changepwd'),
+				'actions'=>array('index','updateuser','view','saveanswer','changepwd','sendinvite'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('test@test9.com'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -55,12 +55,6 @@ class UsersController extends Controller
 
 	}
 	
-	public function actionUseradmin()
-	{
-		$model=new Users();
-		$this->render('useradmin',array('model'=>$model,
-                                    ));
-	}
 
 	public function actionGetOccasions()
 	{
@@ -476,51 +470,77 @@ class UsersController extends Controller
             $this->render('changepwd',array('model'=>$model));
         }
 
-
+        public function actionSendinvite()
+        {
+            $email_address = isset($_POST['emailid'])?$_POST['emailid']:null;
+            if(filter_var($email_address, FILTER_VALIDATE_EMAIL))
+            {
+                    $link = CHtml::link('FORGETMNOT','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl);    
+                    $msg = 'Your friend invited you to join FORGETMNOT. Please click on the link below to join <br/>'.$link;
+                    $subject = 'FMN Invite';
+               
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $email_address;
+                    $email['message'] = $msg;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    echo "success";
+            }
+            else {
+                    echo "fail";
+            }
+        }
 
         public function actionFpmail($email_address = null,$for=null)
         {
             $email_address = isset($_POST['emailid'])?$_POST['emailid']:$email_address;
-            $for = isset($_POST['for'])?$_POST['for']:$for;
-            $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
-            if($record===null)
+            if(filter_var($email_address, FILTER_VALIDATE_EMAIL))
             {
-                echo '1';
-            }
-            elseif($email_address!=null)
-            {
-                $token = md5($email_address.time());
-                if($for == 'changepwd')
+                $for = isset($_POST['for'])?$_POST['for']:$for;
+                $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
+                if($record===null)
                 {
-                    $link = CHtml::link('Click here',
-                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
-                    $for = '1';
-                    $msg = 'Please click the below link and change your password <br/>'.$link;
-					$subject = 'FMN Forgot Password';
+                    echo '1';
                 }
-                elseif($for=='confirmRegistration')
+                elseif($email_address!=null)
                 {
-                    $link = CHtml::link('Click here',
-                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
-                    $for = '2';
-                    $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
-					$subject = 'FMN Registration';
+                    $token = md5($email_address.time());
+                    if($for == 'changepwd')
+                    {
+                        $link = CHtml::link('Click here',
+                                'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
+                        $for = '1';
+                        $msg = 'Please click the below link and change your password <br/>'.$link;
+                        $subject = 'FMN Forgot Password';
+                    }
+                    elseif($for=='confirmRegistration')
+                    {
+                        $link = CHtml::link('Click here',
+                                'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
+                        $for = '2';
+                        $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
+                        $subject = 'FMN Registration';
+                    }
+                    
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $email_address;
+                    $email['message'] = $msg;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    $model = new ResetPassword;
+                    $model->email = $email_address;
+                    $model->token = $token;
+                    $model->token_for = $for;
+                    $model->save();
+                    if($for == '1')
+                    echo "2";
                 }
-                $email = array();
-                $email['from'] = 'admin@fmn.com';
-                $email['from_name'] = 'Admin';
-                $email['to'] = $email_address;
-                $email['message'] = $msg;
-                $email['subject'] = $subject;
-                $mail = new SendEmail;
-                $mail->send($email);
-                $model = new ResetPassword;
-                $model->email = $email_address;
-                $model->token = $token;
-                $model->token_for = $for;
-                $model->save();
-                if($for == '1')
-                echo "2";
             }
         }
 }

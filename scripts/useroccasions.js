@@ -115,6 +115,7 @@ $(document).ready(function(){
 	
     $('.jpopovercls.jclose').live('click',function(){
         $('.jhideoccpop').html('');
+        $("#jinvtediv").remove();
     });
 			
     // user occasion reminder functionality
@@ -144,6 +145,73 @@ $(document).ready(function(){
         }));
         $('#dp3').datepicker();
 		
+    });
+    
+    $('.jinvite').live('click',function(){
+        $('.jpopovercls.jclose').trigger('click');
+        var top_left_lgt = $(this).offset();
+        var user_occ_id = $(this).attr('user_occ_id');
+        var user_remind_date = $(this).attr('user_remind_date');
+        var popovercontent = '<div class="popover-content">\
+                             <p>Email</p>\
+                             <div class="m_t_10">\
+                             <div class="input-append date f_l m_r_10">\
+                                    <input id="sendinvite" class="span2" size="16" type="text">\
+                             </div>\
+                             <div class="m_t_10"><input class="btn remind m_b_10" type="button" name="send" value="Send Invitation" id="sendinvitation" ></div>\
+                             <div class="jmsg"></div>\
+                            </div></div>';
+        var $div = $('<div />').appendTo('body');
+        $div.attr('id', 'jinvtediv');
+        $('#jinvtediv').html($.showpopover({
+            popovercontent:popovercontent,
+            popoverheader:'Remind me',
+            height:'150px',
+            width:'340px',
+            left:top_left_lgt.left+'px',
+            top:top_left_lgt.top+'px'
+			
+        }));
+		
+    });
+    
+    $("#sendinvitation").live("click",function(){
+        if($('.jremind_date').val() == '')
+        {
+            $('.jmsg').html('Please Enter and email Id').css('color','red');
+            $('.jremind_date').focus();
+            return false;
+        }
+        var qry_string ={
+                'emailid':$("#sendinvite").val(),
+                'for':'email_invite',
+                'FMN_TOKEN':fmn_token
+                } ;
+        $.ajax({
+            type: 'POST',
+            url: base_url+'/users/sendinvite',
+            data: qry_string,
+            beforeSend: function(){ },
+            success: function(res){
+                if(res == 'success')
+                {
+                    $('.jmsg').html('Invite Sent Successfully');
+                    setTimeout(function(){
+                        $('.popover').hide('slow');
+                    }, 2000);
+                }
+                else
+                {
+                    $('.jmsg').html('Please try again later');
+                }
+            },
+            error: function(sts,txt,res){
+            },
+            complete: function(){
+            }
+        });
+        
+            
     });
 
     //user occasion hide functionality
