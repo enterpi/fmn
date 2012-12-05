@@ -28,16 +28,17 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail','saveReminder',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions'),
+				'actions'=>array('view','create','fpmail',
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','updateuser','view','saveanswer','changepwd','sendinvite'),
+				'actions'=>array('index','updateuser','view',
+                                            'saveanswer','changepwd','sendinvite','saveReminder','hideOccasions'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','update'),
 				'users'=>array('test@test9.com'),
 			),
 			array('deny',  // deny all users
@@ -89,15 +90,15 @@ class UsersController extends Controller
 	
 	public function actionhideOccasions()
 	{
-		$occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
-		$sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-		$model=UsersOccassions::model()->findByPk($occ_id);
-		$UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
-        $UsersOccassions->hide_occ = $sts_value; 
-        if($UsersOccassions->save())
-			echo true;
-		else
-			echo false;
+            $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
+            $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
+            $model=UsersOccassions::model()->findByPk($occ_id);
+            $UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
+            $UsersOccassions->hide_occ = $sts_value; 
+            if($UsersOccassions->save())
+                            echo true;
+                    else
+                            echo false;
 	}
 
         public function actionSaveanswer()
@@ -269,6 +270,35 @@ class UsersController extends Controller
             }
             $this->render('updateuser',array('model'=>$model));
         }
+        
+        
+        public function actionUpdate($id)
+        {
+            $model=Users::model()->findByPk($id);
+            $model->setScenario('update');
+            // uncomment the following code to enable ajax-based validation
+            /*
+            if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
+            */
+
+            if(isset($_POST['Users']))
+            {
+                $model->attributes=$_POST['Users'];
+                if($model->validate())
+                {
+                        $user = Yii::app()->input->stripClean($_POST['Users']);
+                        $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+			$model->attributes=$user;
+                        if($model->save())
+                                $this->redirect(array('admin'));
+                }
+            }
+            $this->render('updateuser',array('model'=>$model));
+        }
 
 	/**
 	 * Deletes a particular model.
@@ -348,10 +378,11 @@ class UsersController extends Controller
 	{
 		$model=new Users('search');
 		$model->unsetAttributes();  // clear any default values
+                
 		if(isset($_GET['Users']))
 			$model->attributes=$_GET['Users'];
 
-		$this->render('admin',array(
+                $this->render('admin',array(
 			'model'=>$model,
 		));
 	}

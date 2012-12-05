@@ -523,5 +523,5 @@ ul.yiiPager li{
 	padding:4px 12px !important;
 }
 .button-column .view, .button-column .delete{
-	display:none;
+	/*display:none;*/
 }

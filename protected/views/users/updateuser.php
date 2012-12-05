@@ -96,7 +96,7 @@
 		<?php echo $form->labelEx($model,'gender'); ?>
                 <?php 
                     echo $form->dropDownList($model, 'gender',
-                                    array('m' => 'Male', 'f' => 'Female','o'=>'Other'),
+                                    array('male' => 'Male', 'female' => 'Female','other'=>'Other'),
                                     array('empty' => 'Select')
                                 ); 
                 ?>

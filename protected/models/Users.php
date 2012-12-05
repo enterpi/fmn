@@ -101,7 +101,7 @@ class Users extends CActiveRecord
                             array('gender,
                                 status', 
                                 'length', 
-                                'max'=>1),
+                                'max'=>6),
 
                             array('birthday,
                                 confirm_password', 
@@ -180,17 +180,12 @@ class Users extends CActiveRecord
 		$criteria->compare('first_name',$this->first_name,true);
 		$criteria->compare('last_name',$this->last_name,true);
 		$criteria->compare('email_address',$this->email_address,true);
-		$criteria->compare('password',$this->password,true);
 		$criteria->compare('birthday',$this->birthday,true);
 		$criteria->compare('gender',$this->gender,true);
 		$criteria->compare('physical_address',$this->physical_address,true);
-		$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('created_date',$this->created_date,true);
-		$criteria->compare('modified_by',$this->modified_by);
-		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('ipaddress',$this->ipaddress,true);
 		$criteria->compare('status',$this->status,true);
-
+               
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
