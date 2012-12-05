@@ -508,7 +508,7 @@ class UsersController extends Controller
             {
                     $link = CHtml::link('FORGETMNOT','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl);    
                     $msg = 'Your friend invited you to join FORGETMNOT. Please click on the link below to join <br/>'.$link;
-                    $subject = 'FMN Invite';
+                    $subject = 'FORGETMNOT Invitation';
                
                     $email = array();
                     $email['from'] = 'admin@fmn.com';

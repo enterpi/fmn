@@ -195,7 +195,7 @@ $(document).ready(function(){
             success: function(res){
                 if(res == 'success')
                 {
-                    $('.jmsg').html('Invite Sent Successfully');
+                    $('.jmsg').html('Invitation Sent Successfully');
                     setTimeout(function(){
                         $('.popover').hide('slow');
                     }, 2000);
@@ -244,7 +244,7 @@ $(document).ready(function(){
                     }
                     else
                     {
-                        $('.jmsg').html('Please try again later');
+                        $('.jmsg').html('Invalid Email');
                     }
                 },
                 error: function(sts,txt,res){
