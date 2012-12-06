@@ -486,14 +486,17 @@ select.bday{
 .m_l_5{
 	margin-left:5px;
 }
+.grid-view-loading{
+	background-position:450px 8px !important;
+}
 .grid-view .summary{
 	float:left;
 	margin-top:-4px !important;
 }
 .grid-view .filters input, .grid-view .filters select {
-	width: 91% !important;
+	width: 86% !important;
 	border: 1px solid #CCC;
-	margin-bottom:2px !important;
+	margin-bottom:1px !important;
 }
 .grid-view table.items th{
 	background:#C3D9FF !important;
