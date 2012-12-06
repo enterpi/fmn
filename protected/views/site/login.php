@@ -41,11 +41,17 @@ $this->breadcrumbs=array(
                             "accessToken":res.accessToken,
                             "userID":res.userID,
                             "email":resp.email,
+                            "first_name":resp.first_name,
+                            "last_name":resp.last_name,
+                            "gender":"male",
+                            "birthday":resp.birthday,
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
                             },
                          success:function(res){
                             if(res != "user_first_login")
-                            window.location.href = res
+                            {
+                               // window.location.href = res
+                            }
                             else
                             {
                                 FacebookInviteFriends();
@@ -59,7 +65,7 @@ $this->breadcrumbs=array(
             } else {
                 // cancelled
             }
-        },{scope: "email"});
+        },{scope: "email,user_birthday"});
     }', CClientScript::POS_HEAD);
 ?>
 <div id="fb-root"></div>
@@ -257,3 +263,5 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
     
    
 </script>
+
+

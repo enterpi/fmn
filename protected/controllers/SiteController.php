@@ -126,43 +126,54 @@ class SiteController extends Controller
         {
             if(isset($_POST['accessToken']) && isset($_POST['userID']) && isset($_POST['email']))
             {
-                $id = $_POST['userID'];
-                $access_token = $_POST['accessToken'];
-                $email_id = $_POST['email'];
-                $user = Users::model()->find(array(
-                                        'select'=>'fb_id,password',
-                                        'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
-                                        'params'=>array(':fbID'=>$id,':emailID'=>'fb_'.$email_id,':Status'=>4), 
-                               ));
-                if($user == null)
+                
+                $id = Yii::app()->input->stripClean($_POST['userID']);
+                $access_token = Yii::app()->input->stripClean($_POST['accessToken']);
+                $email_id = Yii::app()->input->stripClean($_POST['email']);
+                $first_name = Yii::app()->input->stripClean($_POST['first_name']);
+                $last_name = Yii::app()->input->stripClean($_POST['last_name']);
+                $gender = Yii::app()->input->stripClean($_POST['gender']);
+                $birthday = Yii::app()->input->stripClean($_POST['birthday']);
+                $birthday = date('Y-m-d',  strtotime($birthday));
+                if(filter_var($email_id, FILTER_VALIDATE_EMAIL)&&filter_var($id, FILTER_VALIDATE_INT))
                 {
-                    $model = new Users();
-                    $model->fb_id = $id;
-                    $model->access_token = $access_token;
-                    $model->email_address = 'fb_'.$email_id;
-                    $model->status = '4';
-                    $pwd = md5($email_id.time());
-                    $model->password = $pwd;
-                    $model->save();
-                    $first_login = true;
+                    $user = Users::model()->find(array(
+                                            'select'=>'fb_id,password',
+                                            'condition'=>'fb_id=:fbID AND email_address=:emailID AND status=:Status',
+                                            'params'=>array(':fbID'=>$id,':emailID'=>'fb_'.$email_id,':Status'=>4), 
+                                   ));
+                    if($user == null)
+                    {
+                        $model = new Users();
+                        $model->fb_id = $id;
+                        $model->access_token = $access_token;
+                        $model->email_address = 'fb_'.$email_id;
+                        $model->status = '4';
+                        $pwd = md5($email_id.time());
+                        $model->password = $pwd;
+                        $model->first_name = $first_name;
+                        $model->last_name = $last_name;
+                        $model->gender = $gender;
+                        $model->birthday = $birthday;
+                        $model->save();
+                        $first_login = true;
+                    }
+                    else
+                    { 
+                        $pwd = $user->password;
+                        $first_login = false;
+                    }
+
+                    $login_model = new LoginForm;
+                    $login_model->username = 'fb_'.$email_id;
+                    $login_model->password = $pwd;
+                    $login_model->login();
+
+                    if(!$first_login)
+                    echo Yii::app()->createUrl('/users');
+                    else
+                    echo 'user_first_login';
                 }
-                else
-                { 
-                    $pwd = $user->password;
-                    $first_login = false;
-                }
-                
-                $login_model = new LoginForm;
-                $login_model->username = 'fb_'.$email_id;
-                $login_model->password = $pwd;
-                $login_model->login();
-                
-                if(!$first_login)
-                echo Yii::app()->createUrl('/users');
-                else
-                echo 'user_first_login';
-                
-                
                 
             }
         }
