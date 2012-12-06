@@ -49,7 +49,7 @@ class UserIdentity extends CUserIdentity
         public function getUserDetails($id)
         {
                 $record_details=Users::model()->findByAttributes(array('id'=>$id));
-                return ucfirst($record_details->first_name.' '.$record_details->last_name);
+                return $record_details;
                 //echo '<pre>';print_r($record_details);die;
         }
 }

@@ -32,16 +32,15 @@ class QuestionsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions','useradmin','admin'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','updateuser','view','saveanswer','changepwd'),
+				'actions'=>array('view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array(),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -52,7 +51,6 @@ class QuestionsController extends Controller
 	public function actionView()
 	{
 		$model=new Questions();
-		$this->render('admin_question',array('model'=>$model,
-                                    ));
+		$this->render('admin_question',array('model'=>$model));
 	}
 }

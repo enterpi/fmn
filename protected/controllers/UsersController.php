@@ -28,17 +28,18 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail','saveReminder',
-                                    'changepassword','GetOccasions','getNotifications','confirmregistration','hideOccasions','useradmin','admin'),
+				'actions'=>array('view','create','fpmail',
+                                    'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','updateuser','view','saveanswer','changepwd'),
+				'actions'=>array('index','updateuser','view',
+                                            'saveanswer','changepwd','sendinvite','saveReminder','hideOccasions'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete','update'),
+				'users'=>array('test@test9.com'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -55,12 +56,6 @@ class UsersController extends Controller
 
 	}
 	
-	public function actionUseradmin()
-	{
-		$model=new Users();
-		$this->render('useradmin',array('model'=>$model,
-                                    ));
-	}
 
 	public function actionGetOccasions()
 	{
@@ -95,15 +90,15 @@ class UsersController extends Controller
 	
 	public function actionhideOccasions()
 	{
-		$occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
-		$sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-		$model=UsersOccassions::model()->findByPk($occ_id);
-		$UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
-        $UsersOccassions->hide_occ = $sts_value; 
-        if($UsersOccassions->save())
-			echo true;
-		else
-			echo false;
+            $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
+            $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
+            $model=UsersOccassions::model()->findByPk($occ_id);
+            $UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
+            $UsersOccassions->hide_occ = $sts_value; 
+            if($UsersOccassions->save())
+                            echo true;
+                    else
+                            echo false;
 	}
 
         public function actionSaveanswer()
@@ -251,7 +246,40 @@ class UsersController extends Controller
         {
             $id = Yii::app()->user->getId();
             $model=Users::model()->findByPk($id);
-            $model->setScenario('updateuser');
+            if($model->status != '4')
+            {
+                $model->setScenario('updateuser');
+                // uncomment the following code to enable ajax-based validation
+                /*
+                if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
+                {
+                    echo CActiveForm::validate($model);
+                    Yii::app()->end();
+                }
+                */
+
+                if(isset($_POST['Users']))
+                {
+                    $model->attributes=$_POST['Users'];
+                    if($model->validate())
+                    {
+                            $user = Yii::app()->input->stripClean($_POST['Users']);
+                            $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+                            $model->attributes=$user;
+                            if($model->save())
+                                    $this->redirect(array('/users'));
+                    }
+                }
+                $this->render('updateuser',array('model'=>$model));
+            }
+            
+        }
+        
+        
+        public function actionUpdate($id)
+        {
+            $model=Users::model()->findByPk($id);
+            $model->setScenario('update');
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
@@ -270,7 +298,7 @@ class UsersController extends Controller
                         $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
 			$model->attributes=$user;
                         if($model->save())
-                                $this->redirect(array('/users'));
+                                $this->redirect(array('admin'));
                 }
             }
             $this->render('updateuser',array('model'=>$model));
@@ -284,6 +312,12 @@ class UsersController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+                
+                $model = UsersAnswers::model()->findByAttributes(array('user_id'=>$id));
+                $model->delete();
+                $model = UsersFriends::model()->findByAttributes(array('user_id'=>$id));
+                $model->delete();
+                
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -354,10 +388,11 @@ class UsersController extends Controller
 	{
 		$model=new Users('search');
 		$model->unsetAttributes();  // clear any default values
+                
 		if(isset($_GET['Users']))
 			$model->attributes=$_GET['Users'];
 
-		$this->render('admin',array(
+                $this->render('admin',array(
 			'model'=>$model,
 		));
 	}
@@ -443,6 +478,7 @@ class UsersController extends Controller
         {
             $model=new ChangePassword;
             $model->setScenario('pwdchange');
+            
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='change-password-changepwd-form')
@@ -454,73 +490,102 @@ class UsersController extends Controller
             Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
-                $model->attributes=$_POST['ChangePassword'];
-                if($model->validate())
+                $user_id = Yii::app()->user->getid();
+                $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+                if($user->status != '4')
                 {
-                    $user_id = Yii::app()->user->getid();
-                    $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
-                    if($user)
+                    $model->attributes=$_POST['ChangePassword'];
+                    if($model->validate())
                     {
-                        $user->password = md5($model->confirm_password);
-                        $user->save();
-                        $this->redirect(array('/users'));
+                        if($user)
+                        {
+                            $user->password = md5($model->confirm_password);
+                            $user->save();
+                            $this->redirect(array('/users'));
+                        }
+                        else
+                        {
+                            $model->addError('current_password', 'Incorrect Current Password!');
+                        }
+
                     }
-                    else
-                    {
-                        $model->addError('current_password', 'Incorrect Current Password!');
-                    }
-                    
                 }
             }
             
             $this->render('changepwd',array('model'=>$model));
         }
 
-
+        public function actionSendinvite()
+        {
+            $email_address = isset($_POST['emailid'])?$_POST['emailid']:null;
+            if(filter_var($email_address, FILTER_VALIDATE_EMAIL))
+            {
+                    $link = CHtml::link('FORGETMNOT','http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl);    
+                    $msg = 'Your friend invited you to join FORGETMNOT. Please click on the link below to join <br/>'.$link;
+                    $subject = 'FORGETMNOT Invitation';
+               
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $email_address;
+                    $email['message'] = $msg;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    echo "success";
+            }
+            else {
+                    echo "fail";
+            }
+        }
 
         public function actionFpmail($email_address = null,$for=null)
         {
             $email_address = isset($_POST['emailid'])?$_POST['emailid']:$email_address;
-            $for = isset($_POST['for'])?$_POST['for']:$for;
-            $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
-            if($record===null)
+            if(filter_var($email_address, FILTER_VALIDATE_EMAIL))
             {
-                echo '1';
-            }
-            elseif($email_address!=null)
-            {
-                $token = md5($email_address.time());
-                if($for == 'changepwd')
+                $for = isset($_POST['for'])?$_POST['for']:$for;
+                $record=Users::model()->findByAttributes(array('email_address'=>$email_address));
+                if($record===null)
                 {
-                    $link = CHtml::link('Click here',
-                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
-                    $for = '1';
-                    $msg = 'Please click the below link and change your password <br/>'.$link;
-					$subject = 'FMN Forgot Password';
+                    echo '1';
                 }
-                elseif($for=='confirmRegistration')
+                elseif($email_address!=null)
                 {
-                    $link = CHtml::link('Click here',
-                            'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
-                    $for = '2';
-                    $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
-					$subject = 'FMN Registration';
+                    $token = md5($email_address.time());
+                    if($for == 'changepwd')
+                    {
+                        $link = CHtml::link('Click here',
+                                'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/Changepassword?token='.$token);
+                        $for = '1';
+                        $msg = 'Please click the below link and change your password <br/>'.$link;
+                        $subject = 'FMN Forgot Password';
+                    }
+                    elseif($for=='confirmRegistration')
+                    {
+                        $link = CHtml::link('Click here',
+                                'http://'.Yii::app()->request->getServerName().Yii::app()->baseUrl.'/users/confirmregistration?token='.$token);    
+                        $for = '2';
+                        $msg = 'Please click the below link to Confirm your FORGETMNOT Registration <br/>'.$link;
+                        $subject = 'FMN Registration';
+                    }
+                    
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $email_address;
+                    $email['message'] = $msg;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    $model = new ResetPassword;
+                    $model->email = $email_address;
+                    $model->token = $token;
+                    $model->token_for = $for;
+                    $model->save();
+                    if($for == '1')
+                    echo "2";
                 }
-                $email = array();
-                $email['from'] = 'admin@fmn.com';
-                $email['from_name'] = 'Admin';
-                $email['to'] = $email_address;
-                $email['message'] = $msg;
-                $email['subject'] = $subject;
-                $mail = new SendEmail;
-                $mail->send($email);
-                $model = new ResetPassword;
-                $model->email = $email_address;
-                $model->token = $token;
-                $model->token_for = $for;
-                $model->save();
-                if($for == '1')
-                echo "2";
             }
         }
 }

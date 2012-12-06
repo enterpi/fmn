@@ -1,7 +1,6 @@
 <?php
 /* @var $this UsersController */
 /* @var $model Users */
-
 $this->breadcrumbs=array(
 	'Users'=>array('index'),
 	'Create',
@@ -31,20 +30,23 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
        Yii::app()->clientScript->registerScript('questions','
         function question(questions)
         {
-            random_number = Math.floor(Math.random()*questions.length);
-            var question =  questions[random_number];
-            var html=\'<h3 class="m_t_15">\'+question.question+\'</h3>\';
-                html+=\'<div class="answer">\';
-                html+=  \'<input id="user_question" type="hidden" name="question" value="\'+question.question_id+\'" />\';
-                $.each(question.options,function(index,value){
-                    html+=  \'<div class="opt1">\';
-                    html+=  \'<label><input class="user_answer" type="checkbox" name="question_option" value="\'+value.id+\'" />\'+value.option+\'</label>\'; 
-                    html+=  \'</div>\'; 
-                });
-               
-                html+=  \'</div>\';
-                            
-                $("#question").html(html);
+            if(typeof(questions.length)!="undefined" && questions.length>0)
+            {
+                random_number = Math.floor(Math.random()*questions.length);
+                var question =  questions[random_number];
+                var html=\'<h3 class="m_t_15">\'+question.question+\'</h3>\';
+                    html+=\'<div class="answer">\';
+                    html+=  \'<input id="user_question" type="hidden" name="question" value="\'+question.question_id+\'" />\';
+                    $.each(question.options,function(index,value){
+                        html+=  \'<div class="opt1">\';
+                        html+=  \'<label><input class="user_answer" type="checkbox" name="question_option" value="\'+value.id+\'" />\'+value.option+\'</label>\'; 
+                        html+=  \'</div>\'; 
+                    });
+
+                    html+=  \'</div>\';
+
+                    $("#question").html(html);
+                }
         }
         
         var questions = \''.$questions.'\';
@@ -131,3 +133,7 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
         </div>
     </div>
 </div>
+
+
+
+

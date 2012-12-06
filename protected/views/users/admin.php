@@ -43,8 +43,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <div class="admin_menu">
     <ul class="nav nav-tabs m_b_0">
-      <li class="active"><a href="#">Users</a></li>
-      <li><a href="#">Questions</a></li>
+      <li class="active"><?php echo CHtml::link('Users',Yii::app()->baseUrl.'/users/admin'); ?></li>
+      <li><?php echo CHtml::link('Questions',Yii::app()->baseUrl.'/questions/view'); ?></li>
     </ul>
 </div>
 
@@ -62,21 +62,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
             'email_address',
             'gender',
             'birthday',
-            /*
-            'id',
-            'password',
+            
+            //'id',
+            //'password',
             'physical_address',
-            'created_by',
+            /*'created_by',
             'created_date',
             'modified_by',
-            'modified_date',
+            'modified_date',*/
             'ipaddress',
-            'status',
-            */
             array(
                 'class'=>'CButtonColumn',
+                'template'=>'{update}{delete}',
             ),
         ),
-		'pager'=>array('header'=>'')
+            'pager'=>array('header'=>''),
+            'enableSorting'=>true,
     )); ?>
 </div>
