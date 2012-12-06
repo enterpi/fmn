@@ -312,6 +312,12 @@ class UsersController extends Controller
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
+                
+                $model = UsersAnswers::model()->findByAttributes(array('user_id'=>$id));
+                $model->delete();
+                $model = UsersFriends::model()->findByAttributes(array('user_id'=>$id));
+                $model->delete();
+                
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
