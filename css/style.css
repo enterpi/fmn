@@ -299,6 +299,9 @@ textarea.inp{
 .m_t_10{
 	margin-top:10px;
 }
+.m_t_5{
+	margin-top:5px;
+}
 .m_t_25{
 	margin-top:25px;
 }
@@ -440,7 +443,7 @@ select.bday{
 }
 .remind{
 	padding:3px 12px;
-	line-height:22px;
+	height:30px !important;
 }
 .userlist{
 	font-size:14px;

@@ -74,6 +74,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			array(            
             'name'=>'physical_address',
             'value'=>'nl2br($data->physical_address)',
+			'type'=>'raw',
         	),
 			array(            
             'name'=>'status',

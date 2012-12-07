@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail',
+				'actions'=>array('view','create','fpmail','GetReminders',
                                     'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
@@ -87,6 +87,22 @@ class UsersController extends Controller
                     'freinds_occasions'=>$freinds_occasions
             ));*/
         }
+		
+		public function actionGetReminders()
+		{		
+			$data = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			$i=1;
+			echo '<pre>'; print_r($data);die;
+			foreach($data as $val)
+			{
+				echo $i.'-----'.'<br>';
+				echo $data->remind_date.'<br>';
+				echo $data->users_occassions_id.'<br>';
+				echo $data->users_id.'<br>';
+				$i++;
+			}
+			die;
+		}
 	
 	public function actionhideOccasions()
 	{
@@ -569,8 +585,8 @@ class UsersController extends Controller
             Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
-                $user_id = Yii::app()->user->getid();
-                $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+				$user_id = Yii::app()->user->getid();
+				$user = Users::model()->findByAttributes(array('id'=>$user_id));
                 if($user->status != '4')
                 {
                     $model->attributes=$_POST['ChangePassword'];

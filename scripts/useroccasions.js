@@ -9,6 +9,7 @@ $(document).ready(function(){
 	
     // loading Occasions and notification on pageload
     $('.jgetocc').click(function(){
+		$('.popover').hide();						 
         $('.jgetocc').removeClass('active');
         $(this).addClass('active');
         var p_month = $(this).attr("month");
@@ -141,14 +142,14 @@ $(document).ready(function(){
                                     <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'" readonly>\
                                     <span class="add-on"><i class="icon-th"></i></span>\
                              </div>\
-                             <div class="m_t_10"><input class="btn remind m_b_10 jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\
+                             <div class="m_t_10"><input class="btn remind m_b_10 f_l jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\
                              <div class="jmsg"></div>\
                             </div></div>';
         $('.jhideoccpop').html($.showpopover({
             popovercontent:popovercontent,
             popoverheader:'Remind me',
             height:'150px',
-            width:'340px',
+            width:'350px',
             left:top_left_lgt.left+'px',
             top:top_left_lgt.top+'px'
 			
@@ -161,22 +162,21 @@ $(document).ready(function(){
         $('.jpopovercls.jclose').trigger('click');
         var top_left_lgt = $(this).offset();
         var user_occ_id = $(this).attr('user_occ_id');
-        var user_remind_date = $(this).attr('user_remind_date');
         var popovercontent = '<div class="popover-content">\
-                             <p>Email</p>\
-                             <div class="m_t_10">\
-                             <div class="input-append date f_l m_r_10">\
-                                    <input id="sendinvite" class="span2" size="16" type="text">\
+                             <div class="m_t_5">\
+                             <div class="m_r_10">\
+                                    <label><p>Email</p>\
+									<input id="sendinvite" class="inp" size="16" type="text"></label>\
                              </div>\
-                             <div class="m_t_10"><input class="btn remind m_b_10" type="button" name="send" value="Send Invitation" id="sendinvitation" ></div>\
                              <div class="jmsg"></div>\
-                            </div></div>';
+							 <div class="m_t_5"><input class="btn remind" type="button" name="send" value="Send Invitation" id="sendinvitation" ></div>\
+                             </div></div>';
         var $div = $('<div />').appendTo('body');
         $div.attr('id', 'jinvtediv');
         $('#jinvtediv').html($.showpopover({
             popovercontent:popovercontent,
             popoverheader:'Invite Friend',
-            height:'150px',
+           	height:'auto',
             width:'340px',
             left:top_left_lgt.left+'px',
             top:top_left_lgt.top+'px'
@@ -243,9 +243,12 @@ $(document).ready(function(){
                 $('.jremind_date').focus();
                 return false;
             }
+			var remind_date = $('.jremind_date').val();
+			var occ_id = $(this).attr('user_occ_id');
+			//alert(remind_date);
             var qry_string ={
                 'occ_id':$(this).attr("user_occ_id"),
-                'remind_date':$('.jremind_date').val(),
+                'remind_date':remind_date,
                 'FMN_TOKEN':fmn_token
                 } ;
             //don't delete below commented code
@@ -255,6 +258,7 @@ $(document).ready(function(){
                 data: qry_string,
                 beforeSend: function(){ },
                 success: function(res){
+					$('.jreminder[user_occ_id='+occ_id+']').attr('user_remind_date',remind_date);
                     if(res == 'success')
                     {
                         $('.jmsg').html('Reminder Set Successfully');
@@ -263,10 +267,8 @@ $(document).ready(function(){
                         }, 2000);
                         getNotifications($('.jgetocc.active').attr('month'),$('.jgetocc.active').attr('user_id'));
                     }
-                    else
-                    {
-                        $('.jmsg').html('Invalid Email');
-                    }
+					
+					
                 },
                 error: function(sts,txt,res){
                 },
@@ -274,5 +276,12 @@ $(document).ready(function(){
                 }
             });
     });
+	
+	 $('.day').live('click',function(){
+									 alert('hiii');
+	 	//$('.datepicker').hide('slow')
+	 });
+	
+
 });
 	
