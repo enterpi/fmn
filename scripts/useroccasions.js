@@ -97,9 +97,16 @@ $(document).ready(function(){
                 data: qry_string,
                 beforeSend: function(){ },
                 success: function(res){
-                    $('.jhideoccpop').html('');
+                    //$('.jhideoccpop').html('');
                     //getOccasions(p_month,user_id);
-                    $('.jgetocc.active').trigger('click'); // trigger click the active button to get the details of that particular month
+                   setTimeout(function(){
+                       $('.popover').hide('slow');
+                    }, 500);
+                    
+					setTimeout(function(){
+                        $('.jgetocc.active').trigger('click'); // trigger click the active button to get the details of that particular month
+                    }, 1000);
+					
                 },
                 error: function(sts,txt,res){
                 },
@@ -109,7 +116,10 @@ $(document).ready(function(){
         }
         else
         {
-            $('.jhideoccpop').html('');
+            //$('.jhideoccpop').html('');
+			//setTimeout(function(){
+				$('.popover').hide('slow');
+			//}, 1000);
         }
     });
 	
@@ -128,7 +138,7 @@ $(document).ready(function(){
                              <p>Remind occasion on</p>\
                              <div class="m_t_10">\
                              <div class="input-append date f_l m_r_10" id="dp3" data-date="12/02/2012" data-date-format="mm/dd/yyyy">\
-                                    <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'">\
+                                    <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'" readonly>\
                                     <span class="add-on"><i class="icon-th"></i></span>\
                              </div>\
                              <div class="m_t_10"><input class="btn remind m_b_10 jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\
@@ -165,7 +175,7 @@ $(document).ready(function(){
         $div.attr('id', 'jinvtediv');
         $('#jinvtediv').html($.showpopover({
             popovercontent:popovercontent,
-            popoverheader:'Remind me',
+            popoverheader:'Invite Friend',
             height:'150px',
             width:'340px',
             left:top_left_lgt.left+'px',
@@ -176,12 +186,20 @@ $(document).ready(function(){
     });
     
     $("#sendinvitation").live("click",function(){
-        if($('.jremind_date').val() == '')
+        if($('#sendinvite').val() == '')
         {
-            $('.jmsg').html('Please Enter and email Id').css('color','red');
-            $('.jremind_date').focus();
+            $('.jmsg').html('Please Enter email Id').css('color','red');
+            $('#sendinvite').focus();
             return false;
         }
+		var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
+		var valid = emailRegex.test($('#sendinvite').val());
+		if (!valid) 
+		{
+			$('.jmsg').html('Please Enter Valid email Id').css('color','red');
+            $('#sendinvite').focus();
+			return false;
+		} 
         var qry_string ={
                 'emailid':$("#sendinvite").val(),
                 'for':'email_invite',
@@ -191,7 +209,10 @@ $(document).ready(function(){
             type: 'POST',
             url: base_url+'/users/sendinvite',
             data: qry_string,
-            beforeSend: function(){ },
+            beforeSend: function(){ 
+			$('.jmsg').html('');
+			
+			},
             success: function(res){
                 if(res == 'success')
                 {
@@ -202,7 +223,7 @@ $(document).ready(function(){
                 }
                 else
                 {
-                    $('.jmsg').html('Please try again later');
+                    $('.jmsg').html('Unable to sent mail... Please try again later');
                 }
             },
             error: function(sts,txt,res){

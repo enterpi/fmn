@@ -40,7 +40,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit',array('class'=>'btn signin')); ?>
+		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn_fgt')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

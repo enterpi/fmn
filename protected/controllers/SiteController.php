@@ -79,7 +79,12 @@ class SiteController extends Controller
 	{
 		$model=new LoginForm;
 		$id = Yii::app()->user->getId();
-		if(isset($id)) $this->redirect(array('users/'));
+		if(isset($id))
+		{
+			$user_details = UserIdentity::getUserDetails(Yii::app()->user->getId());
+			if($user_details->is_admin == 'N') $this->redirect(array('users/'));
+			else if($user_details->is_admin == 'Y') $this->redirect(array('users/admin'));
+		}
 		
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -99,7 +104,14 @@ class SiteController extends Controller
 			if($model->validate() && $model->login()){
                             $id = Yii::app()->user->getid();
 				//$this->redirect(Yii::app()->user->returnUrl);
-                                $this->redirect(array('users/'));
+                                if($_POST['LoginForm']['username'] == Yii::app()->params['adminlogin'])
+								{
+									$this->redirect(array('users/admin'));
+								}
+								else
+								{
+								$this->redirect(array('users/'));
+								}
                         }
                         else{
                             $login['password'] = $pwd;

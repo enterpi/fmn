@@ -2,13 +2,7 @@
 /* @var $this UsersController */
 /* @var $model Users */
 /* @var $form CActiveForm */
-$cancel_link = 'index';
-if(isset($page_from_admin) and ($page_from_admin))
-{
-	$cancel_link = 'users/admin';
-}
-
-
+$cancel_link = 'users/admin';
 ?>
 <?php 
        $cs=Yii::app()->getClientScript(); 
@@ -17,6 +11,13 @@ if(isset($page_from_admin) and ($page_from_admin))
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
 ?>
+<div class="admin_menu">
+    <ul class="nav nav-tabs m_b_0">
+      <li class="active"><?php echo CHtml::link('Users',Yii::app()->baseUrl.'/users/admin'); ?></li>
+      <li><?php echo CHtml::link('Questions',Yii::app()->baseUrl.'/questions/view'); ?></li>
+    </ul>
+</div>
+
 <div class="form">
 <div class="update_pro">
 
@@ -116,12 +117,21 @@ if(isset($page_from_admin) and ($page_from_admin))
 		<?php echo $form->textArea($model,'physical_address',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'physical_address'); ?>
 	</div>
-
+	<div class="row">
+		<?php echo $form->labelEx($model,'Status'); ?>
+                <?php 
+                    echo $form->dropDownList($model, 'status',
+                                    array('1' => 'Active', '0' => 'Inactive'),
+                                    array('empty' => 'Select')
+                                ); 
+                ?>
+		<?php echo $form->error($model,'status'); ?>
+	</div>
 
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn_fgt')); ?>
-        <?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt')); ?>
+         <?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
