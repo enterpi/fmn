@@ -147,7 +147,7 @@ class SiteController extends Controller
                 $gender = Yii::app()->input->stripClean($_POST['gender']);
                 $birthday = Yii::app()->input->stripClean($_POST['birthday']);
                 $birthday = date('Y-m-d',  strtotime($birthday));
-                if(filter_var($email_id, FILTER_VALIDATE_EMAIL)&&filter_var($id, FILTER_VALIDATE_INT))
+                if(filter_var($email_id, FILTER_VALIDATE_EMAIL))
                 {
                     $user = Users::model()->find(array(
                                             'select'=>'fb_id,password',

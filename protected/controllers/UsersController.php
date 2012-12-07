@@ -666,5 +666,9 @@ class UsersController extends Controller
                     echo "2";
                 }
             }
+            else 
+            {
+                echo '1';
+            }
         }
 }
