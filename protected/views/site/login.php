@@ -47,10 +47,10 @@ $this->breadcrumbs=array(
                             "birthday":resp.birthday,
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
                             },
-                         success:function(res){
+                         success:function(res){console.log(res);
                             if(res != "user_first_login")
                             {
-                               // window.location.href = res
+                                window.location.href = res
                             }
                             else
                             {
