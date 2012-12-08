@@ -90,15 +90,22 @@ class UsersController extends Controller
 		
 		public function actionGetReminders()
 		{		
-			$data = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			//$OccassionsReminder = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			
+			$OccassionsReminder = OccassionsReminder::model()->findAll(array(
+                                                                       'select'=>'id,remind_date,users_occassions_id,users_id',
+                                                                        'condition'=>'remind_date=:remindDate',
+                                                                        'params'=>array(':remindDate'=>gmdate('Y-m-d')),         
+                                                                        ));
 			$i=1;
-			echo '<pre>'; print_r($data);die;
-			foreach($data as $val)
+			//echo '<pre>'; print_r($OccassionsReminder);die;
+			foreach($OccassionsReminder as $val)
 			{
 				echo $i.'-----'.'<br>';
-				echo $data->remind_date.'<br>';
-				echo $data->users_occassions_id.'<br>';
-				echo $data->users_id.'<br>';
+				echo $val->remind_date.'<br>';
+				echo $val->users_occassions_id.'<br>';
+				echo $val->users_id.'<br>';
+				echo $val->created_date.'<br>';
 				$i++;
 			}
 			die;
@@ -443,11 +450,11 @@ class UsersController extends Controller
                 }
                 if(sizeof($ids)>0)
                 {
-                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).')');
+                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).') AND t.status="1"');
                 }
                 else
                 {
-                    $cond = array();
+                    $cond = array('condition'=>'t.status="1"');
                 }
                 $questions = Questions::model()->with(array('questionOptions'=>array(
                                                                 'joinType'=>'INNER JOIN',
