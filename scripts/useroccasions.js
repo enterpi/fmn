@@ -139,7 +139,7 @@ $(document).ready(function(){
                              <p>Remind occasion on</p>\
                              <div class="m_t_10">\
                              <div class="input-append date f_l m_r_10" id="dp3" data-date="12/02/2012" data-date-format="mm/dd/yyyy">\
-                                    <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'" readonly>\
+                                    <input  class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'" readonly>\
                                     <span class="add-on"><i class="icon-th"></i></span>\
                              </div>\
                              <div class="m_t_10"><input class="btn remind m_b_10 f_l jremind" type="button" name="send" value="Set Reminder" id="setremainder" user_occ_id="'+user_occ_id+'"></div>\

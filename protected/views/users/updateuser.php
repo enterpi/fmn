@@ -120,8 +120,8 @@ if(isset($page_from_admin) and ($page_from_admin))
 
 
 	<div class="row buttons">
+    	<?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt m_r_10')); ?>
 		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn_fgt')); ?>
-        <?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

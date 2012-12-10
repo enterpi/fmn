@@ -5132,7 +5132,7 @@ input[type="submit"].btn.btn-mini {
   z-index: 1010;
   /*display: none;*/
   width: 236px;
-  padding: 1px;
+  /*padding: 1px;*/
   background-color: #ffffff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -5178,7 +5178,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover-content {
-  padding: 9px 10px;
+  padding: 9px 7px;
 }
 
 .popover-content p,
@@ -5221,7 +5221,7 @@ input[type="submit"].btn.btn-mini {
   top: 30px;
   left: -10px;
   margin-top: -10px;
-  border-right-color: #ffffff;
+  border-right-color: #F7F7F7;
   border-width: 10px 10px 10px 0;
 }
 

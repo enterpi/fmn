@@ -331,6 +331,9 @@ textarea.inp{
 	text-align:right;
 	line-height:45px;
 }
+.prev_head p a{
+	margin:0px 8px;
+}
 .gift_sec{
 	overflow:hidden;
 }
@@ -461,7 +464,7 @@ select.bday{
   left: 0;
   z-index: 1010;
   width: 236px;
-  padding: 1px;
+  /*padding: 1px;*/
   background-color: #ffffff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);

@@ -144,8 +144,8 @@
             
         
             <div class="row buttons">
+            	<?php echo CHtml::button('Cancel', array('submit' => array('users/admin'),'class'=>'btn btn_fgt m_r_10')); ?>
                 <?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save' ,array('class'=>'btn btn_fgt')); ?>
-                <?php echo CHtml::button('Cancel', array('submit' => array('users/admin'),'class'=>'btn btn_fgt')); ?>
             </div>
         
         <?php $this->endWidget(); ?>
