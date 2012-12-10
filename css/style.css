@@ -537,3 +537,6 @@ ul.yiiPager li{
 .button-column .view, .button-column .delete{
 	display:none;
 }
+.hidden a{
+	cursor:not-allowed;	
+}

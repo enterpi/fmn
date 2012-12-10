@@ -633,8 +633,10 @@ class UsersController extends Controller
                     $email['message'] = $msg;
                     $email['subject'] = $subject;
                     $mail = new SendEmail;
-                    $mail->send($email);
+                    if($mail->send($email))
                     echo "success";
+					else
+					echo 'fail';
             }
             else {
                     echo "fail";

@@ -135,10 +135,16 @@ $(document).ready(function(){
         var top_left_lgt = $(this).offset();
         var user_occ_id = $(this).attr('user_occ_id');
         var user_remind_date = $(this).attr('user_remind_date');
+		var currentTime = new Date()
+		var month = currentTime.getMonth() + 1
+		var day = currentTime.getDate()
+		var year = currentTime.getFullYear()
+		var curr_date = month + "/" + day + "/" + year;
+		
         var popovercontent = '<div class="popover-content">\
                              <p>Remind occasion on</p>\
                              <div class="m_t_10">\
-                             <div class="input-append date f_l m_r_10" id="dp3" data-date="12/02/2012" data-date-format="mm/dd/yyyy">\
+                             <div class="input-append date f_l m_r_10" id="dp3" data-date="'+curr_date+'" data-date-format="mm/dd/yyyy">\
                                     <input class="span2 bday jremind_date" size="16" type="text" value="'+user_remind_date+'" readonly>\
                                     <span class="add-on"><i class="icon-th"></i></span>\
                              </div>\
@@ -154,8 +160,11 @@ $(document).ready(function(){
             top:top_left_lgt.top+'px'
 			
         }));
-        $('#dp3').datepicker();
+        //$('#dp3').datepicker('autoclose',true);
+		//$('#dp3').datepicker({'setStartDate':'12/08/2012'});
 		
+		$('#dp3').datepicker(
+    	{"format": "mm/dd/yyyy", "startDate":curr_date, "autoclose": true});
     });
     
     $('.jinvite').live('click',function(){
@@ -216,14 +225,14 @@ $(document).ready(function(){
             success: function(res){
                 if(res == 'success')
                 {
-                    $('.jmsg').html('Invitation Sent Successfully');
+                    $('.jmsg').html('Invitation Sent Successfully').css('color','black');
                     setTimeout(function(){
                         $('.popover').hide('slow');
                     }, 2000);
                 }
                 else
                 {
-                    $('.jmsg').html('Unable to sent mail... Please try again later');
+                    $('.jmsg').html('Unable to send mail... Please try again later').css('color','red');
                 }
             },
             error: function(sts,txt,res){
