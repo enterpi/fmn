@@ -47,13 +47,16 @@ $this->breadcrumbs=array(
                             "birthday":resp.birthday,
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
                             },
-                         success:function(res){console.log(res);
+                         success:function(res){
                             if(res != "user_first_login")
                             {
                                 window.location.href = res
                             }
                             else
                             {
+                                FB.api("/me/friends", { fields: "name,id,location,birthday" }, function(result) {
+                                  console.log(result);
+                                })
                                 FacebookInviteFriends();
                             }
                             
@@ -65,7 +68,7 @@ $this->breadcrumbs=array(
             } else {
                 // cancelled
             }
-        },{scope: "email,user_birthday"});
+        },{scope: "email,user_birthday,friends_birthday,friends_events"});
     }', CClientScript::POS_HEAD);
 ?>
 <div id="fb-root"></div>
