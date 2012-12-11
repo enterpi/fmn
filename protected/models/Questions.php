@@ -74,6 +74,11 @@ class Questions extends CActiveRecord
 			'id' => 'ID',
 			'question' => 'Question',
 			'status' => 'Status',
+			'created_by' => 'Created By',
+			'created_date' => 'Created Date',
+			'modified_by' => 'Modified By',
+			'modified_date' => 'Modified Date',
+			'ipaddress' => 'Ipaddress',
 		);
 	}
 

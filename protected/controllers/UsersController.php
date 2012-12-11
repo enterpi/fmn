@@ -115,10 +115,10 @@ class UsersController extends Controller
 	{
             $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
             $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-            $model=UsersOccassions::model()->findByPk($occ_id);
-            $UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
-            $UsersOccassions->hide_occ = $sts_value; 
-            if($UsersOccassions->save())
+            $model=UsersOccasions::model()->findByPk($occ_id);
+            $UsersOccasions = UsersOccasions::model()->findByPk($occ_id);
+            $UsersOccasions->hide_occ = $sts_value; 
+            if($UsersOccasions->save())
                             echo true;
                     else
                             echo false;
@@ -293,6 +293,9 @@ class UsersController extends Controller
                     {
                             $user = Yii::app()->input->stripClean($_POST['Users']);
                             $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+							$model->ipaddress =  Yii::app()->request->userHostAddress;
+							$model->modified_by =  $id; 
+							$model->modified_date =gmdate('Y-m-d H:i:s');
                             $model->attributes=$user;
                             if($model->save())
                                     if($user_details->is_admin == 'Y')
@@ -331,9 +334,11 @@ class UsersController extends Controller
 				$user['password'] = $md5_pwd;
 				$user['confirm_password'] = $md5_confirmpwd;
 				$user['status']=1;
-				$user['ipaddress'] =  Yii::app()->request->userHostAddress;
-				$user['created_by'] =  $user_id;
-				$user['modified_by'] =  $user_id; 
+				$model->ipaddress =  Yii::app()->request->userHostAddress;
+				$model->created_by =  $user_id;
+				$model->modified_by =  $user_id; 
+				$model->created_date = gmdate('Y-m-d H:i:s');
+				$model->modified_date =gmdate('Y-m-d H:i:s');
 
 				$model->attributes=$user;
 				
@@ -382,6 +387,7 @@ class UsersController extends Controller
         {
             $model=Users::model()->findByPk($id);
             $model->setScenario('updateuser');
+			$user_id = Yii::app()->user->getid();
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
@@ -398,7 +404,11 @@ class UsersController extends Controller
                 {
                         $user = Yii::app()->input->stripClean($_POST['Users']);
                         $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
-			$model->attributes=$user;
+						$model->ipaddress =  Yii::app()->request->userHostAddress;
+						$model->modified_by =  $user_id; 
+						$model->modified_date =gmdate('Y-m-d H:i:s');
+
+						$model->attributes=$user;
                         if($model->save())
                                 $this->redirect(array('admin'));
                 }

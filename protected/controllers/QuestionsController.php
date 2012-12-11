@@ -74,13 +74,15 @@ class QuestionsController extends Controller
 
 		if(isset($_POST['Questions']))
 		{
+					//echo '<pre>'; print_r($_POST['Questions']);die;
+
 			$model->attributes=$_POST['Questions'];
 			if($model->validate())
 			{
 					$questions = Yii::app()->input->stripClean($_POST['Questions']);
-					$questions['ipaddress'] =  Yii::app()->request->userHostAddress;
-					$questions['modified_date'] =  gmdate('Y-m-d H:i:s');
-					$questions['modified_by'] =  $user_id;
+					$model->ipaddress =  Yii::app()->request->userHostAddress;
+					$model->modified_date =  gmdate('Y-m-d H:i:s');
+					$model->modified_by =  $user_id;
 					$model->attributes=$questions;
 					if($model->save())
 							$this->redirect(array('questions/view'));
@@ -110,11 +112,11 @@ class QuestionsController extends Controller
 			{
 					$questions = Yii::app()->input->stripClean($_POST['Questions']);
 					
-					$questions['ipaddress'] =  Yii::app()->request->userHostAddress;
-					$questions['created_date'] =  gmdate('Y-m-d H:i:s');
-					$questions['modified_date'] =  gmdate('Y-m-d H:i:s');
-					$questions['created_by'] =  $user_id;
-					$questions['modified_by'] =  $user_id;
+					$model->ipaddress =  Yii::app()->request->userHostAddress;
+					$model->created_date =  gmdate('Y-m-d H:i:s');
+					$model->modified_date =  gmdate('Y-m-d H:i:s');
+					$model->created_by =  $user_id;
+					$model->modified_by =  $user_id;
 					$model->attributes=$questions;
 					if($model->save())
 							$this->redirect(array('questions/view'));

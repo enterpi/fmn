@@ -74,6 +74,13 @@ class Users extends CActiveRecord
                             array('email_address',
                                 'email',
                                 'message'=>'Not valid email address'),
+							
+							//array('birthday', 'compare', 'compareValue' => date("Y-m-d"), 'operator' => '<'),
+							/*array('birthday', 'ext.validators.age.EAgeValidator',                    
+										  'minAge'=>16, 
+										  'maxAge'=>120, 
+										  'allowEmpty'=>false
+								),*/
 
                             array('first_name, 
                                 last_name, 
