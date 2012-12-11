@@ -71,7 +71,40 @@ class QuestionsController extends Controller
 			Yii::app()->end();
 		}
 		*/
-
+                if(!isset($_POST['Questions'])){
+                   $question_options = QuestionOptions::model()->findAll(array(
+                                                                   'select'=>'id,`option`,questions_id,status',
+                                                                    'condition'=>'questions_id=:ID',
+                                                                    'params'=>array(':ID'=>$id),         
+                                                                    ));
+                   $options = array();
+                   $options_model = new Options;
+                   foreach($question_options as $option)
+                    {
+                        $op['id'] = $option->id;
+                        $op['option'] = $option->option;
+                        $op['status'] = $option->status;
+                        $op['questions_id'] = $option->questions_id;
+                        array_push($options,$op);
+                    }
+                } else {
+                        $question_options = QuestionOptions::model()->findAll(array('select'=>'id',
+                                                                'condition'=>'questions_id=:ID',
+                                                                'params'=>array(':ID'=>$id),         
+                                                                ));
+                        foreach($question_options as $option)
+                        {   
+                            $ids[] = $option->id;
+                        }
+                        foreach($ids as $id)
+                        {
+                            $qop = QuestionOptions::model()->findByPk($id); 
+                            $qop->option = $_POST[$id];
+                            $qop->save();
+                        }
+                        
+                }
+                
 		if(isset($_POST['Questions']))
 		{
 					//echo '<pre>'; print_r($_POST['Questions']);die;
@@ -88,7 +121,7 @@ class QuestionsController extends Controller
 							$this->redirect(array('questions/view'));
 			}
 		}
-		$this->render('updateques',array('model'=>$model,'from_page'=>'update'));
+		$this->render('updateques',array('model'=>$model,'options'=>$options,',from_page'=>'update'));
 	}
 	
 	public function actionAddques()
@@ -119,7 +152,16 @@ class QuestionsController extends Controller
 					$model->modified_by =  $user_id;
 					$model->attributes=$questions;
 					if($model->save())
-							$this->redirect(array('questions/view'));
+                                        {
+                                              for($i=1;$i<=3;$i++)
+                                              {
+                                                    $qop = new QuestionOptions;
+                                                    $qop->questions_id = $model->id;
+                                                    $qop->option = $_POST['option'.$i];
+                                                    $qop->save();
+                                              }    
+                                              $this->redirect(array('questions/view'));
+                                        }
 			}
 		}
 		$this->render('updateques',array('model'=>$model,'from_page'=>'add'));

@@ -14,6 +14,9 @@
  */
 class Questions extends CActiveRecord
 {
+        public $option1;
+        public $option2;
+        public $option3;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -79,6 +82,9 @@ class Questions extends CActiveRecord
 			'modified_by' => 'Modified By',
 			'modified_date' => 'Modified Date',
 			'ipaddress' => 'Ipaddress',
+                        'option1' => 'Option 1',
+                        'option2' => 'Option 2',
+                        'option3' => 'Option 3'
 		);
 	}
 
