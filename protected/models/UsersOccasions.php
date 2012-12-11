@@ -11,7 +11,7 @@
  * @property string $status
  * @property string $hide_occ
  */
-class UsersOccassions extends CActiveRecord
+class UsersOccasions extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -28,7 +28,7 @@ class UsersOccassions extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'users_occassions';
+		return 'users_occasions';
 	}
 
 	/**
@@ -39,12 +39,12 @@ class UsersOccassions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id, occassions_id, occassion_date', 'required'),
-			array('users_id, occassions_id', 'numerical', 'integerOnly'=>true),
+			array('users_id, occasions_id, occasion_date', 'required'),
+			array('users_id, occasions_id', 'numerical', 'integerOnly'=>true),
 			array('status, hide_occ', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, users_id, occassions_id, occassion_date, status, hide_occ', 'safe', 'on'=>'search'),
+			array('id, users_id, occasions_id, occasion_date, status, hide_occ', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,8 +67,8 @@ class UsersOccassions extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'users_id' => 'Users',
-			'occassions_id' => 'Occassions',
-			'occassion_date' => 'Occassion Date',
+			'occasions_id' => 'Occasions',
+			'occasion_date' => 'Occasion Date',
 			'status' => 'Status',
 			'hide_occ' => 'Hide Occ',
 		);
@@ -87,8 +87,8 @@ class UsersOccassions extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('users_id',$this->users_id);
-		$criteria->compare('occassions_id',$this->occassions_id);
-		$criteria->compare('occassion_date',$this->occassion_date,true);
+		$criteria->compare('occasions_id',$this->occasions_id);
+		$criteria->compare('occasion_date',$this->occasion_date,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('hide_occ',$this->hide_occ,true);
 
