@@ -43,12 +43,12 @@ class Questions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('question', 'required'),
+			array('question,option1,option2,option3', 'required','on'=>'addques,updateques'),
 			array('status', 'length', 'max'=>1),
 			array('question,
 					status',
 					'required',
-					'on'=>array('updateques')),
+					'on'=>array('addques')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, question, status', 'safe', 'on'=>'search'),
