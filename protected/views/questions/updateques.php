@@ -37,7 +37,7 @@ if($from_page == 'add')
     
 	<div class="row">
 		<?php echo $form->labelEx($model,'question'); ?>
-		<?php echo $form->textArea($model,'question',array('class'=>'inp')); ?>
+		<?php echo $form->textArea($model,'question',array('class'=>'inp', 'autofocus'=>true)); ?>
 		<?php echo $form->error($model,'question'); ?>
 	</div>
 

@@ -23,7 +23,7 @@
         
         <div class="row">
 		<?php echo $form->labelEx($model,'current_password'); ?>
-		<?php echo $form->passwordField($model,'current_password',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->passwordField($model,'current_password',array('class'=>'inp','maxlength'=>255, 'autofocus'=>true)); ?>
 		<?php echo $form->error($model,'current_password'); ?>
 	</div>
 	<div class="row">

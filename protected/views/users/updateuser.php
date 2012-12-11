@@ -30,7 +30,7 @@ if(isset($page_from_admin) and ($page_from_admin))
     
 	<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
-		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255, 'autofocus'=>true)); ?>
 		<?php echo $form->error($model,'first_name'); ?>
 	</div>
 

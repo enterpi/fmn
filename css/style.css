@@ -357,23 +357,39 @@ textarea.inp{
 }
 .icon-none{
 	width:17px;
-	height:17px;
+	height:18px;
+	cursor:pointer;
 	background:url(./images/sprite.png) 0 1px no-repeat;
 }
 .icon-gift{
 	width:17px;
 	height:17px;
+	cursor:pointer;
 	background:url(./images/sprite.png) 0 -60px no-repeat;
 }
 .icon-time{
 	width:17px;
 	height:17px;
+	cursor:pointer;
 	background:url(./images/sprite.png) 0 -29px no-repeat;
 }
 .icon-fb{
 	width:17px;
 	height:17px;
+	cursor:pointer;
 	background:url(./images/sprite.png) 0 -87px no-repeat;
+}
+.icon-none:hover{
+	background:url(./images/sprite.png) 0 -344px no-repeat;
+}
+.icon-gift:hover{
+	background:url(./images/sprite.png) 0 -405px no-repeat;
+}
+.icon-time:hover{
+	background:url(./images/sprite.png) 0 -374px no-repeat;
+}
+.icon-fb:hover{
+	background:url(./images/sprite.png) 0 -432px no-repeat;
 }
 .right_head{
 	background-color:#000;

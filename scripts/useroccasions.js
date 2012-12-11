@@ -175,7 +175,7 @@ $(document).ready(function(){
                              <div class="m_t_5">\
                              <div class="m_r_10">\
                                     <label><p>Email</p>\
-									<input id="sendinvite" class="inp" size="16" type="text"></label>\
+									<input id="sendinvite" class="inp" size="16" type="text" autofocus=true></label>\
                              </div>\
                              <div class="jmsg"></div>\
 							 <div class="m_t_5"><input class="btn remind" type="button" name="send" value="Send Invitation" id="sendinvitation" ></div>\
