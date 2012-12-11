@@ -74,12 +74,20 @@ class Users extends CActiveRecord
                             array('email_address',
                                 'email',
                                 'message'=>'Not valid email address'),
+							
+							//array('birthday', 'compare', 'compareValue' => date("Y-m-d"), 'operator' => '<'),
+							/*array('birthday', 'ext.validators.age.EAgeValidator',                    
+										  'minAge'=>16, 
+										  'maxAge'=>120, 
+										  'allowEmpty'=>false
+								),*/
 
                             array('first_name, 
                                 last_name, 
                                 email_address,
                                 birthday,
-                                gender',
+                                gender,
+								status',
                                 'required',
                                 'on'=>array('updateuser')),
 
@@ -91,7 +99,7 @@ class Users extends CActiveRecord
                                 birthday,
                                 gender',
                                 'required',
-                                'on'=>array('usercreate')),
+                                'on'=>array('usercreate','adduser')),
 
                             array('confirm_password',
                                 'compare',
@@ -173,7 +181,6 @@ class Users extends CActiveRecord
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
@@ -185,9 +192,17 @@ class Users extends CActiveRecord
 		$criteria->compare('physical_address',$this->physical_address,true);
 		$criteria->compare('ipaddress',$this->ipaddress,true);
 		$criteria->compare('status',$this->status,true);
+		if(!isset($_GET['Users_sort']))
+		{
+			$criteria->order = 'first_name ASC';
+		}
+		$criteria->condition = "is_admin = 'N'";
                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination' => array(
+            'pageSize' => 25,
+        	),
 		));
 	}
 }

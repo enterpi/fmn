@@ -2,11 +2,6 @@
 /* @var $this UsersController */
 /* @var $model Users */
 
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Manage',
-);
-
 /*$this->menu=array(
 	array('label'=>'List Users', 'url'=>array('index')),
 	array('label'=>'Create Users', 'url'=>array('create')),
@@ -49,12 +44,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div>
 
 <div class="userlist">
+<div class="f_r">
+        	<a href="<?php echo Yii::app()->baseUrl.'/questions/addques';?>" rel="adduser" class="btn btn_fgt m_b_10" type="button"><i class="icon-plus-sign icon-white m_r_5"></i>Add Question</a>
+    </div>
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'users-grid',
         'dataProvider'=>$model->search(),
-        'filter'=>$model,
+        //'filter'=>$model,
         'columns'=>array(
            'question',
+		   	array(            // display 'create_time' using an expression
+            'name'=>'status',
+            'value'=>'($data->status == "0"?"Inactive":"Active")',
+       		 ),
             array(
                 'class'=>'CButtonColumn',
             ),

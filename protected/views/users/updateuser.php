@@ -2,6 +2,13 @@
 /* @var $this UsersController */
 /* @var $model Users */
 /* @var $form CActiveForm */
+$cancel_link = 'index';
+if(isset($page_from_admin) and ($page_from_admin))
+{
+	$cancel_link = 'users/admin';
+}
+
+
 ?>
 <?php 
        $cs=Yii::app()->getClientScript(); 
@@ -23,7 +30,7 @@
     
 	<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
-		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255, 'autofocus'=>true)); ?>
 		<?php echo $form->error($model,'first_name'); ?>
 	</div>
 
@@ -46,6 +53,7 @@
                     $months = array();
                     $dates = array();
                     $num = 0;
+					$this_year = date('Y');
                     $curr_year = date('Y');
                     $curr_date = date ('j');
                     $curr_month = date('n');
@@ -56,7 +64,7 @@
                         $curr_month = date('n',strtotime($model->birthday));
                         $num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
                     }
-                    for($i=1900;$i<=$curr_year;$i++)
+                    for($i=$this_year;$i>=1905;$i--)
                     {
                         $years[$i] = $i;
                     }
@@ -112,7 +120,8 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit',array('class'=>'btn signin')); ?>
+    	<?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt m_r_10')); ?>
+		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn_fgt')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

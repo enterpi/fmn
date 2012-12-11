@@ -2,22 +2,33 @@
 /* @var $this UsersController */
 /* @var $model Users */
 /* @var $form CActiveForm */
+$cancel_link = 'users/admin';
 ?>
+<?php 
+       $cs=Yii::app()->getClientScript(); 
+       Yii::app()->clientScript->registerCoreScript('jquery');  
+       $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/slider/slider.css');
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/slider/coin-slider.js');
+       $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/numberofdays.js');
+?>
+<div class="admin_menu">
+    <ul class="nav nav-tabs m_b_0">
+      <li class="active"><?php echo CHtml::link('Users',Yii::app()->baseUrl.'/users/admin'); ?></li>
+      <li><?php echo CHtml::link('Questions',Yii::app()->baseUrl.'/questions/view'); ?></li>
+    </ul>
+</div>
 
-<div class="form login_sec">
-    <div class="signin_sec">
-        <div class="head">
-            <h2>Register </h2>
-        </div>
+<div class="form">
+<div class="update_pro">
+
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'users-form',
+	'id'=>'users-updateuser-form',
 	'enableAjaxValidation'=>false,
-        'enableClientValidation'=>true,
 )); ?>
 
-
-	<?php /* echo $form->errorSummary($model); */ ?>
-
+	<!--<p class="note">Fields with <span class="required">*</span> are required.</p> -->
+    <h2 class="update_head">Update Profile</h2>
+    
 	<div class="row">
 		<?php echo $form->labelEx($model,'first_name'); ?>
 		<?php echo $form->textField($model,'first_name',array('class'=>'inp','maxlength'=>255, 'autofocus'=>true)); ?>
@@ -32,47 +43,29 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'email_address'); ?>
-		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'email_address',array('class'=>'inp','maxlength'=>255,'disabled'=>true)); ?>
 		<?php echo $form->error($model,'email_address'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('class'=>'inp','maxlength'=>255)); ?>
-		<?php echo $form->error($model,'password'); ?>
-	</div>
+	
         <div class="row">
-		<?php echo $form->labelEx($model,'confirm_password'); ?>
-		<?php echo $form->passwordField($model,'confirm_password',array('class'=>'inp','maxlength'=>255)); ?>
-		<?php echo $form->error($model,'confirm_password'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'birthday'); ?>
-                <?php /*$this->widget('zii.widgets.jui.CJuiDatePicker',array(
-                        'model'=>$model,
-                        'attribute'=>'birthday',
-                        'name'=>'Users[birthday]',
-                        'options'=>array(
-                        'showAnim'=>'fold',
-                        ),
-                        'htmlOptions'=>array(
-                            'style'=>'height:20px;',
-							'class'=>'inp',
-                        ),
-                        
-                    )); */?>
-                    <?php 
+                <?php 
                     $years = array();
                     $months = array();
                     $dates = array();
-					
+                    $num = 0;
+					$this_year = date('Y');
                     $curr_year = date('Y');
-                    $curr_date = date('j');
+                    $curr_date = date ('j');
                     $curr_month = date('n');
-                    //$num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
-					$num= 31;
-                    for($i=$curr_year;$i>=1905;$i--)
+                    if($model->birthday!=null)
+                    {
+                        $curr_year = date('Y',strtotime($model->birthday));
+                        $curr_date = date('j',strtotime($model->birthday));
+                        $curr_month = date('n',strtotime($model->birthday));
+                        $num = cal_days_in_month(CAL_GREGORIAN, $curr_month, $curr_year);
+                    }
+                    for($i=$this_year;$i>=1905;$i--)
                     {
                         $years[$i] = $i;
                     }
@@ -94,21 +87,17 @@
                     }
                     echo $form->dropDownList($model, 'date',
                                         $dates,
-										//array('class'=>'bday'),
-                                        array('empty' =>'Date','class'=>'bday')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_date=>array('selected'=>true))):array('empty'=>'Day','class'=>'bday')
                                     ); 
 					 echo $form->dropDownList($model, 'month',
                                         $months,
-										//array(),
-                                        array('empty' =>'Month','class'=>'bday')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_month=>array('selected'=>true))):array('empty'=>'Month','class'=>'bday')
                                     ); 
 					echo $form->dropDownList($model, 'year',
                                         $years,
-										//array('class'=>'bday'),
-                                        array('empty' =>'Year','class'=>'bday')
+                                        $model->birthday!=null?array('class'=>'bday','options' =>array($curr_year=>array('selected'=>true))):array('empty'=>'Year','class'=>'bday')
                                     ); 
                    
-                    
                     echo $form->error($model,'birthday'); ?>
 	</div>
 
@@ -128,10 +117,21 @@
 		<?php echo $form->textArea($model,'physical_address',array('class'=>'inp','maxlength'=>255)); ?>
 		<?php echo $form->error($model,'physical_address'); ?>
 	</div>
-	
+	<div class="row">
+		<?php echo $form->labelEx($model,'Status'); ?>
+                <?php 
+                    echo $form->dropDownList($model, 'status',
+                                    array('1' => 'Active', '0' => 'Inactive'),
+                                    array('empty' => 'Select')
+                                ); 
+                ?>
+		<?php echo $form->error($model,'status'); ?>
+	</div>
+
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Sign Up' : 'Save' ,array('class'=>'btn signin')); ?>
+    	<?php echo CHtml::button('Cancel', array('submit' => array($cancel_link),'class'=>'btn btn_fgt m_r_10')); ?>
+		<?php echo CHtml::submitButton('Submit',array('class'=>'btn btn_fgt')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

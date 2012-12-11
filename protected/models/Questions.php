@@ -42,6 +42,10 @@ class Questions extends CActiveRecord
 		return array(
 			array('question', 'required'),
 			array('status', 'length', 'max'=>1),
+			array('question,
+					status',
+					'required',
+					'on'=>array('updateques')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, question, status', 'safe', 'on'=>'search'),
@@ -70,6 +74,11 @@ class Questions extends CActiveRecord
 			'id' => 'ID',
 			'question' => 'Question',
 			'status' => 'Status',
+			'created_by' => 'Created By',
+			'created_date' => 'Created Date',
+			'modified_by' => 'Modified By',
+			'modified_date' => 'Modified Date',
+			'ipaddress' => 'Ipaddress',
 		);
 	}
 
@@ -86,8 +95,12 @@ class Questions extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('question',$this->question,true);
-		$criteria->compare('status',$this->status,true);
-
+		//$criteria->compare('status',$this->status);
+		if(!isset($_GET['Questions_sort']))
+		{
+			$criteria->order = 'question ASC';
+		}
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

@@ -28,7 +28,7 @@ class UsersController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view','create','fpmail',
+				'actions'=>array('view','create','fpmail','GetReminders',
                                     'changepassword','GetOccasions','getNotifications','confirmregistration'),
 				'users'=>array('*'),
 			),
@@ -38,8 +38,8 @@ class UsersController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','update'),
-				'users'=>array('test@test9.com'),
+				'actions'=>array('admin','delete','update','addUser'),
+				'users'=>array(Yii::app()->params['adminlogin']),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -87,15 +87,38 @@ class UsersController extends Controller
                     'freinds_occasions'=>$freinds_occasions
             ));*/
         }
+		
+		public function actionGetReminders()
+		{		
+			//$OccassionsReminder = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			
+			$OccassionsReminder = OccassionsReminder::model()->findAll(array(
+                                                                       'select'=>'id,remind_date,users_occassions_id,users_id',
+                                                                        'condition'=>'remind_date=:remindDate',
+                                                                        'params'=>array(':remindDate'=>gmdate('Y-m-d')),         
+                                                                        ));
+			$i=1;
+			//echo '<pre>'; print_r($OccassionsReminder);die;
+			foreach($OccassionsReminder as $val)
+			{
+				echo $i.'-----'.'<br>';
+				echo $val->remind_date.'<br>';
+				echo $val->users_occassions_id.'<br>';
+				echo $val->users_id.'<br>';
+				echo $val->created_date.'<br>';
+				$i++;
+			}
+			die;
+		}
 	
 	public function actionhideOccasions()
 	{
             $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
             $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-            $model=UsersOccassions::model()->findByPk($occ_id);
-            $UsersOccassions = UsersOccassions::model()->findByPk($occ_id);
-            $UsersOccassions->hide_occ = $sts_value; 
-            if($UsersOccassions->save())
+            $model=UsersOccasions::model()->findByPk($occ_id);
+            $UsersOccasions = UsersOccasions::model()->findByPk($occ_id);
+            $UsersOccasions->hide_occ = $sts_value; 
+            if($UsersOccasions->save())
                             echo true;
                     else
                             echo false;
@@ -163,8 +186,10 @@ class UsersController extends Controller
 
                         $user['password'] = $md5_pwd;
                         $user['confirm_password'] = $md5_confirmpwd;
-
-			$model->attributes=$user;
+						$user['ipaddress'] =  Yii::app()->request->userHostAddress;
+						$user['created_date'] =  date('Y-m-d');
+						$user['modified_date'] =  date('Y-m-d');
+						$model->attributes=$user;
                         if($model->validate())
                         {
                             if($model->save())
@@ -245,7 +270,10 @@ class UsersController extends Controller
         public function actionUpdateuser()
         {
             $id = Yii::app()->user->getId();
-            $model=Users::model()->findByPk($id);
+			$model=Users::model()->findByPk($id);
+			$page_from_admin = false;
+			$user_details = UserIdentity::getUserDetails($id);
+			if($user_details->is_admin == 'Y') $page_from_admin = true;
             if($model->status != '4')
             {
                 $model->setScenario('updateuser');
@@ -265,13 +293,92 @@ class UsersController extends Controller
                     {
                             $user = Yii::app()->input->stripClean($_POST['Users']);
                             $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+							$model->ipaddress =  Yii::app()->request->userHostAddress;
+							$model->modified_by =  $id; 
+							$model->modified_date =gmdate('Y-m-d H:i:s');
                             $model->attributes=$user;
                             if($model->save())
-                                    $this->redirect(array('/users'));
+                                    if($user_details->is_admin == 'Y')
+										$this->redirect(array('/users/admin'));
+									else
+										$this->redirect(array('/users'));
                     }
                 }
-                $this->render('updateuser',array('model'=>$model));
+				
+                $this->render('updateuser',array('model'=>$model,'page_from_admin'=>$page_from_admin));
             }
+            
+        }
+		
+		public function actionaddUser()
+        {
+			
+			$model=new Users();
+			$model->setScenario('adduser');
+			$user_id = Yii::app()->user->getId();
+			if(isset($_POST['Users']))
+			{
+				$pwd = $_POST['Users']['password'];
+				$c_pwd = $_POST['Users']['confirm_password'];
+
+				$md5_pwd = $pwd!=""?md5($pwd):$pwd;
+				$md5_confirmpwd = $c_pwd!=""?md5($c_pwd):$c_pwd;
+
+				$user = Yii::app()->input->stripClean($_POST['Users']);
+
+				if($user['month'] != '' && $user['year']!='' && $user['year']!='')
+				$user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
+				else
+				$user['birthday'] = null;
+
+				$user['password'] = $md5_pwd;
+				$user['confirm_password'] = $md5_confirmpwd;
+				$user['status']=1;
+				$model->ipaddress =  Yii::app()->request->userHostAddress;
+				$model->created_by =  $user_id;
+				$model->modified_by =  $user_id; 
+				$model->created_date = gmdate('Y-m-d H:i:s');
+				$model->modified_date =gmdate('Y-m-d H:i:s');
+
+				$model->attributes=$user;
+				
+					if($model->validate())
+					{
+						//print_r($user); die;
+						if($model->save())
+						{
+								 $this->redirect(array('users/admin'));
+								/*$this->actionFpmail($user['email_address'],'confirmRegistration');
+								Yii::app()->clientScript->registerCoreScript('jquery');
+								$this->render('confirm',array('email'=>$user['email_address']));
+								unset($_POST['Users']);*/
+						}
+						else
+						{
+								$user['password'] = $pwd;
+								$user['confirm_password'] = $c_pwd;
+								$model->attributes = $user;
+								$this->render('addUser',array(
+										'model'=>$model,
+								));
+						}
+					}
+					else
+					{       
+							$user['password'] = $pwd;
+							$user['confirm_password'] = $c_pwd;
+							$model->attributes = $user;
+							$this->render('addUser',array(
+									'model'=>$model,
+							));
+					}
+                }
+                else
+                {
+                        $this->render('addUser',array(
+                                'model'=>$model,
+                        ));
+                }
             
         }
         
@@ -279,7 +386,8 @@ class UsersController extends Controller
         public function actionUpdate($id)
         {
             $model=Users::model()->findByPk($id);
-            $model->setScenario('update');
+            $model->setScenario('updateuser');
+			$user_id = Yii::app()->user->getid();
             // uncomment the following code to enable ajax-based validation
             /*
             if(isset($_POST['ajax']) && $_POST['ajax']==='users-updateuser-form')
@@ -296,12 +404,16 @@ class UsersController extends Controller
                 {
                         $user = Yii::app()->input->stripClean($_POST['Users']);
                         $user['birthday'] = date('Y-m-d',strtotime($user['month'].'/'.$user['date'].'/'.$user['year']));
-			$model->attributes=$user;
+						$model->ipaddress =  Yii::app()->request->userHostAddress;
+						$model->modified_by =  $user_id; 
+						$model->modified_date =gmdate('Y-m-d H:i:s');
+
+						$model->attributes=$user;
                         if($model->save())
                                 $this->redirect(array('admin'));
                 }
             }
-            $this->render('updateuser',array('model'=>$model));
+            $this->render('updateprofile',array('model'=>$model));
         }
 
 	/**
@@ -348,11 +460,11 @@ class UsersController extends Controller
                 }
                 if(sizeof($ids)>0)
                 {
-                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).')');
+                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).') AND t.status="1"');
                 }
                 else
                 {
-                    $cond = array();
+                    $cond = array('condition'=>'t.status="1"');
                 }
                 $questions = Questions::model()->with(array('questionOptions'=>array(
                                                                 'joinType'=>'INNER JOIN',
@@ -490,8 +602,8 @@ class UsersController extends Controller
             Yii::app()->clientScript->registerCoreScript('jquery');
             if(isset($_POST['ChangePassword']))
             {
-                $user_id = Yii::app()->user->getid();
-                $user = Users::model()->findByAttributes(array('id'=>$user_id,'password'=>md5($_POST['ChangePassword']['current_password'])));
+				$user_id = Yii::app()->user->getid();
+				$user = Users::model()->findByAttributes(array('id'=>$user_id));
                 if($user->status != '4')
                 {
                     $model->attributes=$_POST['ChangePassword'];

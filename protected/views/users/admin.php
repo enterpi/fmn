@@ -50,27 +50,41 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <div class="userlist">
 	<div class="f_r">
-        	<a href="#" rel="adduser" class="btn btn_fgt m_b_10" type="button"><i class="icon-plus-sign icon-white m_r_5"></i>Add Users</a>
+        	<a href="<?php echo Yii::app()->baseUrl.'/users/addUser';?>" rel="adduser" class="btn btn_fgt m_b_10" type="button"><i class="icon-plus-sign icon-white m_r_5"></i>Add User</a>
     </div>
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'users-grid',
         'dataProvider'=>$model->search(),
-        'filter'=>$model,
+        //'filter'=>$model,
         'columns'=>array(
-            'first_name',
+            //'first_name',
+			array(
+				'name'=>'first_name',
+				'value'=>'$data->first_name',
+                ),
             'last_name',
             'email_address',
             'gender',
-            'birthday',
+            //'birthday',
+			 array(            // display 'create_time' using an expression
+            'name'=>'birthday',
+            'value'=>'date("m/d/Y", strtotime($data->birthday))',
+        	),
             
-            //'id',
-            //'password',
-            'physical_address',
+			array(            
+            'name'=>'physical_address',
+            'value'=>'nl2br($data->physical_address)',
+			'type'=>'raw',
+        	),
+			array(            
+            'name'=>'status',
+            'value'=>'($data->status == "0"?"Inactive":"Active")',
+        	),
             /*'created_by',
             'created_date',
             'modified_by',
-            'modified_date',*/
-            'ipaddress',
+            'modified_date',
+            'ipaddress',*/
             array(
                 'class'=>'CButtonColumn',
                 'template'=>'{update}{delete}',

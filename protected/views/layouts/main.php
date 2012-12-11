@@ -45,7 +45,7 @@
                   <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
                     <?php if($user->status!='4'){?><li><?php echo CHtml::link('Update Profile',array('/users/updateuser')); ?></li> <?php } ?>
                     <?php if($user->status!='4'){?><li><?php echo CHtml::link('Change Password',array('/users/changepwd')); ?></li> <?php } ?>
-                    <?php if($user->status!='4'){?><li><?php echo CHtml::link('Go to admin view',array('/users/admin')); ?></li> <?php } ?>
+                    <?php //if($user->status!='4'){?><li><?php //echo CHtml::link('Go to admin view',array('/users/admin')); ?></li> <?php //} ?>
                     <li><?php echo CHtml::link('Logout',array('/site/logout')); ?></li>
                   </ul>
                 </div>
