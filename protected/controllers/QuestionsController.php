@@ -130,7 +130,7 @@ class QuestionsController extends Controller
                                         }
 			}
 		}
-		$this->render('updateques',array('model'=>$model,'options'=>$options,',from_page'=>'update'));
+		$this->render('updateques',array('model'=>$model,'options'=>$options,'from_page'=>'update'));
 	}
 	
 	public function actionAddques()
@@ -146,7 +146,7 @@ class QuestionsController extends Controller
 			Yii::app()->end();
 		}
 		*/
-
+                $options = array();
 		if(isset($_POST['Questions']))
 		{
 			$model->attributes=Yii::app()->input->stripClean($_POST['Questions']);

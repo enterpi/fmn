@@ -52,17 +52,17 @@ if($from_page == 'add')
 	</div>
         <div class="row">
 		<?php echo $form->labelEx($model,'option1'); ?>
-		<?php echo CHtml::textField(!empty($options[0]['id'])?$options[0]['id']:'option1', $options[0]['option']); ?>
+		<?php echo CHtml::textField(!empty($options[0]['id'])?$options[0]['id']:'option1', !empty ($options[0]['option'])?$options[0]['option']:''); ?>
 		<?php echo $form->error($model,'option1'); ?>
 	</div>
         <div class="row">
 		<?php echo $form->labelEx($model,'option2'); ?>
-		<?php echo CHtml::textField(!empty($options[1]['id'])?$options[1]['id']:'option2', $options[1]['option']); ?>
+		<?php echo CHtml::textField(!empty($options[1]['id'])?$options[1]['id']:'option2', !empty ($options[1]['option'])?$options[1]['option']:''); ?>
 		<?php echo $form->error($model,'option2'); ?>
 	</div>
         <div class="row">
 		<?php echo $form->labelEx($model,'option3'); ?>
-		<?php echo CHtml::textField(!empty($options[2]['id'])?$options[2]['id']:'option3', $options[2]['option']); ?>
+		<?php echo CHtml::textField(!empty($options[2]['id'])?$options[2]['id']:'option3', !empty ($options[2]['option'])?$options[2]['option']:''); ?>
 		<?php echo $form->error($model,'option3'); ?>
 	</div>
 
