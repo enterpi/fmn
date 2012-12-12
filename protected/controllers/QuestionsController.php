@@ -78,7 +78,6 @@ class QuestionsController extends Controller
                                                                     'condition'=>'questions_id=:ID',
                                                                     'params'=>array(':ID'=>$id),         
                                                                     ));
-                   $options_model = new Options;
                    foreach($question_options as $option)
                     {
                         $ids[] = $option->id;
