@@ -70,7 +70,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=fmn',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'PlateApp1947',
+			'password' => 'PlateAppDB',
 			'charset' => 'utf8',
 		),
 		
