@@ -115,8 +115,8 @@ class UsersController extends Controller
 	{
             $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
             $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-            $model=UsersOccasions::model()->findByPk($occ_id);
-            $UsersOccasions = UsersOccasions::model()->findByPk($occ_id);
+            $model=UserFriends::model()->findByPk($occ_id);
+            $UsersOccasions = UserFriends::model()->findByPk($occ_id);
             $UsersOccasions->hide_occ = $sts_value; 
             if($UsersOccasions->save())
                             echo true;
@@ -146,9 +146,16 @@ class UsersController extends Controller
 	public function actiongetNotifications()
 	{
 		$userFriend_occasions = new User_friends_Occasions;
+		$notification_date_repitive = date('m-d', strtotime(date('Y-m-d'). ' + 14 days'));
 		$notification_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 14 days'));
+		$to_day_repitive = date('m-d');
 		$to_day = date('Y-m-d');
-		$ip_array = array('user_id'=>$_POST['user_id'],'notification_date'=>$notification_date,'to_day'=>$to_day);
+		$ip_array = array(
+						  'user_id'=>$_POST['user_id'],
+						  'notification_date_repitive'=>$notification_date_repitive,
+						  'to_day_repitive'=>$to_day_repitive,
+						  'notification_date'=>$notification_date,
+						  'to_day'=>$to_day);
 		$freinds_notifications = $userFriend_occasions->getUser_friends_Notifications($ip_array);
 		echo $this->renderPartial('notifications',array(
 			'freinds_notifications'=>$freinds_notifications,

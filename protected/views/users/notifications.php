@@ -6,8 +6,12 @@ if(!empty($freinds_notifications))
 	{
 	?>
 		<div class="gift gift1">
-            <div class="f_l">
-                <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
+            <div class="f_l avtaar">
+                <?php 
+				$profile_img_path = ($noti_values['profile_img_path']!=''?$noti_values['profile_img_path']:Yii::app()->request->baseUrl.'/css/images/gift.png');
+				//echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); 
+				echo CHtml::image($profile_img_path); 
+				?>
             </div>
             <div class="f_l">
                 <p><?php echo $noti_values['occasion_name'];?></p>

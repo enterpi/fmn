@@ -35,12 +35,15 @@
 		<div id="logo" class="logo_sec"><?php echo CHtml::link('<img src="'. Yii::app()->request->baseUrl .'/css/images/logo.png" alt="" />',array('/site/login')); ?></div>
     <?php
                 $user = UserIdentity::getUserDetails(Yii::app()->user->getId());
-		if(!Yii::app()->user->isGuest){ ?>
+				
+		if(!Yii::app()->user->isGuest){ 
+				$profile_img_path = ($user->profile_img_path!=''?$user->profile_img_path:Yii::app()->request->baseUrl.'/css/images/gift.png');
+		?>
             <div class="profile">
             	<div class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <div class="pro_pic">
-                  	<?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
+                  <div class="pro_pic avtaar">
+                  	<?php echo CHtml::image($profile_img_path); ?>
                   </div><?php echo $user->first_name.' '.$user->last_name;?></a>
                   <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
                     <?php if($user->status!='4'){?><li><?php echo CHtml::link('Update Profile',array('/users/updateuser')); ?></li> <?php } ?>

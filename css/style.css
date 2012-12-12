@@ -218,7 +218,7 @@ textarea.inp{
 .profile{
 	float:right;
 	text-align:right;
-	line-height:50px;
+	line-height:55px;
 	margin:15px 0px 0px 15px;
 }
 .pro_pic{
@@ -555,4 +555,11 @@ ul.yiiPager li{
 }
 .button-column .view, .button-column .delete{
 	display:none;
+}
+.avtaar img{
+	/*padding:2px;
+	border:1px solid #CCC;*/
+	margin-top:3px;
+	height:55px;
+	width:55px;
 }
