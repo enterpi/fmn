@@ -14,6 +14,9 @@
  */
 class Questions extends CActiveRecord
 {
+        public $option1;
+        public $option2;
+        public $option3;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -40,12 +43,12 @@ class Questions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('question', 'required'),
+			array('question,option1,option2,option3', 'required','on'=>'addques,updateques'),
 			array('status', 'length', 'max'=>1),
 			array('question,
 					status',
 					'required',
-					'on'=>array('updateques')),
+					'on'=>array('addques')),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, question, status', 'safe', 'on'=>'search'),
@@ -79,6 +82,9 @@ class Questions extends CActiveRecord
 			'modified_by' => 'Modified By',
 			'modified_date' => 'Modified Date',
 			'ipaddress' => 'Ipaddress',
+                        'option1' => 'Option 1',
+                        'option2' => 'Option 2',
+                        'option3' => 'Option 3'
 		);
 	}
 
