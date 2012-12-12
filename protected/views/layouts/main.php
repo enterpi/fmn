@@ -41,10 +41,7 @@
 		?>
             <div class="profile">
             	<div class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <div class="pro_pic avtaar">
-                  	<?php echo CHtml::image($profile_img_path); ?>
-                  </div><?php echo $user->first_name.' '.$user->last_name;?></a>
+                  <a class="dropdown-toggle u_name_bx" data-toggle="dropdown" href="#"><?php echo CHtml::image($profile_img_path); ?><span class="u_name"><?php echo $user->first_name.' '.$user->last_name;?></span></a>
                   <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
                     <?php if($user->status!='4'){?><li><?php echo CHtml::link('Update Profile',array('/users/updateuser')); ?></li> <?php } ?>
                     <?php if($user->status!='4'){?><li><?php echo CHtml::link('Change Password',array('/users/changepwd')); ?></li> <?php } ?>

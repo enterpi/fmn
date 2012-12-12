@@ -224,12 +224,26 @@ textarea.inp{
 .pro_pic{
 	float:left;
 }
+.pro_pic .u_name{
+	
+}
 .pro_pic img{
 	margin-right:8px; /* standard */
-	margin-right:63px\9; /* IE 8 and below */
-	*margin-right:8px; /* IE 7 and below */
-
+	/*margin-right:63px\9; /* IE 8 and below */
+	/**margin-right:8px; /* IE 7 and below */
 }
+.u_name_bx{
+	display: inline-block;
+	zoom: 1;
+	width :200px;
+}
+.u_name_bx img{
+	vertical-align: middle;
+}
+.u_name_bx .u_name{
+	padding: 0 0 0 2px;
+}
+
 .errorMessage{
 	color:red;
 	font-size:13px;
