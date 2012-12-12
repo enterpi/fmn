@@ -45,8 +45,7 @@ if($from_page == 'add')
 		<?php echo $form->labelEx($model,'Status'); ?>
                 <?php 
                     echo $form->dropDownList($model, 'status',
-                                    array('1' => 'Active', '0' => 'Inactive'),
-                                    array('empty' => 'Select')
+                                    array('1' => 'Active', '0' => 'Inactive')
                                 ); 
                 ?>
 		<?php echo $form->error($model,'status'); ?>

@@ -49,7 +49,7 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
                 }
         }
         
-        var questions = \''.$questions.'\';
+        var questions = \''.addslashes($questions).'\';
         questions = JSON.parse(questions);
         if(questions.length>0)
         question(questions);

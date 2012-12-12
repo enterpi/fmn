@@ -106,7 +106,7 @@ class QuestionsController extends Controller
                         $i = 1;
                         foreach($ids as $id)
                         {
-                            $model->{'option'.$i} = $_POST[$id];
+                            $model->{'option'.$i} = Yii::app()->input->stripClean($_POST[$id]);
                             $options[] = array('id'=>$id,'option'=>$_POST[$id]);
                             $i++;
                         }
@@ -124,7 +124,7 @@ class QuestionsController extends Controller
                                                         foreach($ids as $id)
                                                         {
                                                             $qop = QuestionOptions::model()->findByPk($id); 
-                                                            $qop->option = $_POST[$id];
+                                                            $qop->option = Yii::app()->input->stripClean($_POST[$id]);
                                                             $qop->save();
                                                         }
 							$this->redirect(array('questions/view'));
@@ -150,10 +150,13 @@ class QuestionsController extends Controller
 
 		if(isset($_POST['Questions']))
 		{
-			$model->attributes=$_POST['Questions'];
-                        $model->option1 = $_POST['option1'];
-                        $model->option2 = $_POST['option2'];
-                        $model->option3 = $_POST['option3'];
+			$model->attributes=Yii::app()->input->stripClean($_POST['Questions']);
+                        $model->option1 = Yii::app()->input->stripClean($_POST['option1']);
+                        $options[]['option'] = $_POST['option1'];
+                        $model->option2 = Yii::app()->input->stripClean($_POST['option2']);
+                        $options[]['option'] = $_POST['option2'];
+                        $model->option3 = Yii::app()->input->stripClean($_POST['option3']);
+                        $options[]['option'] = $_POST['option3'];
 			if($model->validate())
 			{
 					$questions = Yii::app()->input->stripClean($_POST['Questions']);
@@ -170,13 +173,13 @@ class QuestionsController extends Controller
                                               {
                                                     $qop = new QuestionOptions;
                                                     $qop->questions_id = $model->id;
-                                                    $qop->option = $_POST['option'.$i];
+                                                    $qop->option = Yii::app()->input->stripClean($_POST['option'.$i]);
                                                     $qop->save();
                                               }
                                               $this->redirect(array('questions/view'));
                                         }
 			}
 		}
-		$this->render('updateques',array('model'=>$model,'from_page'=>'add'));
+		$this->render('updateques',array('model'=>$model,'from_page'=>'add','options'=>$options));
 	}
 }
