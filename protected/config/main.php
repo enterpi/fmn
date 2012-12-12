@@ -68,7 +68,6 @@ return array(
 		
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=fmn',
-			'connectionString' => 'mysql:host=192.168.1.109;dbname=fmn',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'PlateAppDB',
