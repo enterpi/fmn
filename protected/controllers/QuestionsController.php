@@ -146,7 +146,7 @@ class QuestionsController extends Controller
 			Yii::app()->end();
 		}
 		*/
-		$options = array();
+                $options = array();
 		if(isset($_POST['Questions']))
 		{
 			$model->attributes=Yii::app()->input->stripClean($_POST['Questions']);
