@@ -138,8 +138,7 @@ class SiteController extends Controller
         {
             if(isset($_POST['accessToken']) && isset($_POST['userID']) && isset($_POST['email']))
             {
-                
-                $id = Yii::app()->input->stripClean($_POST['userID']);
+				$id = Yii::app()->input->stripClean($_POST['userID']);
                 $access_token = Yii::app()->input->stripClean($_POST['accessToken']);
                 $email_id = Yii::app()->input->stripClean($_POST['email']);
                 $first_name = Yii::app()->input->stripClean($_POST['first_name']);
@@ -147,6 +146,7 @@ class SiteController extends Controller
                 $gender = Yii::app()->input->stripClean($_POST['gender']);
                 $birthday = Yii::app()->input->stripClean($_POST['birthday']);
                 $birthday = date('Y-m-d',  strtotime($birthday));
+				$profile_img_path = (isset($_POST['picture']['data']['url'])?$_POST['picture']['data']['url']:'');
                 if(filter_var($email_id, FILTER_VALIDATE_EMAIL))
                 {
                     $user = Users::model()->find(array(
@@ -167,6 +167,7 @@ class SiteController extends Controller
                         $model->last_name = $last_name;
                         $model->gender = $gender;
                         $model->birthday = $birthday;
+						$model->profile_img_path = $profile_img_path;
                         $model->save();
                         $first_login = true;
                     }
@@ -189,4 +190,40 @@ class SiteController extends Controller
                 
             }
         }
+		
+		public function actionAdduserfriends()
+		{
+			$user_id = Yii::app()->user->getId();
+			$imp_friends_sql = 'INSERT INTO user_friends(users_id, first_name, last_name, fb_id, gender, occasion_id, occasion_date, profile_img_path, is_fmn_user) VALUES ';
+			foreach($_POST['friends']['data'] as $friends_details)
+			{
+				$first_name = (isset($friends_details['first_name'])?$friends_details['first_name']:'');
+				$last_name = (isset($friends_details['last_name'])?$friends_details['last_name']:'');
+				$gender = (isset($friends_details['gender'])?$friends_details['gender']:'');
+				$fb_id = (isset($friends_details['id'])?$friends_details['id']:'');
+				$birthday = (isset($friends_details['birthday'])?$friends_details['birthday']:'');
+				$profile_img_path = (isset($friends_details['picture']['data']['url'])?$friends_details['picture']['data']['url']:'');
+				 
+				$user = Users::model()->find(array(
+                                            'select'=>'id,fb_id',
+                                            'condition'=>'fb_id=:fbID AND status=:Status',
+                                            'params'=>array(':fbID'=>$fb_id,':Status'=>4), 
+                                   ));
+				
+				$is_fmn_user = 'y';
+				if($user == null)
+				{
+					$is_fmn_user = 'n';
+				}
+				
+				if($birthday!='')
+				{
+					$imp_friends_sql .= "('".$user_id."','".$first_name."','".$last_name."','".$fb_id."','".$gender."','1','".$birthday."','".$profile_img_path."','".$is_fmn_user."'),";
+				}
+			}
+			$imp_friends_sql = rtrim($imp_friends_sql,',');
+			$connection=Yii::app()->db;
+			$command=$connection->createCommand($imp_friends_sql);
+		    $command->execute();
+		}
 }

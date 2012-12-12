@@ -7,12 +7,12 @@ if(!empty($freinds_notifications))
 	?>
 		<div class="gift gift1">
             <div class="f_l">
-                <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); ?>
+                <?php echo CHtml::image($noti_values['profile_img_path']); ?>
             </div>
             <div class="f_l">
                 <p><?php echo $noti_values['occasion_name'];?></p>
                 <p><span><?php echo $noti_values['occasion_date'];?></span></p>
-                <div class="f_l m_r_10"><i class="icon-time"></i></div>
+                <!--<div class="f_l m_r_10"><i class="icon-time"></i></div>-->
                 <div class="f_l m_r_10"><i class="icon-gift"></i></div>
                 <div class="f_l m_r_10"><i class="icon-fb"></i></div>
                 <div class="f_l m_r_10"><i class="icon-none"></i></div>
