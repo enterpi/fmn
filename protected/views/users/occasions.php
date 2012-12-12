@@ -6,9 +6,11 @@ if(!empty($freinds_occasions))
 	{
 	?>
 		<div class="gift">
-			<div class="f_l">
-				<?php //echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); 
-				echo CHtml::image($oca_values['profile_img_path']); 
+			<div class="f_l avtaar">
+				<?php
+				$profile_img_path = ($oca_values['profile_img_path']!=''?$oca_values['profile_img_path']:Yii::app()->request->baseUrl.'/css/images/gift.png');
+				//echo CHtml::image(Yii::app()->request->baseUrl.'/css/images/gift.png'); 
+				echo CHtml::image($profile_img_path); 
 				?>
 			</div>
 			<div class="f_l">

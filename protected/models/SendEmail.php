@@ -17,12 +17,12 @@ class SendEmail
             if(isset($email['from'])&& isset($email['from_name']) && isset($email['to']) && isset($email['message']) && isset($email['subject']) ){
 
             $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
-            $mailer->IsSMTP();
+            /*$mailer->IsSMTP();
             $mailer->Host ="ssl://smtp.gmail.com";
             $mailer->Port ="465";
             $mailer->SMTPAuth = true;
             $mailer->Username ="enterpi.php@gmail.com";
-            $mailer->Password ="touchwithraju";
+            $mailer->Password ="touchwithraju";*/
             
             
             $mailer->From = $email['from'];

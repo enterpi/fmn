@@ -42,7 +42,7 @@
             <div class="profile">
             	<div class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <div class="pro_pic">
+                  <div class="pro_pic avtaar">
                   	<?php echo CHtml::image($profile_img_path); ?>
                   </div><?php echo $user->first_name.' '.$user->last_name;?></a>
                   <ul class="dropdown-menu dro_menu" role="menu" aria-labelledby="dLabel">
