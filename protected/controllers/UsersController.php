@@ -117,20 +117,16 @@ class UsersController extends Controller
 						<div style="font-size:20px; border-bottom:1px solid #CCC; font-family:Palatino Linotype; margin-top:-32px; line-height:45px; margin-bottom:15px; padding-left:15px; background-color:#E9E9E9;">Birthday Reminder</div>';
 					foreach($occasions as $labels=>$details)
 					{
-						$message .= '<table style="margin:0px 0px 10px 10px; font-family:Arial; font-size:14px;">
+						$message .= '<table style="margin:0px 0px 10px 10px; font-family:Arial; font-size:12px;">
 							<tr style="margin:0px;">
-								<td rowspan="2"><img style="margin:0px 5px 0px 0px;" src="'.$details['profile_img_path'].'" /></td>
-								<td style="padding-top:5px;">'.$details['friend_name'].'</td>
-							</tr>
-							<tr style="margin:10px 0px 0px 0px;">
-								<td>'.$details["occasion_date"].'</td>
+								<td><img style="margin:0px 5px 0px 0px;" src="'.$details['profile_img_path'].'" /></td>
+								<td style="line-height:20px">'.$details['friend_name'].'<br>'.$details["occasion_date"].'</td>
 							</tr>
 						</table>';
 						$user_email = $details["user_email_id"];
 					}
 					$message .= '</div>';
 					
-					echo $message; die;
 					$subject = 'FORGETMNOT Birthday Reminder';
                     $email = array();
                     $email['from'] = 'admin@fmn.com';
