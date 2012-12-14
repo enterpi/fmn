@@ -90,25 +90,60 @@ class UsersController extends Controller
 		
 		public function actionGetReminders()
 		{		
-			//$OccassionsReminder = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			$userFriend_occasions = new User_friends_Occasions;
+			$ip_array = array('to_date'=>gmdate('Y-m-d'));
+			$reminder_occasions = $userFriend_occasions->getReminder_Occasions($ip_array);
 			
-			$OccassionsReminder = OccassionsReminder::model()->findAll(array(
-                                                                       'select'=>'id,remind_date,users_occassions_id,users_id',
-                                                                        'condition'=>'remind_date=:remindDate',
-                                                                        'params'=>array(':remindDate'=>gmdate('Y-m-d')),         
-                                                                        ));
-			$i=1;
-			//echo '<pre>'; print_r($OccassionsReminder);die;
-			foreach($OccassionsReminder as $val)
+			$user_friends_occ = array(); 
+			//echo '<pre>'; print_r($reminder_occasions);die;
+			foreach($reminder_occasions as $val)
 			{
-				echo $i.'-----'.'<br>';
-				echo $val->remind_date.'<br>';
-				echo $val->users_occassions_id.'<br>';
-				echo $val->users_id.'<br>';
-				echo $val->created_date.'<br>';
-				$i++;
+				//echo '<pre>';
+				//print_r($val); die;
+				$user_friends_occ[$val['id']][] = array(
+												 'friend_name'=>ucfirst($val['friend_name']),
+												 'occasion_date'=>date('F d', strtotime($val['occasion_date'])),
+												 'user_email_id'=>ltrim($val['email_address'], " fb_"),
+												 'occasion_name'=>$val['occasion_name'],
+												 'profile_img_path' => ($val['profile_img_path']!=''?$val['profile_img_path']:Yii::app()->request->baseUrl.'/css/images/gift.png')
+												 );
 			}
-			die;
+			$message = '';
+			if(!empty($user_friends_occ))
+			{
+				foreach($user_friends_occ as $user_id=>$occasions)
+				{
+					$message .= '<div style="border:1px solid #CCC; overflow:hidden;">
+						<div style="font-size:20px; border-bottom:1px solid #CCC; font-family:Palatino Linotype; margin-top:-32px; line-height:45px; margin-bottom:15px; padding-left:15px; background-color:#E9E9E9;">Birthday Reminder</div>';
+					foreach($occasions as $labels=>$details)
+					{
+						$message .= '<table style="margin:0px 0px 10px 10px; font-family:Arial; font-size:14px;">
+							<tr style="margin:0px;">
+								<td rowspan="2"><img style="margin:0px 5px 0px 0px;" src="'.$details['profile_img_path'].'" /></td>
+								<td style="padding-top:5px;">'.$details['friend_name'].'</td>
+							</tr>
+							<tr style="margin:10px 0px 0px 0px;">
+								<td>'.$details["occasion_date"].'</td>
+							</tr>
+						</table>';
+						$user_email = $details["user_email_id"];
+					}
+					$message .= '</div>';
+					
+					echo $message; die;
+					$subject = 'FORGETMNOT Birthday Reminder';
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $user_email;
+                    $email['message'] = $message;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    echo "success";
+				}
+			}
+			//echo '<pre>'; print_r($user_friends_occ); die;
 		}
 	
 	public function actionhideOccasions()

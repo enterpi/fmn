@@ -12,7 +12,7 @@
 class User_friends_Occasions 
 {
 
-  function getUser_friends_Occasions($ip_array)
+  public function getUser_friends_Occasions($ip_array)
   {
 			$ocasion_date = date('Y').'-'.$ip_array['p_month'];		
 			$sql = "select user_occ_id,occasion_name,occasion_date,occasion_day,remind_date,profile_img_path from (
@@ -47,7 +47,7 @@ class User_friends_Occasions
 			return $friends_occasions;
 			
   }
-  function getUser_friends_Notifications($ip_array)
+  public function getUser_friends_Notifications($ip_array)
   {
 			
 			$sql = "select user_occ_id,occasion_name,occasion_date,occasion_day,remind_date,profile_img_path from (
@@ -87,12 +87,31 @@ class User_friends_Occasions
 			
   }
 
-  function setReminderDate($ip_array)
-  {
-        $user = UserFriends::model()->findByPk($ip_array['occ_id']);
-        $user->remind_date = $ip_array['remind_date'];
-        return $user->save();
-  }
+	public function setReminderDate($ip_array)
+	{
+		$user = UserFriends::model()->findByPk($ip_array['occ_id']);
+		$user->remind_date = $ip_array['remind_date'];
+		return $user->save();
+	}
+	public function getReminder_Occasions($ip_array)
+	{
+		$sql = "SELECT CONCAT(uf.first_name,' ',uf.last_name) as friend_name, 
+				uf.occasion_date as occasion_date,uf.profile_img_path,
+				DATE_FORMAT(STR_TO_DATE(uf.occasion_date, '%m/%d/%Y'), '%d/%m') as occa_date,
+				u.email_address,u.id,
+				o.occasion as occasion_name 
+				from 
+				user_friends uf 
+				left join occasions o on o.id = uf.occasion_id 
+				left join users u on u.id = uf.users_id 
+				where uf.remind_date = '".$ip_array['to_date']."' order by occa_date";
+		
+		$reminder_Occasions = Yii::app()->db->createCommand($sql)->queryAll();
+			//echo '<pre>';print_r($friends_occasions); die;
+		return $reminder_Occasions;
+				
+	}
+  
     //put your code here
 }
 ?>
