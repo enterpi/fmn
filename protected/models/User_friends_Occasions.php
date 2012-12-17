@@ -97,14 +97,14 @@ class User_friends_Occasions
 	{
 		$sql = "SELECT CONCAT(uf.first_name,' ',uf.last_name) as friend_name, 
 				uf.occasion_date as occasion_date,uf.profile_img_path,
-				DATE_FORMAT(STR_TO_DATE(uf.occasion_date, '%m/%d/%Y'), '%d/%m') as occa_date,
+				DATE_FORMAT(STR_TO_DATE(uf.occasion_date, '%m/%d/%Y'), '%m/%d') as occa_date,
 				u.email_address,u.id,
 				o.occasion as occasion_name 
 				from 
 				user_friends uf 
 				left join occasions o on o.id = uf.occasion_id 
 				left join users u on u.id = uf.users_id 
-				where uf.remind_date = '".$ip_array['to_date']."' order by occa_date";
+				where uf.remind_date = '".$ip_array['to_date']."' order by occa_date,friend_name";
 		
 		$reminder_Occasions = Yii::app()->db->createCommand($sql)->queryAll();
 			//echo '<pre>';print_r($friends_occasions); die;

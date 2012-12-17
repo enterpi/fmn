@@ -168,7 +168,17 @@ class SiteController extends Controller
                         $model->gender = $gender;
                         $model->birthday = $birthday;
 						$model->profile_img_path = $profile_img_path;
+						$model->created_date = gmdate('Y-m-d H:i:s');
+						$model->modified_date =gmdate('Y-m-d H:i:s');
                         $model->save();
+						
+						//updating 'Is FMN User' in user friends table 
+						$is_fmn_user = 'y';
+						$sql='update user_friends set is_fmn_user ="y" where fb_id='.$id;
+						$connection=Yii::app()->db;
+						$command=$connection->createCommand($sql);
+						$command->execute();
+						
                         $first_login = true;
                     }
                     else

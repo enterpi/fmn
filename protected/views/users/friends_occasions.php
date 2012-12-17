@@ -26,6 +26,9 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
 <?php 
        $cs=Yii::app()->getClientScript(); 
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/popover.js');
+	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.scrollbars.js');
+	   $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/jquery.mousewheel.min.js');
+	   $cs->registerCssFile(Yii::app()->request->baseUrl.'/css/jquery.scrollbars.css');
        $cs->registerScriptFile(Yii::app()->request->baseUrl.'/scripts/useroccasions.js');
        Yii::app()->clientScript->registerScript('questions','
         function question(questions)
@@ -133,6 +136,7 @@ var fmn_token = '<?php echo Yii::app()->request->csrfToken; ?>';
         </div>
     </div>
 </div>
+
 
 
 

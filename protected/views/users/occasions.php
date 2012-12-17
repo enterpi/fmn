@@ -2,6 +2,15 @@
 //echo '<pre>';print_r($friends_occasions); die;
 if(!empty($freinds_occasions))
 {
+	$div_over_flow_cls = 'gift_sec';
+	if(count($freinds_occasions)> 10)
+	{
+		$div_over_flow_cls = 'gift_over';	
+	}
+			
+?>
+	<div class="<?php echo $div_over_flow_cls;?>">
+<?php    
 	foreach($freinds_occasions as $oca_key=>$oca_values)
 	{
 	?>
@@ -24,6 +33,9 @@ if(!empty($freinds_occasions))
 		</div>
 	<?php	
 	}
+?>	
+	</div>
+<?php    
 }
 else
 {
@@ -33,4 +45,10 @@ else
 }
 
 ?>
+
+<script type="text/javascript">
+	$(function() {
+		$('.gift_over').scrollbars();
+	});
+</script>
 

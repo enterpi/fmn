@@ -356,9 +356,26 @@ textarea.inp{
 .gift_sec{
 	overflow:hidden;
 }
+.gift_over{
+	overflow-y:scroll;
+	height:400px;
+}
+.gift_over::-webkit-scrollbar {
+    width: 12px;
+}
+
+.gift_over::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.gift_over::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 .gift{
 	float:left;
-	min-width:350px;
+	min-width:340px;
 	min-height:80px;
 }
 .gift1{
