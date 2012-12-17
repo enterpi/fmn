@@ -90,33 +90,64 @@ class UsersController extends Controller
 		
 		public function actionGetReminders()
 		{		
-			//$OccassionsReminder = OccassionsReminder::model()->findByAttributes(array('remind_date'=>gmdate('Y-m-d')));
+			$userFriend_occasions = new User_friends_Occasions;
+			$ip_array = array('to_date'=>gmdate('Y-m-d'));
+			$reminder_occasions = $userFriend_occasions->getReminder_Occasions($ip_array);
 			
-			$OccassionsReminder = OccassionsReminder::model()->findAll(array(
-                                                                       'select'=>'id,remind_date,users_occassions_id,users_id',
-                                                                        'condition'=>'remind_date=:remindDate',
-                                                                        'params'=>array(':remindDate'=>gmdate('Y-m-d')),         
-                                                                        ));
-			$i=1;
-			//echo '<pre>'; print_r($OccassionsReminder);die;
-			foreach($OccassionsReminder as $val)
+			$user_friends_occ = array(); 
+			//echo '<pre>'; print_r($reminder_occasions);die;
+			foreach($reminder_occasions as $val)
 			{
-				echo $i.'-----'.'<br>';
-				echo $val->remind_date.'<br>';
-				echo $val->users_occassions_id.'<br>';
-				echo $val->users_id.'<br>';
-				echo $val->created_date.'<br>';
-				$i++;
+				//echo '<pre>';
+				//print_r($val); die;
+				$user_friends_occ[$val['id']][] = array(
+												 'friend_name'=>ucfirst($val['friend_name']),
+												 'occasion_date'=>date('F d', strtotime($val['occasion_date'])),
+												 'user_email_id'=>ltrim($val['email_address'], " fb_"),
+												 'occasion_name'=>$val['occasion_name'],
+												 'profile_img_path' => ($val['profile_img_path']!=''?$val['profile_img_path']:Yii::app()->request->baseUrl.'/css/images/gift.png')
+												 );
 			}
-			die;
+			$message = '';
+			if(!empty($user_friends_occ))
+			{
+				foreach($user_friends_occ as $user_id=>$occasions)
+				{
+					$message .= '<div style="border:1px solid #CCC; overflow:hidden;">
+						<div style="font-size:20px; border-bottom:1px solid #CCC; font-family:Palatino Linotype; margin-top:-32px; line-height:45px; margin-bottom:15px; padding-left:15px; background-color:#E9E9E9;">Birthday Reminder</div>';
+					foreach($occasions as $labels=>$details)
+					{
+						$message .= '<table style="margin:0px 0px 10px 10px; font-family:Arial; font-size:12px;">
+							<tr style="margin:0px;">
+								<td><img style="margin:0px 5px 0px 0px;" src="'.$details['profile_img_path'].'" /></td>
+								<td style="line-height:20px">'.$details['friend_name'].'<br>'.$details["occasion_date"].'</td>
+							</tr>
+						</table>';
+						$user_email = $details["user_email_id"];
+					}
+					$message .= '</div>';
+					
+					$subject = 'FORGETMNOT Birthday Reminder';
+                    $email = array();
+                    $email['from'] = 'admin@fmn.com';
+                    $email['from_name'] = 'Admin';
+                    $email['to'] = $user_email;
+                    $email['message'] = $message;
+                    $email['subject'] = $subject;
+                    $mail = new SendEmail;
+                    $mail->send($email);
+                    echo "success";
+				}
+			}
+			//echo '<pre>'; print_r($user_friends_occ); die;
 		}
 	
 	public function actionhideOccasions()
 	{
             $occ_id = Yii::app()->input->stripClean(Yii::app()->input->post('occ_id'));
             $sts_value = Yii::app()->input->stripClean(Yii::app()->input->post('sts_value'));
-            $model=UsersOccasions::model()->findByPk($occ_id);
-            $UsersOccasions = UsersOccasions::model()->findByPk($occ_id);
+            $model=UserFriends::model()->findByPk($occ_id);
+            $UsersOccasions = UserFriends::model()->findByPk($occ_id);
             $UsersOccasions->hide_occ = $sts_value; 
             if($UsersOccasions->save())
                             echo true;
@@ -146,9 +177,16 @@ class UsersController extends Controller
 	public function actiongetNotifications()
 	{
 		$userFriend_occasions = new User_friends_Occasions;
+		$notification_date_repitive = date('m-d', strtotime(date('Y-m-d'). ' + 14 days'));
 		$notification_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 14 days'));
+		$to_day_repitive = date('m-d');
 		$to_day = date('Y-m-d');
-		$ip_array = array('user_id'=>$_POST['user_id'],'notification_date'=>$notification_date,'to_day'=>$to_day);
+		$ip_array = array(
+						  'user_id'=>$_POST['user_id'],
+						  'notification_date_repitive'=>$notification_date_repitive,
+						  'to_day_repitive'=>$to_day_repitive,
+						  'notification_date'=>$notification_date,
+						  'to_day'=>$to_day);
 		$freinds_notifications = $userFriend_occasions->getUser_friends_Notifications($ip_array);
 		echo $this->renderPartial('notifications',array(
 			'freinds_notifications'=>$freinds_notifications,

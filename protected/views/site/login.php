@@ -33,8 +33,8 @@ $this->breadcrumbs=array(
             if (response.authResponse) {
                 //connected
                 var res = response.authResponse;
-                FB.api("/me", function(resp) {
-                    $.ajax({
+                FB.api("/me", { fields: "email,first_name,last_name,gender,birthday,picture" }, function(resp) {
+					$.ajax({
                         url:"'.Yii::app()->request->baseUrl.'/site/fblogin/",
                         type:"POST",
                         data:{
@@ -43,8 +43,9 @@ $this->breadcrumbs=array(
                             "email":resp.email,
                             "first_name":resp.first_name,
                             "last_name":resp.last_name,
-                            "gender":"male",
+                            "gender":resp.gender,
                             "birthday":resp.birthday,
+							"picture":resp.picture,
                             "FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
                             },
                          success:function(res){
@@ -54,8 +55,17 @@ $this->breadcrumbs=array(
                             }
                             else
                             {
-                                FB.api("/me/friends", { fields: "name,id,location,birthday" }, function(result) {
-                                  console.log(result);
+                                FB.api("/me/friends", { fields: "name,id,location,birthday,gender,first_name,last_name,picture" }, function(result) {
+								  	$.ajax({
+									url:"'.Yii::app()->request->baseUrl.'/site/adduserfriends/",
+									type:"POST",
+									data:{
+										friends:result,
+										"FMN_TOKEN":"'.Yii::app()->request->csrfToken.'"
+										},
+									 success:function(){
+										}
+									});
                                 })
                                 FacebookInviteFriends();
                             }
