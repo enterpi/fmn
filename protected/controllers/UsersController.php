@@ -34,7 +34,7 @@ class UsersController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index','updateuser','view',
-                                            'saveanswer','changepwd','sendinvite','saveReminder','hideOccasions'),
+                                            'saveanswer','changepwd','sendinvite','saveReminder','hideOccasions','profile'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -704,4 +704,50 @@ class UsersController extends Controller
                 echo '1';
             }
         }
+		public function actionProfile($email_address = null,$for=null)
+        {
+			$name = Yii::app()->user->getName();
+                $id = Yii::app()->user->getId();
+                $answered_questions = UsersAnswers::model()->findAll(array(
+                                                                       'select'=>'questions_id',
+                                                                        'condition'=>'users_id=:usersID',
+                                                                        'params'=>array(':usersID'=>$id),         
+                                                                        ));
+                $ids = array();
+                foreach($answered_questions as $ans_q)
+                {
+                    $ids[] = $ans_q->questions_id;
+                }
+                if(sizeof($ids)>0)
+                {
+                    $cond = array('condition'=>'t.id NOT IN ('.implode(',',$ids).') AND t.status="1"');
+                }
+                else
+                {
+                    $cond = array('condition'=>'t.status="1"');
+                }
+                $questions = Questions::model()->with(array('questionOptions'=>array(
+                                                                'joinType'=>'INNER JOIN',
+                                                                )
+                                                        ))->findAll($cond);
+                $view_questions = array();
+                foreach($questions as $question)
+                {
+                    $view_questions[$question->id]['question'] = str_replace('{user name}', $name, $question->question);
+                    $view_questions[$question->id]['question_id'] = $question->id;
+                    $options = array();
+                    foreach($question->questionOptions as $option)
+                    {
+                    $options[$option->id]['option'] = $option->option;
+                    $options[$option->id]['id'] = $option->id;
+                    }
+                    $view_questions[$question->id]['options'] = array_values($options);
+                }
+                Yii::app()->clientScript->registerCoreScript('jquery');
+				//echo '<pre>';print_r($freinds_occasions); die;
+				$this->render('profile',array(
+					'user_id'=>$id,
+					'questions'=> json_encode(array_values($view_questions))
+				));
+		}
 }
