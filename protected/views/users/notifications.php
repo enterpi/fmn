@@ -24,10 +24,10 @@ if(!empty($freinds_notifications))
             <div class="f_l">
                 <p><?php echo $noti_values['occasion_name'];?></p>
                 <p><span><?php echo $noti_values['occasion_date'];?></span></p>
-                <!--<div class="f_l m_r_10"><i class="icon-time"></i></div>-->
-                <div class="f_l m_r_10"><i class="icon-gift"></i></div>
-                <div class="f_l m_r_10"><i class="icon-fb"></i></div>
-                <div class="f_l m_r_10"><i class="icon-none"></i></div>
+                <!--<div class="f_l m_r_10"><i class="icon-time" title="Remind Me"></i></div>-->
+                <div class="f_l m_r_10"><i class="icon-gift c_n" title="Send Gift"></i></div>
+                <div class="f_l m_r_10"><i class="icon-fb c_n" title="Invite Friend"></i></div>
+                <div class="f_l m_r_10"><i class="icon-none c_n" title="Hide Occasions"></i></div>
             </div>
         </div>
 	<?php	

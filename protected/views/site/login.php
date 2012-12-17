@@ -173,7 +173,7 @@ $this->breadcrumbs=array(
                 <label>
                     <div class="lft_em">Email Id:</div>
                     <div class="rgt_em">
-                        <input type="text" name="fp_email" id="fp_email" style="width:300px"/>
+                        <input type="text" name="fp_email" id="fp_email" style="width:300px" autofocus="autofocus"/>
                         <span class="error">Please enter Email Id</span>
                     </div>
                 </label>
